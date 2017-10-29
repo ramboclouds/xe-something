@@ -1,4 +1,5 @@
 <?php
+
 class somethingAdminModel extends something
 {
 	function init()

@@ -2,5 +2,7 @@
 <module>
 	<grants />
 	<permissions />
-	<actions />
+	<actions>
+		<action name="dispScheduleAdminInsertModule" type="view" menu_name="schedule" standalone="true" />
+	</actions>
 </module>

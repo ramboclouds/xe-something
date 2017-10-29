@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="something">
+		<value xml:lang="ko"><![CDATA[XE Something Module]]></value>
+		<value xml:lang="en"><![CDATA[XE Something Module]]></value>
+	</item>
+	<item name="use_to_something">
+		<value xml:lang="ko"><![CDATA[썸띵 모듈 사용여부]]></value>
+		<value xml:lang="en"><![CDATA[Use to something Module]]></value>
+	</item>
+</lang>
