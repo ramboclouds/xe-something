@@ -3,6 +3,10 @@
 	<grants />
 	<permissions />
 	<actions>
-		<action name="dispScheduleAdminInsertModule" type="view" menu_name="schedule" standalone="true" />
+		<!-- admin view -->
+		<action name="dispSomethingAdminConfig" type="view" admin_index="true" standalone="true" />
+
+		<!-- admin Controller -->
+		<action name="procSomethingAdminInsertConfig" type="controller" standalone="true" />
 	</actions>
 </module>

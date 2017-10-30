@@ -1,1 +1,13 @@
-cmd_module_config
+<div class="x_page-header">
+	<h1>{$lang->something}</h1>
+</div>
+
+<div class="header4">
+	<ul class="x_nav x_nav-tabs">
+		<li class="x_active"|cond="$act=='dispScheduleAdminConfig'"><a href="{getUrl('act','dispScheduleAdminConfig')}">{$lang->something_default_setting}</a></li>
+	</ul>
+</div>
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>

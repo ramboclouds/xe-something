@@ -8,4 +8,12 @@
 		<value xml:lang="ko"><![CDATA[썸띵 모듈 사용여부]]></value>
 		<value xml:lang="en"><![CDATA[Use to something Module]]></value>
 	</item>
+	<item name="about_use_to_something">
+		<value xml:lang="ko"><![CDATA[모듈 사용을 설정합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Set to the module use.]]></value>
+	</item>
+	<item name="something_default_setting">
+		<value xml:lang="ko"><![CDATA[기본설정]]></value>
+		<value xml:lang="en"><![CDATA[Default setting]]></value>
+	</item>
 </lang>
