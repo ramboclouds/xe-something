@@ -1,0 +1,114 @@
+<include target="header.html" />
+
+<form class="x_form-horizontal" action="./" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="something" />
+	<input type="hidden" name="act" value="procSomethingAdminInsertModuleInstance" />
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+	<input type="hidden" name="xe_validator_id" value="modules/something/tpl/moduleinstance/1" />
+	<section class="section">
+		<h1>{$lang->subtitle_primary}</h1>
+		<div cond="$logged_info->is_admin == 'Y'" class="x_control-group">
+			<label class="x_control-label" for="mid">{$lang->mid}</label>
+			<div class="x_controls">
+				<input type="text" name="mid" id="mid" value="{$module_info->mid}" />
+				<a href="#module_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="module_name_help" class="x_help-block" hidden>{$lang->about_mid}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="browser_title">{$lang->browser_title}</label>
+			<div class="x_controls">
+				<input type="text" name="browser_title" id="browser_title" value="<!--@if(strpos($module_info->browser_title, '$user_lang->') === false)-->{$module_info->browser_title}<!--@else-->{htmlspecialchars($module_info->browser_title)}<!--@end-->" class="lang_code" />
+				<a href="#browser_title_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="browser_title_help" class="x_help-block" hidden>{$lang->about_browser_title}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="layout_srl">{$lang->layout}</label>
+			<div class="x_controls">
+				<select name="layout_srl" id="layout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->layout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="skin">{$lang->skin}</label>
+			<div class="x_controls">
+				<select name="skin" id="skin" style="width:auto">
+					<option loop="$skin_list=> $key, $val" value="{$key}" selected="selected"|cond="$module_info->skin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_header_text">{$lang->header_text}</label>
+			<div class="x_controls">
+				<textarea name="header_text" id="header_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->header_text, '$user_lang->') === false)-->{$module_info->header_text}<!--@else-->{htmlspecialchars($module_info->header_text)}<!--@end--></textarea>
+				<p id="header_text_help" class="x_help-block">{$lang->about_header_text}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_footer_text">{$lang->footer_text}</label>
+			<div class="x_controls">
+				<textarea name="footer_text" id="footer_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->footer_text}<!--@else-->{htmlspecialchars($module_info->footer_text)}<!--@end--></textarea>
+				<p id="footer_text_help" class="x_help-block">{$lang->about_footer_text}</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<h1>{$lang->mobile_settings}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->mobile_view}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="use_mobile"><input type="checkbox" name="use_mobile" id="use_mobile" value="Y" checked="checked"|cond="$module_info->use_mobile == 'Y'" /> {$lang->about_mobile_view}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mlayout_srl">{$lang->mobile_layout}</label>
+			<div class="x_controls">
+				<select name="mlayout_srl" id="mlayout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->mlayout_srl== $val->layout_srl">{$val->title} <block cond="$val->layout">({$val->layout})</block></option>
+				</select>
+				<a href="#mobile_layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mskin">{$lang->mobile_skin}</label>
+			<div class="x_controls">
+				<select name="mskin" id="mskin">
+					<option loop="$mskin_list=> $key, $val" value="{$key}" selected="selected"|cond="$module_info->mskin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+				<a href="#mobile_skin_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_skin_help" class="x_help-block" hidden>{$lang->about_skin}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_mobile_header_text">{$lang->mobile_header_text}</label>
+			<div class="x_controls">
+				<textarea name="mobile_header_text" id="mobile_header_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->mobile_header_text}<!--@else-->{htmlspecialchars($module_info->mobile_header_text)}<!--@end--></textarea>
+				<p id="mobile_header_text_help" class="x_help-block">{$lang->about_mobile_header_text}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_mobile_footer_text">{$lang->mobile_footer_text}</label>
+			<div class="x_controls">
+				<textarea name="mobile_footer_text" id="mobile_footer_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->mobile_footer_text}<!--@else-->{htmlspecialchars($module_info->mobile_footer_text)}<!--@end--></textarea>
+				<p id="mobile_footer_text_help" class="x_help-block">{$lang->about_mobile_footer_text}</p>
+			</div>
+		</div>
+	</section>
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-left">
+			<!-- TODO(BJRambo): Check again -->
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispSomethingAdminModuleInstance')}" type="button" class="x_btn">{$lang->cmd_cancel}</a>
+		</div>
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+</form>

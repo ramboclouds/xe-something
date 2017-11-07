@@ -16,4 +16,8 @@
 		<value xml:lang="ko"><![CDATA[기본설정]]></value>
 		<value xml:lang="en"><![CDATA[Default setting]]></value>
 	</item>
+	<item name="something_add_to_module">
+		<value xml:lang="ko"><![CDATA[모듈 생성]]></value>
+		<value xml:lang="en"><![CDATA[Add to Module]]></value>
+	</item>
 </lang>

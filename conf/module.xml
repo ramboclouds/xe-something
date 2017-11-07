@@ -5,8 +5,13 @@
 	<actions>
 		<!-- admin view -->
 		<action name="dispSomethingAdminConfig" type="view" admin_index="true" standalone="true" />
+		<action name="dispSomethingAdminModuleInstance" type="view" standalone="true" />
 
 		<!-- admin Controller -->
 		<action name="procSomethingAdminInsertConfig" type="controller" standalone="true" />
+		<action name="procSomethingAdminInsertModuleInstance" type="controller" standalone="true" />
+
+		<!-- user view -->
+		<action name="dispSomethingProfileView" type="view" standalone="true" index="true" />
 	</actions>
 </module>
