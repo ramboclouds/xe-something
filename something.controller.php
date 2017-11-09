@@ -21,12 +21,10 @@ class somethingController extends something
 			$userId = $oModule->mid;
 
 			$moduleInfo = $oModuleModel->getModuleInfoByMid($vid);
-			debugPRint($moduleInfo);
 			if($moduleInfo->module !== 'something')
 			{
 				return;
 			}
-
 
 			$this->module = $moduleInfo->module;
 			$this->mid = $moduleInfo->mid;
