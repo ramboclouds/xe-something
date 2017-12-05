@@ -30,15 +30,19 @@ class somethingAdminController extends something
 		$mid_args->mobile_header_text = $args->mobile_header_text;
 		$mid_args->mobile_footer_text = $args->mobile_footer_text;
 
+		// TODO : should we check mid_name?
 		if ($args->origin_mid == "")
 		{
-			// 신규 생성
 			$module_info = getModel('module')->getModuleInfoByMid($args->mid_name);
 			if (!$module_info->module_srl)
 			{
-				$oModuleController->insertModule($mid_args);
-
+				$insertOutput = $oModuleController->insertModule($mid_args);
+				if(!$insertOutput->toBool())
+				{
+					return $insertOutput;
+				}
 			}
+			// TODO : I Think so ... 굳이 여기에서 리턴 오브젝트를 만들필요가 잇을려나요. if ($args->origin_mid == "") 를 지워버리고 여기에서 업데이트랑 insert랑 나누는게..
 			else
 			{
 				return $this->makeObject(-1, 'error_dup_mid');
@@ -47,7 +51,6 @@ class somethingAdminController extends something
 		}
 		else
 		{
-			//업데이트
 			$mid_args->module_srl = $args->module_srl;
 			$midOutput = $oModuleController->updateModule($mid_args);
 			if(!$midOutput->toBool())
@@ -100,7 +103,6 @@ class somethingAdminController extends something
 		{
 			return $output;
 		}
-
 
 		$this->setMessage('success_updated');
 
