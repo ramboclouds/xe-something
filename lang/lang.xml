@@ -20,4 +20,10 @@
 		<value xml:lang="ko"><![CDATA[모듈 생성]]></value>
 		<value xml:lang="en"><![CDATA[Add to Module]]></value>
 	</item>
+
+	<item name="something_mid_value_module">
+		<value xml:lang="ko"><![CDATA[mid 설정]]></value>
+		<value xml:lang="en"><![CDATA[mid value]]></value>
+	</item>
+
 </lang>

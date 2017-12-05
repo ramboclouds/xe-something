@@ -16,6 +16,27 @@ class somethingAdminView extends something
 		$config = $oSomethingModel->getConfig();
 
 		Context::set('config', $config);
+
+		$oModuleModel = &getModel('module');
+
+		if($config->mid_name != ""){
+			Context::set('module_info',$oModuleModel->getModuleInfoByMid($config->mid_name));
+		}
+
+		$skin_list = $oModuleModel->getSkins($this->module_path);
+		Context::set('skin_list',$skin_list);
+
+		$mskin_list = $oModuleModel->getSkins($this->module_path, "m.skins");
+		Context::set('mskin_list', $mskin_list);
+
+
+		$oLayoutMode = &getModel('layout');
+		$layout_list = $oLayoutMode->getLayoutList();
+		Context::set('layout_list', $layout_list);
+
+		$mobile_layout_list = $oLayoutMode->getLayoutList(0,"M");
+		Context::set('mlayout_list', $mobile_layout_list);
+
 	}
 
 	function dispSomethingAdminModuleInstance()
