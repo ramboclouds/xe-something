@@ -19,8 +19,9 @@ class somethingAdminView extends something
 
 		$oModuleModel = &getModel('module');
 
-		if($config->mid_name != ""){
-			Context::set('module_info',$oModuleModel->getModuleInfoByMid($config->mid_name));
+		if ($config->mid_name != "")
+		{
+			Context::set('module_info', $oModuleModel->getModuleInfoByMid($config->mid_name));
 		}
 
 		$skin_list = $oModuleModel->getSkins($this->module_path);
@@ -53,8 +54,6 @@ class somethingAdminView extends something
 		}
 
 		$moduleInfo = getModel('module')->getModuleInfoByModuleSrl($moduleSrl);
-		debugPrint($moduleInfo);
-		debugPrint($this->module_info);
 
 		Context::set('module_info', $moduleInfo);
 

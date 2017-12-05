@@ -15,7 +15,7 @@ class somethingAdminController extends something
 
 		$args = Context::getRequestVars();
 
-		$mid_args=new stdClass;
+		$mid_args = new stdClass;
 		$mid_args->mid = $args->mid_name;
 		$mid_args->module = 'something';
 		$mid_args->layout_srl = $args->layout_srl;
@@ -25,34 +25,39 @@ class somethingAdminController extends something
 		$mid_args->site_srl = 0;
 		$mid_args->skin = $args->skin;
 		$mid_args->mskin = $args->mskin;
-		$mid_args->header_text=$args->header_text;
-		$mid_args->footer_text=$args->footer_text;
-		$mid_args->mobile_header_text=$args->mobile_header_text;
-		$mid_args->mobile_footer_text=$args->mobile_footer_text;
+		$mid_args->header_text = $args->header_text;
+		$mid_args->footer_text = $args->footer_text;
+		$mid_args->mobile_header_text = $args->mobile_header_text;
+		$mid_args->mobile_footer_text = $args->mobile_footer_text;
 
-		if($args->origin_mid == "")
-		{ // 신규 생성
-			$module_info = $oModule->getModuleInfoByMid($args->mid_name);
-			if(!$module_info->module_srl)
+		if ($args->origin_mid == "")
+		{
+			// 신규 생성
+			$module_info = getModel('module')->getModuleInfoByMid($args->mid_name);
+			if (!$module_info->module_srl)
 			{
 				$oModuleController->insertModule($mid_args);
 
 			}
 			else
 			{
-				return new Object(-1, 'error_dup_mid');
+				return $this->makeObject(-1, 'error_dup_mid');
 			}
 
 		}
 		else
-		{ //업데이트
-
+		{
+			//업데이트
 			$mid_args->module_srl = $args->module_srl;
-			$oModuleController->updateModule($mid_args);
+			$midOutput = $oModuleController->updateModule($mid_args);
+			if(!$midOutput->toBool())
+			{
+				return $midOutput;
+			}
 		}
 
 		$output = $oModuleController->updateModuleConfig('something', $config);
-		if(!$output->toBool())
+		if (!$output->toBool())
 		{
 			return $output;
 		}
