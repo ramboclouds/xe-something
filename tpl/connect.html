@@ -1,0 +1,28 @@
+<include target="header.html" />
+
+<form action="./" method="post" class="x_form-horizontal" id="fo_something">
+	<input type="hidden" name="module" value="something" />
+    <input type="hidden" name="act" value="procSomethingAdminInsertConnect" />
+    <input type="hidden" name="disp_act" value="dispSomethingAdminConnect" />
+	<section class="section">
+		<h1>{$lang->something_connect_setting}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="use">{$lang->something_address_type}</label>
+			<div class="x_controls">
+				<select name="connect_address_type" id="connect_address_type">
+					<option value="user_id" selected="selected"|cond="$config->connect_address_type == 'user_id'">{$lang->user_id}</option>
+                    <option value="nick_name" selected="selected"|cond="$config->connect_address_type == 'nick_name'">{$lang->nick_name}</option>
+                    <option value="member_srl" selected="selected"|cond="$config->connect_address_type == 'member_srl'">{$lang->something_member_srl}</option>
+                    
+				</select>
+				<p class="x_help-block">{$lang->about_address_type}</p>
+			</div>
+		</div>
+	</section>
+	
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+</form>

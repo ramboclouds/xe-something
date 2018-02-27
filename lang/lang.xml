@@ -8,6 +8,10 @@
 		<value xml:lang="ko"><![CDATA[썸띵 모듈 사용여부]]></value>
 		<value xml:lang="en"><![CDATA[Use to something Module]]></value>
 	</item>
+	<item name="about_address_type">
+		<value xml:lang="ko"><![CDATA[주소 형태를 설정합니다]]></value>
+		<value xml:lang="en"><![CDATA[each member address type]]></value>
+	</item>
 	<item name="about_use_to_something">
 		<value xml:lang="ko"><![CDATA[모듈 사용을 설정합니다.]]></value>
 		<value xml:lang="en"><![CDATA[Set to the module use.]]></value>
@@ -15,6 +19,18 @@
 	<item name="something_default_setting">
 		<value xml:lang="ko"><![CDATA[기본설정]]></value>
 		<value xml:lang="en"><![CDATA[Default setting]]></value>
+	</item>
+	<item name="something_connect_setting">
+		<value xml:lang="ko"><![CDATA[접속설정]]></value>
+		<value xml:lang="en"><![CDATA[Connect setting]]></value>
+	</item>
+	<item name="something_address_type">
+		<value xml:lang="ko"><![CDATA[주소형태]]></value>
+		<value xml:lang="en"><![CDATA[address type]]></value>
+	</item>
+	<item name="something_member_srl">
+		<value xml:lang="ko"><![CDATA[회원번호]]></value>
+		<value xml:lang="en"><![CDATA[member number]]></value>
 	</item>
 	<item name="something_add_to_module">
 		<value xml:lang="ko"><![CDATA[모듈 생성]]></value>
@@ -24,4 +40,36 @@
 		<value xml:lang="ko"><![CDATA[mid 설정]]></value>
 		<value xml:lang="en"><![CDATA[mid value]]></value>
 	</item>
+	<item name="something_error_title">
+		<value xml:lang="ko"><![CDATA[오류 안내]]></value>
+		<value xml:lang="en"><![CDATA[Error]]></value>
+	</item>
+	<item name="something_msg_user_notfound">
+		<value xml:lang="ko"><![CDATA[찾을수 없는 회원입니다.]]></value>
+		<value xml:lang="en"><![CDATA[Member does not exist.]]></value>
+	</item>
+	<item name="something_btn_confirm_ok">
+		<value xml:lang="ko"><![CDATA[확인]]></value>
+		<value xml:lang="en"><![CDATA[OK]]></value>
+	</item>
+	<item name="something_btn_confirm_cancle">
+		<value xml:lang="ko"><![CDATA[취소]]></value>
+		<value xml:lang="en"><![CDATA[Cancle]]></value>
+	</item>
+	<item name="something_source_data">
+		<value xml:lang="ko"><![CDATA[데이터]]></value>
+		<value xml:lang="en"><![CDATA[Source data]]></value>
+	</item>
+	<item name="something_board">
+		<value xml:lang="ko"><![CDATA[게시판]]></value>
+		<value xml:lang="en"><![CDATA[Board]]></value>
+	</item>
+
+	<item name="about_something_source_board">
+		<value xml:lang="ko"><![CDATA[데이터를 출력할 게시판을 선택해 주세요.<br/>만약 아무것도 선택하지 않는다면 모두 출력됩니다.]]></value>
+		<value xml:lang="en"><![CDATA[Select a board to output the data.<br/>If nothing is selected, everything is printed.]]></value>
+	</item>
+
+	
+
 </lang>

@@ -1,2 +1,47 @@
-Something
-{Context::get('user_id')}
+<!--#include("_header.html")-->
+{@ $nowDate=""; }
+<div class="st-container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <block cond="$board_data" loop="$board_data=>$no,$document">
+                {@ $doc_type="[Doc]"; }
+                <!--@if($document->doc_type=='cmt')-->
+                    {@ 
+                        $doc_content = cut_str($document->content,30); 
+                        $doc_type="[Cmt]";
+                    }
+                <!--@else if($document->doc_type=='doc')-->
+                    {@ $doc_content = $document->getTitle(30); }
+                <!--@end-->
+                {@
+                    $regdate = $document->regdate;
+                    $nDate = zdate($regdate, 'Ymd');
+                }
+                <!--@if($nowDate=="" )-->
+                <span class="badge badge-primary">{$nDate}</span>
+                <div class="card" style="width: 20rem;">
+                    <ul class="list-group list-group-flush">
+                <!--@end-->
+                
+                <!--@if($nowDate != $nDate && $nowDate != "" )-->
+                </ul>
+                </div>
+                <span class="badge badge-primary">{$nDate}</span>
+                <div class="card" style="width: 20rem;">
+                    <ul class="list-group list-group-flush">
+                <!--@end-->
+                    <li class="list-group-item">
+                        {$doc_type}{$doc_content}{zdate($document->regdate,"Y.m.d H:i:s")}
+                    </li> 
+                {@ $nowDate= $nDate; }
+            </block>
+            </ul>
+            </div>
+        </div>
+        <div class="col-5">
+            회원정보 출력<br/>
+            {print_r($member_info)}
+        </div>
+    </div>
+</div>
+<!--#include("_footer.html")-->

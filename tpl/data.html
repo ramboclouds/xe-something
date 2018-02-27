@@ -1,0 +1,26 @@
+<include target="header.html" />
+<form action="./" method="post" class="x_form-horizontal" id="fo_something">
+	<input type="hidden" name="module" value="something" />
+    <input type="hidden" name="act" value="procSomethingAdminInsertData" />
+    <input type="hidden" name="disp_act" value="dispSomethingAdminData" />
+	<section class="section">
+		<h1>{$lang->something_board}</h1>
+		<div class="x_control-group">
+			<div class="x_controls">
+				<div loop="$mid_list => $mid, $item">
+					<label cond="strtoupper($item->module)=='BOARD'">
+						<input type="checkbox" value="{$item->module_srl}" name="board_module_srls[]" checked="checked"|cond="is_array($config->board_module_srls) && in_array($item->module_srl, $config->board_module_srls)" />
+						<strong>{$item->browser_title}</strong> ({$item->mid} / {strtoupper($item->module)})
+					</label>
+				</div>
+				<p class="x_help-block">{$lang->about_something_source_board}</p>
+			</div>
+		</div>
+	</section>
+	
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+</form>

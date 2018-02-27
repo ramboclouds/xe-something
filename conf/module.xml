@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module>
 	<grants />
-	<permissions />
+	<permissions>
+        <permission action="dispSomethingAdminConfig" target="manager" />
+		<permission action="dispSomethingAdminConnect" target="manager" />
+		<permission action="dispSomethingAdminData" target="manager" />
+	</permissions>
 	<actions>
 		<!-- admin view -->
 		<action name="dispSomethingAdminConfig" type="view" admin_index="true" standalone="true" />
+		<action name="dispSomethingAdminConnect" type="view" standalone="true" />
+		<action name="dispSomethingAdminData" type="view" standalone="true" />
 		<action name="dispSomethingAdminModuleInstance" type="view" standalone="true" />
 
 		<!-- admin Controller -->
 		<action name="procSomethingAdminInsertConfig" type="controller" standalone="true" />
+		<action name="procSomethingAdminInsertConnect" type="controller" standalone="true" />
+		<action name="procSomethingAdminInsertData" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertModuleInstance" type="controller" standalone="true" />
 
 		<!-- user view -->

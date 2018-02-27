@@ -1,9 +1,9 @@
 <include target="header.html" />
-
 <form action="./" method="post" class="x_form-horizontal" id="fo_something">
 	<input type="hidden" name="module" value="something" />
 	<input type="hidden" name="act" value="procSomethingAdminInsertConfig" />
 	<input type="hidden" name="module_srl" id="module_srl" value="{$module_info->module_srl}" />
+	<input type="hidden" name="origin_mid" id="origin_mid" value="{$config->mid_name}" />
 	<section class="section">
 		<h1>{$lang->subtitle_primary}</h1>
 		<div class="x_control-group">

@@ -9,11 +9,12 @@ class somethingAdminController extends something
 	function procSomethingAdminInsertConfig()
 	{
 		/** @var $oModuleController moduleController */
+		$args = Context::getRequestVars();
+
 		$oModuleController = getController('module');
 		$config = new stdClass();
 		$config->use = Context::get('use');
-
-		$args = Context::getRequestVars();
+		$config->mid_name=$args->mid_name;
 
 		$mid_args = new stdClass;
 		$mid_args->mid = $args->mid_name;
@@ -30,7 +31,6 @@ class somethingAdminController extends something
 		$mid_args->mobile_header_text = $args->mobile_header_text;
 		$mid_args->mobile_footer_text = $args->mobile_footer_text;
 
-		// TODO : should we check mid_name?
 		if ($args->origin_mid == "")
 		{
 			$module_info = getModel('module')->getModuleInfoByMid($args->mid_name);
@@ -42,7 +42,6 @@ class somethingAdminController extends something
 					return $insertOutput;
 				}
 			}
-			// TODO : I Think so ... 굳이 여기에서 리턴 오브젝트를 만들필요가 잇을려나요. if ($args->origin_mid == "") 를 지워버리고 여기에서 업데이트랑 insert랑 나누는게..
 			else
 			{
 				return $this->makeObject(-1, 'error_dup_mid');
@@ -59,7 +58,7 @@ class somethingAdminController extends something
 			}
 		}
 
-		$output = $oModuleController->updateModuleConfig('something', $config);
+		$output = $oModuleController->insertModuleConfig('something', $config);
 		if (!$output->toBool())
 		{
 			return $output;
@@ -75,6 +74,42 @@ class somethingAdminController extends something
 		else
 		{
 			$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispSomethingAdminConfig'));
+		}
+	}
+
+	function procSomethingAdminInsertConnect(){
+		$args = Context::getRequestVars();
+		$config = getModel('something')->getConfig();
+		$config->connect_address_type = $args->connect_address_type;
+
+		$oModuleController = &getController('module');
+		$output = $oModuleController->insertModuleConfig('something', $config);
+		$this->setMessage("success_saved");
+		if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))){
+			$returnUrl = getNotEncodedUrl('', 'module', 'admin', 'act', $args->disp_act);
+			header('location: ' . $returnUrl);
+			return;
+		}
+	}
+
+	function procSomethingAdminInsertData(){
+		$args = Context::getRequestVars();
+		$config = getModel('something')->getConfig();
+
+		if (!$args->board_module_srls){
+			$config->board_module_srls =array();
+		}else{
+			$config->board_module_srls=$args->board_module_srls;
+		}
+
+		$oModuleController = getController('module');
+		$oModuleController->insertModuleConfig('something', $config);
+		
+		$this->setMessage("success_saved");
+		if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))){
+			$returnUrl = getNotEncodedUrl('', 'module', 'admin', 'act', $args->disp_act);
+			header('location: ' . $returnUrl);
+			return;
 		}
 	}
 

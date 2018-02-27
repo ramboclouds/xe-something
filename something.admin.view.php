@@ -40,6 +40,22 @@ class somethingAdminView extends something
 
 	}
 
+	function dispSomethingAdminConnect()
+	{
+		$oSomethingModel = getModel('something');
+		$config = $oSomethingModel->getConfig();
+		Context::set('config', $config);
+	}
+
+	function dispSomethingAdminData()
+	{
+		$oSomethingModel = getModel('something');
+		$config = $oSomethingModel->getConfig();
+		Context::set('config', $config);
+		$mid_list = getModel('module')->getMidList(null, array('module_srl', 'mid', 'browser_title', 'module'));
+		Context::set('mid_list', $mid_list);
+	}
+
 	function dispSomethingAdminModuleInstance()
 	{
 		$modulePath = $this->module_path;

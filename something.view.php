@@ -25,11 +25,45 @@ class somethingView extends something
 
 	function dispSomethingProfileView()
 	{
-		$userId = Context::get('user_id');
+		// index.php?mid=sometest&smember=테스트아이디
 
-		$memberInfo = getModel('member')->getMemberInfoByUserId($userId);
+		$user_string = Context::get('smember');
+		
+		if($user_string == "")
+		{
+			Context::set('something_error_msg',lang('something_msg_user_notfound'));
+			$this->setTemplateFile('_error');
+			return;
+		}
 
-		Context::set('user_id', $userId);
+		$stModel = getModel('something');
+		$mbModel = getModel('member');
+		$config = $stModel->getConfig();
+		$memberInfo = new stdClass();
+
+		if($config->connect_address_type == 'user_id')
+		{
+			$memberInfo = $mbModel->getMemberInfoByUserId($user_string);
+		}
+		else if($config->connect_address_type == 'member_srl')
+		{
+			$memberInfo = $mbModel->getMemberInfoByMemberSrl($user_string);
+		}
+		else if($config->connect_address_type == 'nick_name')
+		{
+			$memberInfo = $stModel->getMemberInfoByNickName($user_string,$mbModel);
+		}
+
+		if(!$memberInfo)
+		{
+			Context::set('something_error_msg',lang('something_msg_user_notfound'));
+			$this->setTemplateFile('_error');
+			return;
+		}
+
+		$boardData = $stModel->getMemeberBoardData($memberInfo,$config);
+	
+		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
 		$this->setTemplateFile('profile');
 	}
