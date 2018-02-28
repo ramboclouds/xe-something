@@ -25,7 +25,7 @@ class something extends ModuleObject
 		}
 
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	function checkUpdate()
@@ -59,7 +59,7 @@ class something extends ModuleObject
 			}
 		}
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
