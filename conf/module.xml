@@ -13,7 +13,7 @@
 		<action name="dispSomethingAdminData" type="view" standalone="true" />
 		<action name="dispSomethingAdminModuleInstance" type="view" standalone="true" />
 
-		<!-- admin Controller -->
+		<!-- admin controller -->
 		<action name="procSomethingAdminInsertConfig" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertConnect" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertData" type="controller" standalone="true" />
@@ -21,5 +21,9 @@
 
 		<!-- user view -->
 		<action name="dispSomethingProfileView" type="view" standalone="true" index="true" />
+		
+		<!-- trigger -->
+		<action name="triggerAddMemberMenu" type="controller" />
+
 	</actions>
 </module>

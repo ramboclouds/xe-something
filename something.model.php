@@ -26,6 +26,14 @@ class somethingModel extends something
 			{
 				$config->board_module_srls = array();
 			}
+			
+			if (!$config->memeber_popupmenu_name){
+				$config->memeber_popupmenu_name="회원 활동";
+			}
+
+			if (!$config->connect_address_type){
+				$config->connect_address_type="member_srl";
+			}
 
 			$this->config = $config;
 		}
@@ -35,8 +43,8 @@ class somethingModel extends something
 
 	function getMemberInfoByNickName($nick_name,$mb_model=false)
 	{
-		if(!$nick_name) return;
-		if(!$mb_model)
+		if (!$nick_name) return;
+		if (!$mb_model)
 		{
 			$mb_model=getModel('member');
 		}
@@ -45,8 +53,8 @@ class somethingModel extends something
 		$args->nick_name = $nick_name;
 		$output = executeQuery('something.getMemberInfoByNickName', $args);
 
-		if(!$output->toBool()) return $output;
-		if(!$output->data) return;
+		if (!$output->toBool()) return $output;
+		if (!$output->data) return;
 		$member_info = $mb_model->arrangeMemberInfo($output->data);
 		return $member_info;
 	}
@@ -54,7 +62,7 @@ class somethingModel extends something
 	function getMemeberBoardData($memberInfo,$config){
 		$board_srls = null;
 
-		if(count($config->board_module_srls) > 0)
+		if (count($config->board_module_srls) > 0)
 		{
 			$board_srls = implode($config->board_module_srls, ",");
 		}
@@ -77,7 +85,6 @@ class somethingModel extends something
 		$oDocumentModel = getModel('document');
 		$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE, $tableColumnList);
 		
-		
 		foreach ($output->data as $key => $value)
 		{
 			$output->data[$key]->doc_type="doc";
@@ -89,8 +96,7 @@ class somethingModel extends something
 		foreach ($cmt_output->data as $key => $value)
 		{
 			$cmt_output->data[$key]->doc_type="cmt";
-			$cmt_output->data[$key]->content=strip_tags($value->content,"<img>");
-			
+			$cmt_output->data[$key]->content=strip_tags($value->content);
 		}
 	
 		$output->data = array_merge((array) $output->data, (array) $cmt_output->data);
@@ -100,8 +106,5 @@ class somethingModel extends something
 
 		return $output;
 	}
-
-
-
-
 }
+/* End of file */

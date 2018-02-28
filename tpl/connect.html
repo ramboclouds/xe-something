@@ -13,9 +13,19 @@
 					<option value="user_id" selected="selected"|cond="$config->connect_address_type == 'user_id'">{$lang->user_id}</option>
                     <option value="nick_name" selected="selected"|cond="$config->connect_address_type == 'nick_name'">{$lang->nick_name}</option>
                     <option value="member_srl" selected="selected"|cond="$config->connect_address_type == 'member_srl'">{$lang->something_member_srl}</option>
-                    
 				</select>
 				<p class="x_help-block">{$lang->about_address_type}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<h1>{$lang->something_member_pop_menu}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="use">{$lang->something_display_name}</label>
+			<div class="x_controls">
+				<input type="text" name="memeber_popupmenu_name" value="{$config->memeber_popupmenu_name}">
+				<p class="x_help-block"><img src="images/member_popup_menu_sample.png">{$lang->something_about_display_name}</p>
 			</div>
 		</div>
 	</section>

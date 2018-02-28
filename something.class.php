@@ -2,7 +2,7 @@
 class something extends ModuleObject
 {
 	private $trigger = array(
-		array('moduleHandler.init', 'something', 'controller', 'triggerBeforeModuleHandlerInit', 'before'),
+		array('moduleHandler.init', 'something', 'controller', 'triggerAddMemberMenu', 'after'),
 	);
 
 	function moduleInstall()

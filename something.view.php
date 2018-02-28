@@ -29,7 +29,7 @@ class somethingView extends something
 
 		$user_string = Context::get('smember');
 		
-		if($user_string == "")
+		if ($user_string == "")
 		{
 			Context::set('something_error_msg',lang('something_msg_user_notfound'));
 			$this->setTemplateFile('_error');
@@ -39,22 +39,21 @@ class somethingView extends something
 		$stModel = getModel('something');
 		$mbModel = getModel('member');
 		$config = $stModel->getConfig();
-		$memberInfo = new stdClass();
 
-		if($config->connect_address_type == 'user_id')
+		if ($config->connect_address_type == 'user_id')
 		{
 			$memberInfo = $mbModel->getMemberInfoByUserId($user_string);
 		}
-		else if($config->connect_address_type == 'member_srl')
+		else if ($config->connect_address_type == 'member_srl')
 		{
 			$memberInfo = $mbModel->getMemberInfoByMemberSrl($user_string);
 		}
-		else if($config->connect_address_type == 'nick_name')
+		else if ($config->connect_address_type == 'nick_name')
 		{
 			$memberInfo = $stModel->getMemberInfoByNickName($user_string,$mbModel);
 		}
 
-		if(!$memberInfo)
+		if (!$memberInfo->member_srl)
 		{
 			Context::set('something_error_msg',lang('something_msg_user_notfound'));
 			$this->setTemplateFile('_error');
@@ -68,3 +67,4 @@ class somethingView extends something
 		$this->setTemplateFile('profile');
 	}
 }
+/* End of file */

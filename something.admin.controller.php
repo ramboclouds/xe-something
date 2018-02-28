@@ -81,7 +81,8 @@ class somethingAdminController extends something
 		$args = Context::getRequestVars();
 		$config = getModel('something')->getConfig();
 		$config->connect_address_type = $args->connect_address_type;
-
+		$config->memeber_popupmenu_name = $args->memeber_popupmenu_name;
+		
 		$oModuleController = &getController('module');
 		$output = $oModuleController->insertModuleConfig('something', $config);
 		$this->setMessage("success_saved");

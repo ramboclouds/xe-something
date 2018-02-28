@@ -10,8 +10,8 @@
 			<label class="x_control-label" for="use">{$lang->use_to_something}</label>
 			<div class="x_controls">
 				<select name="use" id="use">
-					<option value="yes" selected="selected"|cond="$config->use == 'yes'">{$lang->use}</option>
-					<option value="no" selected="selected"|cond="$config->use != 'yes'">{$lang->notuse}</option>
+					<option value="Y" selected="selected"|cond="$config->use == 'Y'">{$lang->use}</option>
+					<option value="N" selected="selected"|cond="$config->use == 'N'">{$lang->notuse}</option>
 				</select>
 				<p class="x_help-block">{$lang->about_use_to_something}</p>
 			</div>
