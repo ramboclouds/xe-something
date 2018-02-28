@@ -59,7 +59,7 @@ class something extends ModuleObject
 			}
 		}
 
-		return new Object();
+		return $this->makeObject();
 	}
 
 	/**
