@@ -59,11 +59,12 @@ class somethingView extends something
 			$this->setTemplateFile('_error');
 			return;
 		}
-
+		$memberInfo = $stModel->memberInfoReplace($memberInfo);
 		$boardData = $stModel->getMemeberBoardData($memberInfo,$config);
-	
+		
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
+		Context::set('st_config', $config);
 		$this->setTemplateFile('profile');
 	}
 }

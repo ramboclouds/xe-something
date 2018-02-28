@@ -35,6 +35,21 @@ class somethingModel extends something
 				$config->connect_address_type="member_srl";
 			}
 
+			if (!$config->thumbnail_width)
+			{
+				$config->thumbnail_width = 40;
+			}
+
+			if (!$config->thumbnail_height)
+			{
+				$config->thumbnail_height = 40;
+			}
+
+			if (!$config->thumbnail_type)
+			{
+				$config->thumbnail_type = "crop";
+			}
+
 			$this->config = $config;
 		}
 
@@ -105,6 +120,16 @@ class somethingModel extends something
 		});
 
 		return $output;
+	}
+
+	function memberInfoReplace($memberInfo){
+		if ($memberInfo->signature)
+		{
+			$memberInfo->signature=preg_replace('#<p(.*?)>(.*?)</p>#is', '$2<br/>', $memberInfo->signature);
+			$memberInfo->signature=strip_tags($memberInfo->signature,"<br>");
+		}
+
+		return $memberInfo;
 	}
 }
 /* End of file */

@@ -1,5 +1,8 @@
 <!--#include("_header.html")-->
+<load target="css/profile.css" />
+<load target="js/profile.js" type="body" />
 {@ $nowDate=""; }
+<!--
     <div class="row">
         <div class="col-12 st-member-info-row">
             <div class="st-member-info clearfix st-member-info-effect">
@@ -17,16 +20,15 @@
                     </div>
                 </div>
             </div>            
-         
         </div>
     </div>
+-->
     <div class="row mgt-20">
         <div class="col-12">
+            <section class="timeline">
+            <ul>
             <block cond="$board_data" loop="$board_data=>$no,$document">
-                {@ 
-                    $doc_type="[Doc]";
-                    $thumbNail=false;
-                }
+                {@ $doc_type="[Doc]"; }
                 <!--@if($document->doc_type=='cmt')-->
                     {@ 
                         $doc_content = cut_str($document->content,30); 
@@ -34,34 +36,34 @@
                     }
                 <!--@else if($document->doc_type=='doc')-->
                     {@ $doc_content = $document->getTitle(30); }
-                    <!--@if($document->thumbnailExists())-->
-                    {@ $thumbNail=true; }
-                    <!--@end-->
                 <!--@end-->
                 {@
                     $regdate = $document->regdate;
                     $nDate = zdate($regdate, 'Ymd');
                 }
-                <!--@if($nowDate=="" )-->
-                <span class="badge badge-primary">{$nDate}</span>
-                <div class="st-time card" style="width: 20rem;">
-                    <ul class="list-group list-group-flush st-list-group">
+                <!--@if($nowDate=="" )-->  
+                <li>
+                      <div>
+                <time>{$nDate}</time>
+               
                 <!--@end-->
                 
                 <!--@if($nowDate != $nDate && $nowDate != "" )-->
-                </ul>
-                </div>
-                <span class="badge badge-primary">{$nDate}</span>
-                <div class="st-time card" style="width: 20rem;">
-                    <ul class="list-group list-group-flush st-list-group">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                <time>{$nDate}</time>
                 <!--@end-->
-                    <li class="list-group-item">
-                        <!--@if($thumbNail)--><img class="st-thumb" src="{$document->getThumbnail($st_config->thumbnail_width, $st_config->thumbnail_height, $st_config->thumbnail_type)}" alt="" /><!--@end-->{$doc_type}{$doc_content}
-                    </li> 
+                    <p>
+                        {$doc_type}{$doc_content}
+                    </p> 
                 {@ $nowDate= $nDate; }
-            </block>
+                    </block>
+                    </div>
+                </li>
             </ul>
-            </div>
+        </section>
         </div>
       
     </div>

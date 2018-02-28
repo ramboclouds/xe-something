@@ -28,7 +28,7 @@ class somethingController extends something
 		}
 
 		$str = $config->memeber_popupmenu_name;
-		$oMemberController->addMemberPopupMenu($url, $str, '','self');
+		$oMemberController->addMemberPopupMenu($url, $str, '','_self');
 	}
 }
 /* End of file */

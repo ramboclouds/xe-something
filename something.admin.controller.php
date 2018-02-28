@@ -12,7 +12,7 @@ class somethingAdminController extends something
 		$args = Context::getRequestVars();
 
 		$oModuleController = getController('module');
-		$config = new stdClass();
+		$config = getModel('something')->getConfig();
 		$config->use = Context::get('use');
 		$config->mid_name=$args->mid_name;
 

@@ -80,4 +80,8 @@
 		<value xml:lang="ko"><![CDATA[왼쪽 이미지와 같이 회원 팝업 메뉴에 표시될 텍스트를 설정해 주세요.]]></value>
 		<value xml:lang="en"><![CDATA[Set the text to be displayed in the Members pop-up menu as shown in the image on the left.]]></value>
 	</item>
+	<item name="something_nick_name_suffix">
+		<value xml:lang="ko"><![CDATA[님]]></value>
+		<value xml:lang="en"><![CDATA[]]></value>
+	</item>
 </lang>
