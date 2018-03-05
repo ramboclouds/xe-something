@@ -23,8 +23,6 @@ class something extends ModuleObject
 				}
 			}
 		}
-
-
 		return $this->makeObject();
 	}
 

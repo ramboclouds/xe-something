@@ -36,6 +36,8 @@ class somethingView extends something
 			return;
 		}
 
+		$user_string = urldecode($user_string);
+
 		$stModel = getModel('something');
 		$mbModel = getModel('member');
 		$config = $stModel->getConfig();
