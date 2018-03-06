@@ -1,4 +1,5 @@
 <?php
+
 class somethingController extends something
 {
 	function triggerAddMemberMenu(&$module_info)
@@ -10,12 +11,12 @@ class somethingController extends something
 		}
 
 		$oMemberController = getController('member');
-		$mbModel = getModel('member');
+		$oMemberModel = getModel('member');
 
 		$target_srl = Context::get('target_srl');
 		$target_mid = $config->mid_name;
 
-		$memberInfo = $mbModel->getMemberInfoByMemberSrl($target_srl);
+		$memberInfo = $oMemberModel->getMemberInfoByMemberSrl($target_srl);
 		$url = getUrl('', 'mid', $target_mid, 'smember', $target_srl);
 
 		if ($config->connect_address_type == 'user_id')
@@ -28,7 +29,7 @@ class somethingController extends something
 		}
 
 		$str = $config->memeber_popupmenu_name;
-		$oMemberController->addMemberPopupMenu($url, $str, '','_self');
+		$oMemberController->addMemberPopupMenu($url, $str, '', '_self');
 	}
 }
 /* End of file */

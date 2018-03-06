@@ -9,31 +9,31 @@ class somethingAdminController extends something
 	function procSomethingAdminInsertConfig()
 	{
 		/** @var $oModuleController moduleController */
-		$args = Context::getRequestVars();
+		$obj = Context::getRequestVars();
 
 		$oModuleController = getController('module');
 		$config = getModel('something')->getConfig();
 		$config->use = Context::get('use');
-		$config->mid_name=$args->mid_name;
+		$config->mid_name = $obj->mid_name;
 
 		$mid_args = new stdClass;
-		$mid_args->mid = $args->mid_name;
+		$mid_args->mid = $obj->mid_name;
 		$mid_args->module = 'something';
-		$mid_args->layout_srl = $args->layout_srl;
-		$mid_args->use_mobile = $args->use_mobile;
-		$mid_args->mlayout_srl = $args->mlayout_srl;
-		$mid_args->browser_title = $args->browser_title;
+		$mid_args->layout_srl = $obj->layout_srl;
+		$mid_args->use_mobile = $obj->use_mobile;
+		$mid_args->mlayout_srl = $obj->mlayout_srl;
+		$mid_args->browser_title = $obj->browser_title;
 		$mid_args->site_srl = 0;
-		$mid_args->skin = $args->skin;
-		$mid_args->mskin = $args->mskin;
-		$mid_args->header_text = $args->header_text;
-		$mid_args->footer_text = $args->footer_text;
-		$mid_args->mobile_header_text = $args->mobile_header_text;
-		$mid_args->mobile_footer_text = $args->mobile_footer_text;
+		$mid_args->skin = $obj->skin;
+		$mid_args->mskin = $obj->mskin;
+		$mid_args->header_text = $obj->header_text;
+		$mid_args->footer_text = $obj->footer_text;
+		$mid_args->mobile_header_text = $obj->mobile_header_text;
+		$mid_args->mobile_footer_text = $obj->mobile_footer_text;
 
-		if ($args->origin_mid == "")
+		if ($obj->origin_mid == "")
 		{
-			$module_info = getModel('module')->getModuleInfoByMid($args->mid_name);
+			$module_info = getModel('module')->getModuleInfoByMid($obj->mid_name);
 			if (!$module_info->module_srl)
 			{
 				$insertOutput = $oModuleController->insertModule($mid_args);
@@ -50,11 +50,11 @@ class somethingAdminController extends something
 		}
 		else
 		{
-			$mid_args->module_srl = $args->module_srl;
-			$midOutput = $oModuleController->updateModule($mid_args);
-			if(!$midOutput->toBool())
+			$mid_args->module_srl = $obj->module_srl;
+			$updateOutput = $oModuleController->updateModule($mid_args);
+			if(!$updateOutput->toBool())
 			{
-				return $midOutput;
+				return $updateOutput;
 			}
 		}
 
@@ -77,40 +77,62 @@ class somethingAdminController extends something
 		}
 	}
 
-	function procSomethingAdminInsertConnect(){
-		$args = Context::getRequestVars();
-		$config = getModel('something')->getConfig();
-		$config->connect_address_type = $args->connect_address_type;
-		$config->memeber_popupmenu_name = $args->memeber_popupmenu_name;
+	function procSomethingAdminInsertConnect()
+	{
+		$oModuleController = getController('module');
 		
-		$oModuleController = &getController('module');
+		$obj = Context::getRequestVars();
+		
+		$config = getModel('something')->getConfig();
+		$config->connect_address_type = $obj->connect_address_type;
+		$config->memeber_popupmenu_name = $obj->memeber_popupmenu_name;
+		
 		$output = $oModuleController->insertModuleConfig('something', $config);
+		if(!$output->toBool())
+		{
+			return $output;
+		}
+		
 		$this->setMessage("success_saved");
-		if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))){
-			$returnUrl = getNotEncodedUrl('', 'module', 'admin', 'act', $args->disp_act);
-			header('location: ' . $returnUrl);
-			return;
+
+		$successReturnUrl = Context::get('success_return_url');
+		if ($successReturnUrl)
+		{
+			$this->setRedirectUrl($successReturnUrl);
+		}
+		else
+		{
+			$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispSomethingAdminConnect'));
 		}
 	}
 
-	function procSomethingAdminInsertData(){
-		$args = Context::getRequestVars();
+	function procSomethingAdminInsertData()
+	{
+		$obj = Context::getRequestVars();
 		$config = getModel('something')->getConfig();
 
-		if (!$args->board_module_srls){
-			$config->board_module_srls =array();
-		}else{
-			$config->board_module_srls=$args->board_module_srls;
+		if (!$obj->board_module_srls)
+		{
+			$config->board_module_srls = array();
+		}
+		else
+		{
+			$config->board_module_srls = $obj->board_module_srls;
 		}
 
 		$oModuleController = getController('module');
 		$oModuleController->insertModuleConfig('something', $config);
 		
 		$this->setMessage("success_saved");
-		if(!in_array(Context::getRequestMethod(),array('XMLRPC','JSON'))){
-			$returnUrl = getNotEncodedUrl('', 'module', 'admin', 'act', $args->disp_act);
-			header('location: ' . $returnUrl);
-			return;
+
+		$successReturnUrl = Context::get('success_return_url');
+		if ($successReturnUrl)
+		{
+			$this->setRedirectUrl($successReturnUrl);
+		}
+		else
+		{
+			$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispSomethingAdminData'));
 		}
 	}
 

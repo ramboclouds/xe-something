@@ -2,8 +2,6 @@
 
 class somethingAdminView extends something
 {
-	// TODO(BJRambo): Add to member Variables for module Info
-
 	function init()
 	{
 		$this->setTemplatePath($this->module_path . 'tpl');
