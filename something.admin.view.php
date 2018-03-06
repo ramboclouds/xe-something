@@ -15,11 +15,12 @@ class somethingAdminView extends something
 
 		Context::set('config', $config);
 
-		$oModuleModel = &getModel('module');
+		$oModuleModel = getModel('module');
 
-		if ($config->mid_name != "")
+		if ($config->mid_name)
 		{
-			Context::set('module_info', $oModuleModel->getModuleInfoByMid($config->mid_name));
+			$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
+			Context::set('module_info', $module_info);
 		}
 
 		$skin_list = $oModuleModel->getSkins($this->module_path);
@@ -29,7 +30,7 @@ class somethingAdminView extends something
 		Context::set('mskin_list', $mskin_list);
 
 
-		$oLayoutMode = &getModel('layout');
+		$oLayoutMode = getModel('layout');
 		$layout_list = $oLayoutMode->getLayoutList();
 		Context::set('layout_list', $layout_list);
 
