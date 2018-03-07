@@ -22,6 +22,7 @@ class somethingView extends something
 			$this->module_info->layout_srl = $module_info->layout_srl;
 			$this->setLayoutPath($layout_info->path);
 		}
+		Context::set('rx_verstion', RX_VERSTION);
 	}
 
 	function dispSomethingProfileView()

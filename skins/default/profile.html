@@ -9,12 +9,15 @@
     //마지막 활동
     $last_activity = $member_info->last_login;
 }
-
 <!--@foreach($board_data as $no => $document)-->
 {@
     $last_activity = $document->regdate;
     break;
 }
+<!--@end-->
+{@ $last_activity_gap = getTimeGap($last_activity, "Y.m.d H:i:s"); }
+<!--@if(defined('RX_VERSION'))-->
+    {@ $last_activity_gap = zdate($last_activity, 'relative'); }
 <!--@end-->
 <div class="ui cards">
     <div class="card st-profile">
@@ -36,7 +39,7 @@
 
           <div class="extra st-content pf-card-extra-content">
             <span class="left floated like">
-            최근 활동 : {getTimeGap($last_activity, 'm.d')}
+            최근 활동 : {$last_activity_gap}
             </span>
             <span class="right floated">
                 <a>
@@ -68,9 +71,11 @@
             <!--@end-->
     <!--@end-->
     {@
-        $regdate = $document->regdate;
-        $nDate = zdate($regdate, 'Y.m.d');
+        $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
     }
+    <!--@if(defined('RX_VERSION'))-->
+    {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+    <!--@end-->
     <div class="item">
  
         <a class="ui tiny image">
@@ -84,7 +89,7 @@
         <div class="st-content ">
             <a class="header">{$doc_title}</a>
             <div class="meta">
-                <span class="st-doc-date">{getTimeGap($document->get('regdate'), "Y.m.d")}</span>
+                <span class="st-doc-date">{$time_gap}</span>
             </div>
             <div class="description">
                     {$document->getSummary($st_config->content_cut_size)}
