@@ -49,7 +49,7 @@
 			<label class="x_control-label" for="use">{$lang->skin}</label>
 			<div class="x_controls">
 				<select name="skin" id="skin" >
-					<option loop="$skin_list => $key, $val" value="{$key}" selected="selected"|cond="$config->skin == $key">
+					<option loop="$skin_list => $key, $val" value="{$key}" selected="selected"|cond="$module_info->skin == $key">
 						{$val->title} ({htmlspecialchars($key)})
 					</option>
 				</select>
@@ -99,7 +99,7 @@
 		<label class="x_control-label" for="use">{$lang->mobile_skin}</label>
 		<div class="x_controls">
 			<select name="mskin" id="mskin">
-				<option loop="$mskin_list => $key, $val" value="{$key}" selected="selected"|cond="$config->mskin == $key">
+				<option loop="$mskin_list => $key, $val" value="{$key}" selected="selected"|cond="$module_info->mskin == $key">
 					{$val->title} ({htmlspecialchars($key)})
 				</option>
 			</select>
