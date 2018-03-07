@@ -1,17 +1,95 @@
 <!--#include("_header.html")-->
-<div id="st-container">
-    <div class="st-profile row">
-        <div class="st-left st-profile-image">
-            <!--@if(!$member_info->profile_image->src)-->
-            <img class="st-user-pf-img" src="images/user128.png">
-            <!--@else-->
-                <img class="st-user-pf-img" src="{$member_info->profile_image->src}"  >
+{@
+    //스킨 설정에 추가할 것
+    $st_config->thumbnail_width = 80;
+    $st_config->thumbnail_height = 80;
+    $st_config->thumbnail_type = 'crop';
+    $st_config->content_cut_size =80;
+
+    //마지막 활동
+    $last_activity = $member_info->last_login;
+}
+
+<!--@foreach($board_data as $no => $document)-->
+{@
+    $last_activity = $document->regdate;
+    break;
+}
+<!--@end-->
+<div class="ui cards">
+    <div class="card st-profile">
+          <div class="st-content">
+           <!--@if(!$member_info->profile_image->src)-->
+            {@ $member_info->profile_image->src = "images/user128.png" }
             <!--@end-->
-        </div>
-        <div class="st-profile-text">
-          aa
+            <div class="st-profile-image"><img class="tiny ui image" src="{$member_info->profile_image->src}"></div>
+                <div class="header st-profile-nick_name">
+                {$member_info->nick_name}
+                </div>
+                <div class="meta st-profile-group">
+                {implode($member_info->group_list,",")}
+                </div>
+                <div class="description st-profile-description">
+                    {$member_info->signature}
+                </div>          
+          </div>
 
+          <div class="extra st-content pf-card-extra-content">
+            <span class="left floated like">
+            최근 활동 : {getTimeGap($last_activity, 'm.d')}
+            </span>
+            <span class="right floated">
+                <a>
+                <i class="star icon"></i>
+                17명 구독
+                </a>
+            </span>
         </div>
-
+          
     </div>
+</div>
+<div class="ui three item menu">
+    <a class="item active">작성글</a>
+    <a class="item">댓글</a>
+    <a class="item">추천한 글</a>
+</div>
+
+<div class="ui unstackable items">
+    <!--@foreach($board_data as $no => $document)-->
+        {@ $thumbNail=false; }
+        <!--@if($document->doc_type=='cmt')-->
+            {@ continue; }
+        <!--@else if($document->doc_type=='doc')-->
+            {@ $doc_title = $document->getTitle(30); }
+            <!--@if($document->thumbnailExists())-->
+            {@ $thumbNail=true; }
+            <!--@else-->
+
+            <!--@end-->
+    <!--@end-->
+    {@
+        $regdate = $document->regdate;
+        $nDate = zdate($regdate, 'Y.m.d');
+    }
+    <div class="item">
+ 
+        <a class="ui tiny image">
+            <!--@if($thumbNail)-->
+            <img src="{$document->getThumbnail($st_config->thumbnail_width, $st_config->thumbnail_height, $st_config->thumbnail_type)}">
+            <!--@else-->
+            <img src="images/no_doc_image.png">
+            <!--@end-->
+        </a>
+        
+        <div class="st-content ">
+            <a class="header">{$doc_title}</a>
+            <div class="meta">
+                <span class="st-doc-date">{getTimeGap($document->get('regdate'), "Y.m.d")}</span>
+            </div>
+            <div class="description">
+                    {$document->getSummary($st_config->content_cut_size)}
+            </div>
+        </div>
+    </div>
+    <!--@end-->
 </div>

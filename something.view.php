@@ -66,6 +66,7 @@ class somethingView extends something
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
 		Context::set('st_config', $config);
+		Context::set('st_path',$this->module_path);
 		$this->setTemplateFile('profile');
 	}
 }

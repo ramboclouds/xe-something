@@ -37,20 +37,8 @@ class somethingModel extends something
 				$config->connect_address_type = "member_srl";
 			}
 
-			if (!$config->thumbnail_width)
-			{
-				$config->thumbnail_width = 40;
-			}
+		
 
-			if (!$config->thumbnail_height)
-			{
-				$config->thumbnail_height = 40;
-			}
-
-			if (!$config->thumbnail_type)
-			{
-				$config->thumbnail_type = "crop";
-			}
 
 			$this->config = $config;
 		}
@@ -107,7 +95,6 @@ class somethingModel extends something
 		foreach ($output->data as $key => $value)
 		{
 			$output->data[$key]->doc_type = "doc";
-			// TODO(BJRambo): Check again
 			$output->data[$key]->regdate = $value->getRegdate('YmdHis');
 		}
 

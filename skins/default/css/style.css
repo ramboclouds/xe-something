@@ -1,23 +1,16 @@
-#st-container {
-  margin: 10px auto;
-  padding: 5px;
-  border: 1px solid #bcbcbc;
-  width:100%;
+.st-profile{
+  width:100% !important;
 }
 
 .st-profile-image{
-  float:left;
-  width: 90px;
+  position: absolute;
+  right:10px;
 }
 
-.st-profile-text{
-  float : right;
-  width:100%;
-	margin-right:-90px;
-	padding-right : pxpx;
-	box-sizing:border-box;
-}
-
-@media ( min-width: 768px ) {
-
+.pf-card-extra-content{
+  padding: .75em 1em !important;
+  padding-top: 0.75em !important;
+  padding-right: 1em  !important;
+  padding-bottom: 0.75em  !important;
+  padding-left: 1em  !important;
 }
