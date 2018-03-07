@@ -9,6 +9,11 @@ class somethingController extends something
 			return;
 		}
 
+		if($config->mid_name == "")
+		{
+			return;
+		}
+
 		$oMemberController = getController('member');
 		$mbModel = getModel('member');
 

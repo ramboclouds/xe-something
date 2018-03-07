@@ -1,68 +1,17 @@
 <!--#include("_header.html")-->
-{@ $nowDate=""; }
-    <div class="row">
-        <div class="col-12 st-member-info-row">
-            <div class="st-member-info clearfix st-member-info-effect">
-                <div class="pic">
-                     <!--@if(!$member_info->profile_image->src)-->
-                        <img class="st-user-pf-img" src="images/user128.png">
-                     <!--@else-->
-                         <img class="st-user-pf-img" src="{$member_info->profile_image->src}"  >
-                     <!--@end-->
-                </div>
-                <div class="doc">
-                    <div class="st-doc-user-info">
-                        <span class="st-nick-name">{$member_info->nick_name}{$lang->something_nick_name_suffix}</span>
-                        <div class="st-signature">{$member_info->signature}</div>
-                    </div>
-                </div>
-            </div>            
-         
+<div id="st-container">
+    <div class="st-profile row">
+        <div class="st-left st-profile-image">
+            <!--@if(!$member_info->profile_image->src)-->
+            <img class="st-user-pf-img" src="images/user128.png">
+            <!--@else-->
+                <img class="st-user-pf-img" src="{$member_info->profile_image->src}"  >
+            <!--@end-->
         </div>
-    </div>
-    <div class="row mgt-20">
-        <div class="col-12">
-            <block cond="$board_data" loop="$board_data=>$no,$document">
-                {@ 
-                    $doc_type="[Doc]";
-                    $thumbNail=false;
-                }
-                <!--@if($document->doc_type=='cmt')-->
-                    {@ 
-                        $doc_content = cut_str($document->content,30); 
-                        $doc_type="[Cmt]";
-                    }
-                <!--@else if($document->doc_type=='doc')-->
-                    {@ $doc_content = $document->getTitle(30); }
-                    <!--@if($document->thumbnailExists())-->
-                    {@ $thumbNail=true; }
-                    <!--@end-->
-                <!--@end-->
-                {@
-                    $regdate = $document->regdate;
-                    $nDate = zdate($regdate, 'Ymd');
-                }
-                <!--@if($nowDate=="" )-->
-                <span class="badge badge-primary">{$nDate}</span>
-                <div class="st-time card" style="width: 20rem;">
-                    <ul class="list-group list-group-flush st-list-group">
-                <!--@end-->
-                
-                <!--@if($nowDate != $nDate && $nowDate != "" )-->
-                </ul>
-                </div>
-                <span class="badge badge-primary">{$nDate}</span>
-                <div class="st-time card" style="width: 20rem;">
-                    <ul class="list-group list-group-flush st-list-group">
-                <!--@end-->
-                    <li class="list-group-item">
-                        <!--@if($thumbNail)--><img class="st-thumb" src="{$document->getThumbnail($st_config->thumbnail_width, $st_config->thumbnail_height, $st_config->thumbnail_type)}" alt="" /><!--@end-->{$doc_type}{$doc_content}
-                    </li> 
-                {@ $nowDate= $nDate; }
-            </block>
-            </ul>
-            </div>
+        <div class="st-profile-text">
+          aa
+
         </div>
-      
+
     </div>
-<!--#include("_footer.html")-->
+</div>
