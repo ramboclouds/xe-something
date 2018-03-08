@@ -61,7 +61,7 @@ class somethingView extends something
 			return;
 		}
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
-		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config);
+		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars());
 
 		
 

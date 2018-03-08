@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">기본스킨</title>
+	<description xml:lang="ko">SOMETHING 기본 스킨입니다.</description>
+	<version>1.7.2</version>
+	<date>2010-11-16</date>
+	<author email_address="xe.yeyak@gmail.com" link="https://domain.com/">
+		<name xml:lang="ko">구름이</name>
+	</author>
+    <extra_vars>
+        <group>
+            <title xml:lang="ko">작성글 목록 설정</title>
+            <var name="subject_cut_size" type="text">
+                <title xml:lang="ko">제목 제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
+            </var>
+
+             <var name="content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
+            <var name="wizard" type="radio">
+                <title xml:lang="ko">게시물 썸네일 표시</title>
+                <description xml:lang="ko">썸네일 표시여부</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+
+            <var name="thumbnail_type" type="radio">
+                <title xml:lang="ko">섬네일 비율(*)</title>
+                <options value="">
+                    <title xml:lang="ko">크롭(기본)</title>
+                </options>
+                <options value="ratio">
+                    <title xml:lang="ko">원본 비율</title>
+                </options>
+            </var>
+            <var name="thumbnail_width" type="text">
+                <title xml:lang="ko">섬네일 넓이</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정은 '80' 입니다.</description>
+            </var>
+            <var name="thumbnail_height" type="text">
+                <title xml:lang="ko">섬네일 높이</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정은 '80' 입니다.</description>
+            </var>
+        </group>
+
+        <group>
+            <title xml:lang="ko">페이징 설정</title>
+            <var name="use_page" type="radio">
+                <title xml:lang="ko">페이지 표시</title>
+                <description xml:lang="ko">스킨 하단에 페이지 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="list_count" type="text">
+                <title xml:lang="ko">문서 출력수</title>
+                <description xml:lang="ko">페이지당 표시되는 아이템 수</description>
+            </var>
+            <var name="page_count" type="text">
+                <title xml:lang="ko">페이지 출력수</title>
+                <description xml:lang="ko">페이지 목록에 표시되는 페이지수</description>
+            </var>
+        </group>
+
+		
+    </extra_vars>
+</skin>

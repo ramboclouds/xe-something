@@ -63,7 +63,7 @@
         <!--@if($document->doc_type=='cmt')-->
             {@ continue; }
         <!--@else if($document->doc_type=='doc')-->
-            {@ $doc_title = $document->getTitle(30); }
+            {@ $doc_title = $document->getTitle(20); }
             <!--@if($document->thumbnailExists())-->
             {@ $thumbNail=true; }
             <!--@end-->

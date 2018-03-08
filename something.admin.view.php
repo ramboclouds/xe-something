@@ -12,7 +12,6 @@ class somethingAdminView extends something
 	{
 		$oSomethingModel = getModel('something');
 		$config = $oSomethingModel->getConfig();
-
 		Context::set('config', $config);
 
 		$oModuleModel = getModel('module');
@@ -85,6 +84,40 @@ class somethingAdminView extends something
 		Context::set('mskin_list', $mSkinList);
 		Context::set('layout_list', $layoutList);
 		Context::set('mlayout_list', $mLayoutList);
+	}
+
+	function dispSomethingAdminSkinInfo() {
+		
+		$oSomethingModel = getModel('something');
+		$config = $oSomethingModel->getConfig();
+		Context::set('config', $config);
+
+		$oModuleModel = getModel('module');
+		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
+		Context::set('module_info', $module_info);
+	
+
+		$oModuleAdminModel = getAdminModel('module');
+		$skin_content = $oModuleAdminModel->getModuleSkinHTML($module_info->module_srl);
+		Context::set('skin_content', $skin_content);
+
+		$this->setTemplateFile('skin_info');
+	}
+
+	function dispSomethingAdminMobileSkinInfo() {
+		$oSomethingModel = getModel('something');
+		$config = $oSomethingModel->getConfig();
+		Context::set('config', $config);
+
+		$oModuleModel = getModel('module');
+		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
+		Context::set('module_info', $module_info);
+		
+		$oModuleAdminModel = getAdminModel('module');
+		$skin_content = $oModuleAdminModel->getModuleMobileSkinHTML($module_info->module_srl);
+		Context::set('skin_content', $skin_content);
+
+		$this->setTemplateFile('skin_info');
 	}
 }
 /* End of file */

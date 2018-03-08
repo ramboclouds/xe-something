@@ -71,7 +71,7 @@ class somethingModel extends something
 		return $member_info;
 	}
 
-	function getMemeberBoardData($memberInfo, $config)
+	function getMemeberBoardData($memberInfo, $config,$args)
 	{
 		$board_srls = null;
 
@@ -86,7 +86,9 @@ class somethingModel extends something
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
 		$sObj->order_type = "desc";
-		$sObj->list_count = 20;
+		$args->page = $args->page;
+		$args->page_count = $this->page_count;
+		$sObj->list_count = 10;
 
 		/** @var documentModel $oDocumentModel */
 		$oDocumentModel = getModel('document');
