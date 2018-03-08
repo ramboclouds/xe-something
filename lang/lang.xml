@@ -84,4 +84,20 @@
 		<value xml:lang="ko"><![CDATA[님]]></value>
 		<value xml:lang="en"><![CDATA[]]></value>
 	</item>
+	<item name="something_recent_activity">
+		<value xml:lang="ko"><![CDATA[최근 활동]]></value>
+		<value xml:lang="en"><![CDATA[Recent Activity]]></value>
+	</item>
+	<item name="something_view_type_doc">
+		<value xml:lang="ko"><![CDATA[작성글]]></value>
+		<value xml:lang="en"><![CDATA[Documents]]></value>
+	</item>
+	<item name="something_view_type_com">
+		<value xml:lang="ko"><![CDATA[코멘트]]></value>
+		<value xml:lang="en"><![CDATA[Comments]]></value>
+	</item>
+	<item name="something_view_type_recommend">
+		<value xml:lang="ko"><![CDATA[추천한 글]]></value>
+		<value xml:lang="en"><![CDATA[recommend]]></value>
+	</item>
 </lang>

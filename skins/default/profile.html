@@ -39,7 +39,7 @@
 
           <div class="extra st-content pf-card-extra-content">
             <span class="left floated like">
-            최근 활동 : {$last_activity_gap}
+            {$lang->something_recent_activity} : {$last_activity_gap}
             </span>
             <span class="right floated">
                 <a>
@@ -52,9 +52,9 @@
     </div>
 </div>
 <div class="ui three item menu">
-    <a class="item active">작성글</a>
-    <a class="item">댓글</a>
-    <a class="item">추천한 글</a>
+    <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}}</a>
+    <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_com}</a>
+    <a class="item <!--@if(Context::get('view_type') == 'love_document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','love_document')}">{$lang->something_view_type_recommend}</a>
 </div>
 
 <div class="ui unstackable items">
@@ -84,8 +84,8 @@
             <!--@end-->
         </a>
         
-        <div class="st-content ">
-            <a class="header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>1</span>
+        <div class="st-content">
+            <a class="header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0)--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
             <div class="meta">
                 <span class="st-doc-date">{$time_gap}</span>
             </div>
@@ -103,17 +103,17 @@
 $prev_page = max($page-1, 1);
 $next_page = min($page+1, $page_navigation->last_page);
 }
-<div class="ui pagination menu st-page">
-<a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
-    <i class="angle left st-icon"></i>
-</a>
-<!--@while($page_no = $page_navigation->getNextPage())-->
-				        
-<a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
-<!--@end-->
+    <div class="ui pagination menu st-page">
+    <a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
+        <i class="angle left st-icon"></i>
+    </a>
+    <!--@while($page_no = $page_navigation->getNextPage())-->
+                            
+    <a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
+    <!--@end-->
 
-<a class="<!--@if($page == $next_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $next_page)-->#<!--@else-->{getUrl('page',$next_page,'module_srl','')}<!--@end-->">
-    <i class="angle right st-icon"></i>
-</a>
-</div>
+    <a class="<!--@if($page == $next_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $next_page)-->#<!--@else-->{getUrl('page',$next_page,'module_srl','')}<!--@end-->">
+        <i class="angle right st-icon"></i>
+    </a>
+    </div>
 </div>
