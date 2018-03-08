@@ -14,3 +14,35 @@
   padding-bottom: 0.75em  !important;
   padding-left: 1em  !important;
 }
+
+.st-href{
+  text-decoration: none !important;
+}
+
+.st-href:hover{
+  text-decoration: underline !important;
+}
+
+.st-description-href a{
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.87);
+}
+.st-description-href a:visited{
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.st-description-href a:hover{
+  text-decoration: underline !important;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.font-grey{
+  color:#999999 !important;
+}
+
+@media only screen and (max-width: 767px){
+  .ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
+      width: 100px !important;
+  }
+}

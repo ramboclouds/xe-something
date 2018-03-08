@@ -92,10 +92,14 @@ class somethingModel extends something
 		$oDocumentModel = getModel('document');
 		$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
 
+		$moduleSrltoMid = $this->getMidCache($config);
+
+
 		foreach ($output->data as $key => $value)
 		{
 			$output->data[$key]->doc_type = "doc";
 			$output->data[$key]->regdate = $value->getRegdate('YmdHis');
+			$output->data[$key]->mid = $moduleSrltoMid[$value->get('module_srl')];
 		}
 
 		$commentOutput = executeQueryArray("something.getCommentData", $sObj);
@@ -123,6 +127,82 @@ class somethingModel extends something
 		}
 
 		return $memberInfo;
+	}
+
+	function getMidCache($config=false)
+	{
+		if (!$config)
+		{
+			$config=$this->getConfig();
+		}
+
+		if ($config->ht_use == "N")
+		{
+			return;
+		}
+
+		//디렉토리 검사
+		$cache_folder=_XE_PATH_."files/cache/something";
+		$cache_data=$cache_folder."/srltomid.php";
+
+		if (!is_dir($cache_folder))
+		{
+			mkdir($cache_folder,0707);
+			@chmod($cache_folder,0707);
+		}
+		
+		//ok,no,del
+		$data_make="no";
+
+		if (file_exists($cache_data))
+		{
+			$last_mod=date("YmdHis", filemtime($cache_data));
+			$now_dt=date("YmdHis" , strtotime('-60 minutes') );
+			if ($now_dt > $last_mod) 
+			{
+				$data_make = "ok";
+			}
+		}
+		else
+		{
+			$data_make = "ok";
+		}
+
+		
+		if ($data_make == "ok")
+		{
+			$output=executeQueryArray('something.getMid');
+			$mid_tmp="";
+			foreach($output->data as $key=>$val){
+				if ($mid_tmp == "")
+				{
+					$mid_tmp = $val->module_srl.'=>"'.$val->mid.'"';
+				}
+				else 
+				{
+					$mid_tmp = $mid_tmp.','.$val->module_srl.'=>"'.$val->mid.'"';
+				}
+			}
+
+			$mid_data="<?php \$st_module_srl_to_mid=array(".$mid_tmp."); ?>";
+			$wr_file   = fopen($cache_data, "w");
+			$pieces = str_split($mid_data, 1024 * 4);
+			foreach ($pieces as $piece) {
+				fwrite($wr_file, $piece, strlen($piece));
+			}
+			fclose($wr_file);
+			@chmod($cache_data,0707);
+			
+		}
+
+		if (!file_exists($cache_data))
+		{
+			return array();
+		}
+
+		include_once($cache_data);
+		return $st_module_srl_to_mid;
+
 	}
 }
 /* End of file */

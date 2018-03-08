@@ -43,7 +43,7 @@
             </span>
             <span class="right floated">
                 <a>
-                <i class="star icon"></i>
+                <i class="bell outline st-icon"></i>
                 17명 구독
                 </a>
             </span>
@@ -66,8 +66,6 @@
             {@ $doc_title = $document->getTitle(30); }
             <!--@if($document->thumbnailExists())-->
             {@ $thumbNail=true; }
-            <!--@else-->
-
             <!--@end-->
     <!--@end-->
     {@
@@ -78,22 +76,24 @@
     <!--@end-->
     <div class="item">
  
-        <a class="ui tiny image">
+        <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
             <!--@if($thumbNail)-->
             <img src="{$document->getThumbnail($st_config->thumbnail_width, $st_config->thumbnail_height, $st_config->thumbnail_type)}">
             <!--@else-->
-            <img src="images/no_doc_image.png">
+            <img src="images/no_thumb.png">
             <!--@end-->
         </a>
         
         <div class="st-content ">
-            <a class="header">{$doc_title}</a>
+            <a class="header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>1</span>
             <div class="meta">
                 <span class="st-doc-date">{$time_gap}</span>
             </div>
-            <div class="description">
-                    {$document->getSummary($st_config->content_cut_size)}
+            
+            <div class="description st-description-href">
+                <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_config->content_cut_size)}</a>
             </div>
+            
         </div>
     </div>
     <!--@end-->

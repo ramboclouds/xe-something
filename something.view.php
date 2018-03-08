@@ -22,7 +22,6 @@ class somethingView extends something
 			$this->module_info->layout_srl = $module_info->layout_srl;
 			$this->setLayoutPath($layout_info->path);
 		}
-		Context::set('rx_verstion', RX_VERSTION);
 	}
 
 	function dispSomethingProfileView()
@@ -63,6 +62,8 @@ class somethingView extends something
 		}
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
 		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config);
+
+		
 
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);

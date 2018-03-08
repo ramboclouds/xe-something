@@ -1,0 +1,8 @@
+<query id="getMid" action="select">
+    <tables>
+        <table name="modules" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+</query>
