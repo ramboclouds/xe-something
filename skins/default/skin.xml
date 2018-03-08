@@ -2,8 +2,8 @@
 <skin version="0.2">
 	<title xml:lang="ko">기본스킨</title>
 	<description xml:lang="ko">SOMETHING 기본 스킨입니다.</description>
-	<version>1.7.2</version>
-	<date>2010-11-16</date>
+	<version>1.0</version>
+	<date>2018-01-01</date>
 	<author email_address="xe.yeyak@gmail.com" link="https://domain.com/">
 		<name xml:lang="ko">구름이</name>
 	</author>
@@ -20,7 +20,7 @@
                 <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
             </var>
 
-            <var name="wizard" type="radio">
+            <var name="thumbnail_use" type="radio">
                 <title xml:lang="ko">게시물 썸네일 표시</title>
                 <description xml:lang="ko">썸네일 표시여부</description>
                 <options value="">
@@ -64,11 +64,11 @@
             </var>
             <var name="list_count" type="text">
                 <title xml:lang="ko">문서 출력수</title>
-                <description xml:lang="ko">페이지당 표시되는 아이템 수</description>
+                <description xml:lang="ko">페이지당 표시되는 아이템 수 , 입력하지 않으면 기본 설정은 '10' 입니다.</description>
             </var>
             <var name="page_count" type="text">
                 <title xml:lang="ko">페이지 출력수</title>
-                <description xml:lang="ko">페이지 목록에 표시되는 페이지수</description>
+                <description xml:lang="ko">페이지 목록에 표시되는 페이지수  , 입력하지 않으면 기본 설정은 '5' 입니다.</description>
             </var>
         </group>
 

@@ -98,3 +98,22 @@
     </div>
     <!--@end-->
 </div>
+<div class="ui one column centered grid">
+{@
+$prev_page = max($page-1, 1);
+$next_page = min($page+1, $page_navigation->last_page);
+}
+<div class="ui pagination menu st-page">
+<a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
+    <i class="angle left st-icon"></i>
+</a>
+<!--@while($page_no = $page_navigation->getNextPage())-->
+				        
+<a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
+<!--@end-->
+
+<a class="<!--@if($page == $next_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $next_page)-->#<!--@else-->{getUrl('page',$next_page,'module_srl','')}<!--@end-->">
+    <i class="angle right st-icon"></i>
+</a>
+</div>
+</div>

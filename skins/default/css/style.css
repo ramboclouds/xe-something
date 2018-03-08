@@ -41,6 +41,22 @@
   color:#999999 !important;
 }
 
+.st-page{
+  min-height: 0.1em !important;
+}
+
+.st-angle{
+  padding: 0.52857143em .74285714em  !important;
+}
+
+.st-page .item{
+  min-width: 1em !important;
+
+  padding:0.52857143em 0.74285714em  !important;
+}
+
+
+
 @media only screen and (max-width: 767px){
   .ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
       width: 100px !important;

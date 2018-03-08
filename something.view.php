@@ -39,6 +39,8 @@ class somethingView extends something
 
 		$oSomethingModel = getModel('something');
 		$oMemberModel = getModel('member');
+		$oModuleModel = getModel('module');
+
 		$config = $oSomethingModel->getConfig();
 
 		if ($config->connect_address_type == 'user_id')
@@ -60,11 +62,17 @@ class somethingView extends something
 			$this->setTemplateFile('_error');
 			return;
 		}
+
+		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
-		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars());
+		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$module_info);
 
-		
+		Context::set('total_count', $boardData->total_count);
+		Context::set('total_page', $boardData->total_page);
+		Context::set('page', $boardData->page);
+		Context::set('page_navigation', $boardData->page_navigation);
 
+		Context::set('module_info', $module_info);
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
 		Context::set('st_config', $config);

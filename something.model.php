@@ -71,7 +71,7 @@ class somethingModel extends something
 		return $member_info;
 	}
 
-	function getMemeberBoardData($memberInfo, $config,$args)
+	function getMemeberBoardData($memberInfo, $config, $args, $skin_info)
 	{
 		$board_srls = null;
 
@@ -80,15 +80,17 @@ class somethingModel extends something
 			$board_srls = implode($config->board_module_srls, ",");
 		}
 
+		$skin_info = $this->replaceSkinInfo($skin_info);
+
 		$sObj = new stdClass();
 		$sObj->member_srl = $memberInfo->member_srl;
 		$sObj->module_srl = $board_srls;
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
 		$sObj->order_type = "desc";
-		$args->page = $args->page;
-		$args->page_count = $this->page_count;
-		$sObj->list_count = 10;
+		$sObj->page = $args->page;
+		$sObj->page_count = $skin_info->page_count;
+		$sObj->list_count = $skin_info->list_count;
 
 		/** @var documentModel $oDocumentModel */
 		$oDocumentModel = getModel('document');
@@ -205,6 +207,16 @@ class somethingModel extends something
 		include_once($cache_data);
 		return $st_module_srl_to_mid;
 
+	}
+
+	function replaceSkinInfo($skin_info){
+		$st_skin_info = $skin_info;
+	
+		if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
+		if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
+		if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
+
+		return $st_skin_info;
 	}
 }
 /* End of file */
