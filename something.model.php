@@ -2,7 +2,7 @@
 
 class somethingModel extends something
 {
-	private $config = NULL;
+    private $config = NULL;
 
 	function getConfig()
 	{
@@ -17,7 +17,7 @@ class somethingModel extends something
 				$config = new stdClass();
 			}
 
-			if (!$config->use)
+			if (!$config->use);
 			{
 				$config->use = 'N';
 			}
@@ -37,10 +37,8 @@ class somethingModel extends something
 				$config->connect_address_type = "member_srl";
 			}
 
-		
-
-
 			$this->config = $config;
+			
 		}
 
 		return $this->config;
@@ -102,7 +100,7 @@ class somethingModel extends something
 		foreach ($output->data as $key => $value)
 		{
 			$output->data[$key]->doc_type = "doc";
-			$output->data[$key]->regdate = $value->getRegdate('YmdHis');
+			$output->data[$key]->regdate = $value->get('regdate');
 			$output->data[$key]->mid = $moduleSrltoMid[$value->get('module_srl')];
 		}
 
@@ -217,6 +215,18 @@ class somethingModel extends something
 		if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
 
 		return $st_skin_info;
+	}
+
+	function convertSkinVars($skin_vars){
+	
+		$ret_obj = new stdClass();
+		foreach ($skin_vars as $key => $val)
+		{
+			
+			$ret_obj->$key=$val->value;
+		}
+
+		return $ret_obj;
 	}
 }
 /* End of file */

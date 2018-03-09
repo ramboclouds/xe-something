@@ -64,8 +64,22 @@ class somethingView extends something
 		}
 
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
+		
+		$st_header_text = $module_info->header_text;
+		$st_footer_text = $module_info->footer_text;
+		
+		if(Mobile::isMobileCheckByAgent()){
+			$skin_vars = $oModuleModel->getModuleMobileSkinVars($module_info->module_srl);
+			$st_header_text = $module_info->mobile_header_text;
+			$st_footer_text = $module_info->mobile_footer_text;
+		}else{
+			$skin_vars = $oModuleModel->getModuleSkinVars($module_info->module_srl);
+		}
+
+		$skin_info = $oSomethingModel->convertSkinVars($skin_vars);
+
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
-		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$module_info);
+		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
 
 		Context::set('total_count', $boardData->total_count);
 		Context::set('total_page', $boardData->total_page);
@@ -73,10 +87,17 @@ class somethingView extends something
 		Context::set('page_navigation', $boardData->page_navigation);
 
 		Context::set('module_info', $module_info);
+		Context::set('skin_info', $skin_info);
+
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
+
 		Context::set('st_config', $config);
-		Context::set('st_path',$this->module_path);
+		Context::set('st_path', $this->module_path);
+
+		Context::set('st_header_text', $st_header_text);
+		Context::set('st_footer_text', $st_footer_text);
+
 		$this->setTemplateFile('profile');
 	}
 }

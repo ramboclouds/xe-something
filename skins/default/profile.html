@@ -1,11 +1,5 @@
 <!--#include("_header.html")-->
 {@
-    //스킨 설정에 추가할 것
-    $st_config->thumbnail_width = 80;
-    $st_config->thumbnail_height = 80;
-    $st_config->thumbnail_type = 'crop';
-    $st_config->content_cut_size =80;
-
     //마지막 활동
     $last_activity = $member_info->last_login;
 }
@@ -18,6 +12,9 @@
 {@ $last_activity_gap = getTimeGap($last_activity, "Y.m.d H:i:s"); }
 <!--@if(defined('RX_VERSION'))-->
     {@ $last_activity_gap = zdate($last_activity, 'relative'); }
+<!--@end-->
+<!--@if($st_header_text)-->
+{$st_header_text}
 <!--@end-->
 <div class="ui cards">
     <div class="card st-profile">
@@ -52,7 +49,7 @@
     </div>
 </div>
 <div class="ui three item menu">
-    <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}}</a>
+    <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
     <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_com}</a>
     <a class="item <!--@if(Context::get('view_type') == 'love_document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','love_document')}">{$lang->something_view_type_recommend}</a>
 </div>
@@ -75,15 +72,16 @@
     {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
     <!--@end-->
     <div class="item">
- 
+         <!--@if($st_skin_info->thumbnail_use == 'Y')-->
         <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
             <!--@if($thumbNail)-->
-            <img src="{$document->getThumbnail($st_config->thumbnail_width, $st_config->thumbnail_height, $st_config->thumbnail_type)}">
+            <img src="{$document->getThumbnail($st_skin_info->thumbnail_width, $st_skin_info->thumbnail_height, $st_skin_info->thumbnail_type)}">
             <!--@else-->
             <img src="images/no_thumb.png">
             <!--@end-->
         </a>
-        
+        <!--@end-->
+      
         <div class="st-content">
             <a class="header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0)--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
             <div class="meta">
@@ -91,7 +89,7 @@
             </div>
             
             <div class="description st-description-href">
-                <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_config->content_cut_size)}</a>
+                <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_skin_info->content_cut_size)}</a>
             </div>
             
         </div>
@@ -117,3 +115,6 @@ $next_page = min($page+1, $page_navigation->last_page);
     </a>
     </div>
 </div>
+<!--@if($st_footer_text)-->
+{$st_footer_text}
+<!--@end-->

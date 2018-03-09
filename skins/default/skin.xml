@@ -40,14 +40,7 @@
                     <title xml:lang="ko">원본 비율</title>
                 </options>
             </var>
-            <var name="thumbnail_width" type="text">
-                <title xml:lang="ko">섬네일 넓이</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정은 '80' 입니다.</description>
-            </var>
-            <var name="thumbnail_height" type="text">
-                <title xml:lang="ko">섬네일 높이</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정은 '80' 입니다.</description>
-            </var>
+            
         </group>
 
         <group>
