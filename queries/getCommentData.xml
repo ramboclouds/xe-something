@@ -1,17 +1,26 @@
 <query id="getCommentData" action="select">
     <tables>
         <table name="comments" />
+        <table name="documents" type="left join">
+            <conditions>
+                <condition operation="equal" column="comments.document_srl" default="documents.document_srl" pipe="and" />
+            </conditions>
+        </table>
     </tables>
     <columns>
-        <column name="*" />
+        <column name="comments.*" />
+        <column name="documents.title" alias="doc_title" />
     </columns>
     <conditions>
-        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
-        <condition operation="equal" column="is_secret" var="is_secret" default="N" pipe="and" />
-        <condition operation="in" column="module_srl" var="module_srl" pipe="and" />
+        <condition operation="equal" column="comments.member_srl" var="member_srl" notnull="notnull" />
+        <condition operation="equal" column="comments.is_secret" var="is_secret" default="N" pipe="and" />
+        <condition operation="equal" column="documents.status" var="status" default="PUBLIC" notnull="notnull"  pipe="and" />
+        <condition operation="in" column="comments.module_srl" var="module_srl" pipe="and" />
     </conditions>
     <navigation>
         <index var="sort_index" default="regdate" order="desc" />
-        <list_count var="list_count" default="20" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
     </navigation>
 </query>

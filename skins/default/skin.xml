@@ -11,8 +11,8 @@
         <group>
             <title xml:lang="ko">작성글 목록 설정</title>
             <var name="subject_cut_size" type="text">
-                <title xml:lang="ko">제목 제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
+                <title xml:lang="ko">제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
             </var>
 
              <var name="content_cut_size" type="text">
@@ -40,7 +40,30 @@
                     <title xml:lang="ko">원본 비율</title>
                 </options>
             </var>
-            
+        </group>
+        <group>
+            <title xml:lang="ko">댓글 목록 설정</title>
+            <var name="cmt_content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
+            <var name="cmt_subject_cut_size" type="text">
+                <title xml:lang="ko">댓글의 제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
+            </var>
+
+            <var name="cmt_browser_title_view" type="radio">
+                <title xml:lang="ko">게시판 이름 표시</title>
+                <description xml:lang="ko">댓글 단 글의 게시판 이름 표시</description>
+                <options value="Y">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+             
         </group>
 
         <group>

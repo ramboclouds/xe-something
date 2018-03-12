@@ -1,6 +1,7 @@
 {@
 	$st_skin_info = $skin_info;
     
+    //document
     if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;
     if(!$st_skin_info->subject_cut_size) $st_skin_info->subject_cut_size = 24;
 
@@ -12,4 +13,9 @@
     if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
     if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
     if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
+
+    //comment
+    if(!$st_skin_info->cmt_content_cut_size) $st_skin_info->cmt_content_cut_size = 80;
+    if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
+    if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
 }

@@ -90,18 +90,23 @@ class somethingModel extends something
 		$sObj->page_count = $skin_info->page_count;
 		$sObj->list_count = $skin_info->list_count;
 
-		/** @var documentModel $oDocumentModel */
-		$oDocumentModel = getModel('document');
-		$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
+		$oModuleSrl = $this->getModuleInfoCache($config);
 
-		$moduleSrltoMid = $this->getMidCache($config);
-
-
-		foreach ($output->data as $key => $value)
+		if ($args->view_type != "comment")
 		{
-			$output->data[$key]->doc_type = "doc";
-			$output->data[$key]->regdate = $value->get('regdate');
-			$output->data[$key]->mid = $moduleSrltoMid[$value->get('module_srl')];
+
+			/** @var documentModel $oDocumentModel */
+			$oDocumentModel = getModel('document');
+			$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
+
+			foreach ($output->data as $key => $value)
+			{
+				$output->data[$key]->doc_type = "doc";
+				$output->data[$key]->regdate = $value->get('regdate');
+				$output->data[$key]->mid = $oModuleSrl->mid[$value->get('module_srl')];
+				$output->data[$key]->browser_title = $oModuleSrl->browser_title[$value->get('module_srl')];
+			}
+		
 		}
 
 		$commentOutput = executeQueryArray("something.getCommentData", $sObj);
@@ -109,7 +114,19 @@ class somethingModel extends something
 		foreach ($commentOutput->data as $key => $value)
 		{
 			$commentOutput->data[$key]->doc_type = "cmt";
-			$commentOutput->data[$key]->content = strip_tags($value->content);
+			$cmt_content = strip_tags($value->content);
+			$cmt_content_blank = str_replace(array('&nbsp;'),array(''),$cmt_content);
+			if(trim($cmt_content_blank) == ""){
+				$cmt_content = Context::getLang('something_message_comment_content_blank');
+			}
+			$commentOutput->data[$key]->content = $cmt_content;
+			$commentOutput->data[$key]->mid = $moduleSrltoMid[$value->module_srl];
+			$commentOutput->data[$key]->browser_title = $oModuleSrl->browser_title[$value->module_srl];
+		}
+
+		if ($args->view_type == "comment")
+		{
+			return $commentOutput;
 		}
 
 		$output->data = array_merge((array)$output->data, (array)$commentOutput->data);
@@ -131,7 +148,7 @@ class somethingModel extends something
 		return $memberInfo;
 	}
 
-	function getMidCache($config=false)
+	function getModuleInfoCache($config=false)
 	{
 		if (!$config)
 		{
@@ -175,18 +192,21 @@ class somethingModel extends something
 		{
 			$output=executeQueryArray('something.getMid');
 			$mid_tmp="";
+			$name_tmp="";
 			foreach($output->data as $key=>$val){
 				if ($mid_tmp == "")
 				{
 					$mid_tmp = $val->module_srl.'=>"'.$val->mid.'"';
+					$name_tmp = $val->module_srl.'=>"'.$val->browser_title.'"';
 				}
 				else 
 				{
 					$mid_tmp = $mid_tmp.','.$val->module_srl.'=>"'.$val->mid.'"';
+					$name_tmp = $name_tmp.','.$val->module_srl.'=>"'.$val->browser_title.'"';
 				}
 			}
 
-			$mid_data="<?php \$st_module_srl_to_mid=array(".$mid_tmp."); ?>";
+			$mid_data="<?php \$st_module_srl_to_mid = array(".$mid_tmp."); ".PHP_EOL."\$st_module_srl_to_name = array(".$name_tmp.");?>";
 			$wr_file   = fopen($cache_data, "w");
 			$pieces = str_split($mid_data, 1024 * 4);
 			foreach ($pieces as $piece) {
@@ -194,16 +214,23 @@ class somethingModel extends something
 			}
 			fclose($wr_file);
 			@chmod($cache_data,0707);
-			
+			unset($mid_data);
 		}
+
+		$ret_obj = new stdClass();
+		
 
 		if (!file_exists($cache_data))
 		{
-			return array();
+			$ret_obj->mid = array();
+			$ret_obj->browser_title = array();
+			return $ret_obj;
 		}
 
 		include_once($cache_data);
-		return $st_module_srl_to_mid;
+		$ret_obj->mid = $st_module_srl_to_mid;
+		$ret_obj->browser_title = $st_module_srl_to_name;		
+		return $ret_obj;
 
 	}
 

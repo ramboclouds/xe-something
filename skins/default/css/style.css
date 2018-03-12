@@ -40,6 +40,24 @@
   color: rgba(0, 0, 0, 0.87);
 }
 
+.st-cmt-doc-title a{
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.6)
+}
+.st-cmt-doc-title a:hover{
+  text-decoration: underline !important;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+.st-board-name a{
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.6)
+}
+.st-board-name a:hover{
+  text-decoration: underline !important;
+  color: rgba(0, 0, 0, 0.6)
+}
+
 .font-grey{
   color:#999999 !important;
 }

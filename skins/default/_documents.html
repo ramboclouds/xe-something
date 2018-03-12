@@ -1,0 +1,48 @@
+    <div class="ui unstackable items">
+        <!--@foreach($board_data as $no => $document)-->
+            {@ $thumbNail=false; }
+            <!--@if($document->doc_type=='cmt')-->
+                {@ continue; }
+            <!--@else if($document->doc_type=='doc')-->
+                {@ $doc_title = $document->getTitle(20); }
+                <!--@if($document->thumbnailExists())-->
+                {@ $thumbNail=true; }
+                <!--@end-->
+            <!--@end-->
+                {@
+                    $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
+                }
+            <!--@if(defined('RX_VERSION'))-->
+                {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+            <!--@end-->
+        <div class="item">
+             <!--@if($st_skin_info->thumbnail_use == 'Y')-->
+            <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
+                <!--@if($thumbNail)-->
+                <img src="{$document->getThumbnail($st_skin_info->thumbnail_width, $st_skin_info->thumbnail_height, $st_skin_info->thumbnail_type)}">
+                <!--@else-->
+                <img src="images/no_thumb.png">
+                <!--@end-->
+            </a>
+            <!--@end-->
+          
+            <div class="st-content">
+                <a class="header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0)--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
+                <div class="meta">
+                    <span class="st-doc-date">{$time_gap}</span>
+                </div>
+                
+                <div class="description st-description-href">
+                    <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_skin_info->content_cut_size)}</a>
+                </div>
+                
+            </div>
+        </div>
+        <!--@end-->
+        <!--@if(!$board_data)-->
+        <div class="ui warning message">
+            <i class="close st-icon"></i>
+            {$lang->something_message_doc_empty}
+        </div>
+        <!--@end-->
+    </div>
