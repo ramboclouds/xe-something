@@ -32,6 +32,9 @@
   color: rgba(0, 0, 0, 0.87);
 }
 
+.st-profile-description{
+  min-height: 25px;
+}
 .st-description-href a:hover{
   text-decoration: underline !important;
   color: rgba(0, 0, 0, 0.87);
@@ -53,6 +56,11 @@
   min-width: 1em !important;
 
   padding:0.52857143em 0.74285714em  !important;
+}
+
+.none-profile-image{
+  width:80px !important;
+  height:80px !important;
 }
 
 

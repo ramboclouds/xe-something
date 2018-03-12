@@ -17,7 +17,7 @@ class somethingModel extends something
 				$config = new stdClass();
 			}
 
-			if (!$config->use);
+			if (!$config->use)
 			{
 				$config->use = 'N';
 			}

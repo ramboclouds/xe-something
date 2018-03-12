@@ -100,4 +100,8 @@
 		<value xml:lang="ko"><![CDATA[추천한 글]]></value>
 		<value xml:lang="en"><![CDATA[recommend]]></value>
 	</item>
+	<item name="something_message_doc_empty">
+		<value xml:lang="ko"><![CDATA[작성한 글이 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[There are no registered post.]]></value>
+	</item>
 </lang>
