@@ -36,10 +36,6 @@
 .st-profile-description{
   min-height: 25px;
 }
-.st-description-href a:hover{
-  text-decoration: underline !important;
-  color: rgba(0, 0, 0, 0.87);
-}
 
 .st-cmt-doc-title a{
   text-decoration: none !important;

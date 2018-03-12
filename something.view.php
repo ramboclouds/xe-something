@@ -27,9 +27,11 @@ class somethingView extends something
 	function dispSomethingProfileView()
 	{
 		$user_string = Context::get('smember');
-
+		
+		Context::set('st_path', $this->module_path);
 		if ($user_string == "")
 		{
+			
 			Context::set('something_error_msg', lang('something_msg_user_notfound'));
 			$this->setTemplateFile('_error');
 			return;
@@ -93,7 +95,6 @@ class somethingView extends something
 		Context::set('member_info', $memberInfo);
 
 		Context::set('st_config', $config);
-		Context::set('st_path', $this->module_path);
 
 		Context::set('st_header_text', $st_header_text);
 		Context::set('st_footer_text', $st_footer_text);
