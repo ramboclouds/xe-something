@@ -18,29 +18,40 @@
 <div class="ui cards">
     <div class="card st-profile">
         <div class="st-content">
+            <!--@if($st_skin_info->profile_image_use == 'Y')-->
             <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
-                <div class="header st-profile-nick_name">
-                {$member_info->nick_name}
-                </div>
-                <div class="meta st-profile-group">
-                {implode($member_info->group_list,",")}
-                </div>
-                <div class="description st-profile-description">
-                    {$member_info->signature}
-                </div>          
+            <!--@end-->
+            <div class="header st-profile-nick_name">
+            {$member_info->nick_name}
+            </div>
+            <!--@if($st_skin_info->profile_group_use == 'Y')-->
+            <div class="meta st-profile-group">
+            {implode($member_info->group_list,",")}
+            </div>
+            <!--@end-->
+            <!--@if($st_skin_info->profile_description_use == 'Y')-->
+            <div class="description st-profile-description">
+                {$member_info->signature}
+            </div>
+            <!--@end-->
           </div>
-
+        <!--@if($st_skin_info->profile_last_activity_use == 'Y' || $st_skin_info->profile_subscribe_use == 'Y')-->
         <div class="extra st-content pf-card-extra-content">
+            <!--@if($st_skin_info->profile_last_activity_use == 'Y')-->
             <span class="left floated like">
             {$lang->something_recent_activity} : {$last_activity_gap}
             </span>
+            <!--@end-->
+            <!--@if($st_skin_info->profile_subscribe_use == 'Y')-->
             <span class="right floated">
                 <a>
                 <i class="bell outline st-icon"></i>
-                17명 구독
+                17명 {$st_skin_info->profile_subscribe_text}
                 </a>
             </span>
+            <!--@end-->
         </div>
+        <!--@end-->
           
     </div>
 </div>
@@ -56,7 +67,7 @@
 <!--@end-->
 
 <!--@if($board_data)-->
-<div class="ui one column centered grid">
+<div class="ui one column centered grid st-page-parent">
 {@
 $prev_page = max($page-1, 1);
 $next_page = min($page+1, $page_navigation->last_page);

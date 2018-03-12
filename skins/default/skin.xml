@@ -9,6 +9,64 @@
 	</author>
     <extra_vars>
         <group>
+            <title xml:lang="ko">프로필 설정</title>
+            <var name="profile_group_use" type="radio">
+                <title xml:lang="ko">그룹명 표시</title>
+                <description xml:lang="ko">회원이 소속된 그룹명을 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="profile_description_use" type="radio">
+                <title xml:lang="ko">서명 표시</title>
+                <description xml:lang="ko">회원이 입력한 서명을 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="profile_image_use" type="radio">
+                <title xml:lang="ko">프로필 이미지 표시</title>
+                <description xml:lang="ko">회원이 프로필 이미지를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="profile_last_activity_use" type="radio">
+                <title xml:lang="ko">최근 활동 표시</title>
+                <description xml:lang="ko">회원이 마지막으로 활동한 시간을 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="profile_subscribe_use" type="radio">
+                <title xml:lang="ko">구독자 수 표시</title>
+                <description xml:lang="ko">회원을 구독(팔로워)하고 사용자의 수를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="profile_subscribe_text" type="text">
+                <title xml:lang="ko">구독자 표시명</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '구독' 입니다.</description>
+            </var>
+
+        </group>
+        <group>
             <title xml:lang="ko">작성글 목록 설정</title>
             <var name="subject_cut_size" type="text">
                 <title xml:lang="ko">제목 글자수</title>

@@ -1,5 +1,13 @@
 {@
-	$st_skin_info = $skin_info;
+    $st_skin_info = $skin_info;
+    
+    //profile
+    if(!$st_skin_info->profile_group_use) $st_skin_info->profile_group_use = 'Y';
+    if(!$st_skin_info->profile_description_use) $st_skin_info->profile_description_use = 'Y';
+    if(!$st_skin_info->profile_last_activity_use) $st_skin_info->profile_last_activity_use = 'Y';
+    if(!$st_skin_info->profile_image_use) $st_skin_info->profile_image_use = 'Y';
+    if(!$st_skin_info->profile_subscribe_use) $st_skin_info->profile_subscribe_use = 'Y';
+    if(!$st_skin_info->profile_subscribe_text) $st_skin_info->profile_subscribe_text = '구독';
     
     //document
     if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;

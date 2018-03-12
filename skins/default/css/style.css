@@ -1,5 +1,6 @@
 .st-profile{
   width:100% !important;
+  min-height:120px !important;
 }
 
 .st-profile-image{
@@ -70,6 +71,10 @@
   padding: 0.52857143em .74285714em  !important;
 }
 
+.st-page-parent{
+  margin-top:1rem !important;
+  margin-bottom:1rem !important;
+}
 .st-page .item{
   min-width: 1em !important;
 

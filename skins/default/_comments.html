@@ -1,8 +1,8 @@
     <div class="ui unstackable items">
         <!--@foreach($board_data as $no => $document)-->
-           <!--@if($document->doc_type=='doc')-->
+           <!--@if($document->doc_type == 'doc')-->
             {@ continue; }
-           <!--@else if($document->doc_type=='cmt')-->
+           <!--@else if($document->doc_type == 'cmt')-->
             {@ 
                 $comment = cut_str($documnet->content,$st_skin_info->cmt_content_cut_size); 
                 $doc_title = cut_str($document->doc_title,$st_skin_info->cmt_subject_cut_size);
@@ -18,7 +18,7 @@
                            <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}#comment_{$document->comment_srl}">{$document->content}</a>
                        </div>
                        <div class="meta">
-                               <span class="st-doc-date"><i class="clock outline st-icon"></i>{$time_gap}</span><!--@if($st_skin_info->cmt_browser_title_view=='Y')-->
+                               <span class="st-doc-date"><i class="clock outline st-icon"></i>{$time_gap}</span><!--@if($st_skin_info->cmt_browser_title_view == 'Y')-->
                                <span class="st-board-name"><i class="folder outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl')}">{$document->browser_title}</a> <i class="right chevron st-icon divider"></i> </span>
                                <!--@end--><span class="st-cmt-doc-title"><i class="file outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a></span>
                        </div> 

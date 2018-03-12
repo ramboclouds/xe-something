@@ -1,9 +1,9 @@
     <div class="ui unstackable items">
         <!--@foreach($board_data as $no => $document)-->
             {@ $thumbNail=false; }
-            <!--@if($document->doc_type=='cmt')-->
+            <!--@if($document->doc_type == 'cmt')-->
                 {@ continue; }
-            <!--@else if($document->doc_type=='doc')-->
+            <!--@else if($document->doc_type == 'doc')-->
                 {@ $doc_title = $document->getTitle(20); }
                 <!--@if($document->thumbnailExists())-->
                 {@ $thumbNail=true; }
