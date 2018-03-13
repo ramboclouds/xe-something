@@ -13,7 +13,11 @@
             <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
             <!--@end-->
             <div class="st-header st-profile-nick_name">
+            <!--@if($member_info->image_name)-->
+            <img src="{$member_info->image_name->src}" width="{$member_info->image_name->width}" height="{$member_info->image_name->height}" style="border:0 !important;width {$member_info->image_name->width}px !important;height:{$member_info->image_name->height}px !important;">
+            <!--@else-->
             {$member_info->nick_name}
+            <!--@end-->
             </div>
             <!--@if($st_skin_info->profile_group_use == 'Y')-->
             <div class="meta st-profile-group">
@@ -55,8 +59,10 @@
     <!--#include("_documents.html")-->
 <!--@else if(Context::get('view_type') == 'comment')-->
     <!--#include("_comments.html")-->
-<!--@end-->
+<!--@else if(Context::get('view_type') == 'recommend')-->
     <!--#include("_recommend.html")-->
+<!--@end-->
+    
 <!--@if($something_data)-->
 <div class="ui one column centered grid st-page-parent">
 {@

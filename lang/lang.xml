@@ -108,8 +108,13 @@
 		<value xml:lang="ko"><![CDATA[작성한 댓글이 없습니다.]]></value>
 		<value xml:lang="en"><![CDATA[There are no registered comment.]]></value>
 	</item>
+	<item name="something_message_recommend_empty">
+		<value xml:lang="ko"><![CDATA[추천한 글이 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[There are no registered recommendation.]]></value>
+	</item>
 	<item name="something_message_comment_content_blank">
 		<value xml:lang="ko"><![CDATA[댓글 내용 없음]]></value>
 		<value xml:lang="en"><![CDATA[Comment is blank]]></value>
 	</item>
+	
 </lang>

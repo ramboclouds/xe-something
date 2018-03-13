@@ -24,7 +24,6 @@
             <!--@end-->
         </a>
         <!--@end-->
-      
         <div class="st-content">
             <a class="st-header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0)--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
             <div class="meta">
@@ -42,7 +41,7 @@
     <!--@if(!$something_data)-->
     <div class="ui warning message">
         <i class="close st-icon"></i>
-        {$lang->something_message_doc_empty}
+        {$lang->something_message_recommend_empty}
     </div>
     <!--@end-->
 </div>
