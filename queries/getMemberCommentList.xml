@@ -1,4 +1,4 @@
-<query id="getCommentData" action="select">
+<query id="getMemberCommentList" action="select">
     <tables>
         <table name="comments" />
         <table name="documents" type="left join">

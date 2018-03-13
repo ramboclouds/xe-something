@@ -1,5 +1,5 @@
     <div class="ui unstackable items">
-        <!--@foreach($board_data as $no => $document)-->
+        <!--@foreach($something_data as $no => $document)-->
            <!--@if($document->doc_type == 'doc')-->
             {@ continue; }
            <!--@else if($document->doc_type == 'cmt')-->
@@ -25,7 +25,7 @@
                </div>
         </div>
        <!--@end-->
-       <!--@if(!$board_data)-->
+       <!--@if(!$something_data)-->
        <div class="ui warning message">
            <i class="close st-icon"></i>
            {$lang->something_message_cmt_empty}

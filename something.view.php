@@ -82,17 +82,26 @@ class somethingView extends something
 		$skin_info = $oSomethingModel->convertSkinVars($skin_vars);
 
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
-		$boardData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
+		if (Context::get('view_type') == "recommend")
+		{
+			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(),$skin_info);
 
-		Context::set('total_count', $boardData->total_count);
-		Context::set('total_page', $boardData->total_page);
-		Context::set('page', $boardData->page);
-		Context::set('page_navigation', $boardData->page_navigation);
+		}
+		else
+		{
+			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
+		}
+		
+
+		Context::set('total_count', $somethingData->total_count);
+		Context::set('total_page', $somethingData->total_page);
+		Context::set('page', $somethingData->page);
+		Context::set('page_navigation', $somethingData->page_navigation);
 
 		Context::set('module_info', $module_info);
 		Context::set('skin_info', $skin_info);
 
-		Context::set('board_data', $boardData->data);
+		Context::set('something_data', $somethingData->data);
 		Context::set('member_info', $memberInfo);
 		Context::set('recent_activity', $recent_activity);
 

@@ -1,0 +1,39 @@
+<query id="getMemberVotedList" action="select">
+    <tables>
+        <table name="document_voted_log" />
+        <table name="documents" type="left join">
+            <conditions>
+                <condition operation="equal" column="document_voted_log.document_srl" default="documents.document_srl" pipe="and" />
+            </conditions>
+        </table>
+        <table name="files" type="left join">
+            <conditions>
+                <condition operation="equal" column="document_voted_log.document_srl" default="files.upload_target_srl" pipe="and" />
+            </conditions>
+             <navigation>
+                <index var="sort_index" default="regdate" order="asc" />
+                <list_count var="list_count" default="1" />
+            </navigation>
+        </table>
+    </tables>
+    <columns>
+        <column name="document_voted_log.*" />
+        <column name="documents.title" alias="doc_title" />
+        <column name="documents.title" alias="doc_regdate" />
+        <column name="documents.content" alias="doc_content" />
+        <column name="documents.comment_count" alias="comment_count" />
+        <column name="files.file_srl" alias="file_srl" />
+        <column name="files.uploaded_filename" alias="file_name" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="document_voted_log.member_srl" var="member_srl" notnull="notnull" />
+        <condition operation="equal" column="document_voted_log.point" var="point" default="1" pipe="and" />
+        <condition operation="equal" column="documents.status" var="status" default="PUBLIC" notnull="notnull"  pipe="and" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="regdate" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

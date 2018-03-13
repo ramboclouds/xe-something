@@ -109,7 +109,7 @@ class somethingModel extends something
 		
 		}
 
-		$commentOutput = executeQueryArray("something.getCommentData", $sObj);
+		$commentOutput = executeQueryArray("something.getMemberCommentList", $sObj);
 
 		foreach ($commentOutput->data as $key => $value)
 		{
@@ -137,6 +137,24 @@ class somethingModel extends something
 		return $output;
 	}
 
+	function getMemberVotedList($memberInfo, $config, $args, $skin_info)
+	{
+		$skin_info = $this->replaceSkinInfo($skin_info);
+
+		$sObj = new stdClass();
+		$sObj->member_srl = $memberInfo->member_srl;
+		$sObj->module_srl = $board_srls;
+		$sObj->statusList = "PUBLIC";
+		$sObj->sort_index = "regdate";
+		$sObj->order_type = "desc";
+		$sObj->page = $args->page;
+		$sObj->page_count = $skin_info->page_count;
+		$sObj->list_count = $skin_info->list_count;
+
+		$output = executeQueryArray("something.getMemberVotedList",$sObj);
+		return $output;
+	}
+
 	function memberInfoReplace($memberInfo)
 	{
 		if ($memberInfo->signature)
@@ -160,7 +178,6 @@ class somethingModel extends something
 			return;
 		}
 
-		//디렉토리 검사
 		$cache_folder=_XE_PATH_."files/cache/something";
 		$cache_data=$cache_folder."/srltomid.php";
 
@@ -170,8 +187,7 @@ class somethingModel extends something
 			@chmod($cache_folder,0707);
 		}
 		
-		//ok,no,del
-		$data_make="no";
+		$data_make="no";	//ok,no,del
 
 		if (file_exists($cache_data))
 		{
@@ -190,7 +206,7 @@ class somethingModel extends something
 		
 		if ($data_make == "ok")
 		{
-			$output=executeQueryArray('something.getMid');
+			$output=executeQueryArray('something.getMidList');
 			$mid_tmp="";
 			$name_tmp="";
 			foreach($output->data as $key=>$val){

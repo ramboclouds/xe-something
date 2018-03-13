@@ -56,8 +56,8 @@
 <!--@else if(Context::get('view_type') == 'comment')-->
     <!--#include("_comments.html")-->
 <!--@end-->
-
-<!--@if($board_data)-->
+    <!--#include("_recommend.html")-->
+<!--@if($something_data)-->
 <div class="ui one column centered grid st-page-parent">
 {@
 $prev_page = max($page-1, 1);

@@ -1,4 +1,4 @@
-<query id="getMid" action="select">
+<query id="getMidList" action="select">
     <tables>
         <table name="modules" />
     </tables>
