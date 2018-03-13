@@ -271,7 +271,9 @@ class somethingModel extends something
 		if (!$force_update)
 		{
 			$stOutput = executeQueryArray("something.getMemberInfo",$sObj);
-		}else{
+		}
+		else
+		{
 			$stOutput = new stdClass();
 		}
 		
