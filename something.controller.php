@@ -2,7 +2,7 @@
 
 class somethingController extends something
 {
-	function triggerAddMemberMenu(&$module_info)
+	function triggerAddMemberMenu($module_info)
 	{
 		$config = getModel('something')->getConfig();
 		if ($config->use != "Y")
@@ -35,6 +35,95 @@ class somethingController extends something
 
 		$str = $config->memeber_popupmenu_name;
 		$oMemberController->addMemberPopupMenu($url, $str, '', '_self');
+	}
+
+	function triggerInsertAfterDocument($obj)
+	{
+		if (!Context::get('is_logged'))
+		{
+			return;
+		}
+
+		$stModel=getModel('something');
+		$config = $stModel->getConfig();
+
+		if ($config->use != "Y")
+		{
+			return;
+		}
+		
+		if($obj->status != "PUBLIC")
+		{
+			return;
+		}
+
+		$stModel->updateMemberRecentActivity($obj);
+	}
+
+	function triggerInsertAfterComment($obj)
+	{
+		if (!Context::get('is_logged'))
+		{
+			return;
+		}
+
+		$oSomethingModel=getModel('something');
+		$config = $oSomethingModel->getConfig();
+
+		if ($config->use != "Y")
+		{
+			return;
+		}
+		
+		if ($obj->is_secret != "N")
+		{
+			return;
+		}
+
+		$oDocument = getModel('document')->getDocument($obj->document_srl);
+		if ($oDocument->get('status') != "PUBLIC")
+		{
+			return;
+		}
+
+		$oSomethingModel->updateMemberRecentActivity($obj);
+	}
+
+	function triggerDeleteAfterDocument($obj)
+	{
+		$this->deleteMemberRecentActivity($obj);
+		return;
+	}
+
+	function triggerDeleteAfterComment($obj)
+	{
+		$this->deleteMemberRecentActivity($obj);
+		return;
+	}
+
+	function deleteMemberRecentActivity($obj)
+	{
+		if (!Context::get('is_logged'))
+		{
+			return;
+		}
+
+		$oSomethingModel=getModel('something');
+		$config = $oSomethingModel->getConfig();
+
+		if ($config->use != "Y")
+		{
+			return;
+		}
+
+		if (!$obj->member_srl)
+		{
+			return;
+		}
+
+		$oMemberModel=getModel('member');
+		$memberInfo = $oMemberModel->getMemberInfoByMemberSrl($obj->member_srl);
+		$oSomethingModel->getMemeberRecentActivity($memberInfo,true);
 	}
 }
 /* End of file */

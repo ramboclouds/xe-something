@@ -3,6 +3,10 @@ class something extends ModuleObject
 {
 	private $trigger = array(
 		array('moduleHandler.init', 'something', 'controller', 'triggerAddMemberMenu', 'after'),
+		array('document.insertDocument', 'something', 'controller', 'triggerInsertAfterDocument', 'after'),
+		array('comment.insertComment', 'something', 'controller', 'triggerInsertAfterComment', 'after'),
+		array('document.deleteDocument', 'something', 'controller', 'triggerDeleteAfterDocument', 'after'),
+		array('comment.deleteComment', 'something', 'controller', 'triggerDeleteAfterComment', 'after'),
 	);
 
 	function moduleInstall()

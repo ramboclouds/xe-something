@@ -1,16 +1,7 @@
 <!--#include("_header.html")-->
-{@
-    $last_activity = $member_info->last_login;
-}
-<!--@foreach($board_data as $no => $document)-->
-{@
-    $last_activity = $document->regdate;
-    break;
-}
-<!--@end-->
-{@ $last_activity_gap = getTimeGap($last_activity, "Y.m.d H:i:s"); }
+{@ $recent_activity_gap = getTimeGap($recent_activity, "Y.m.d H:i:s"); }
 <!--@if(defined('RX_VERSION'))-->
-    {@ $last_activity_gap = zdate($last_activity, 'relative'); }
+{@ $recent_activity_gap = zdate($recent_activity, 'relative'); }
 <!--@end-->
 <!--@if($st_header_text)-->
 {$st_header_text}
@@ -38,8 +29,8 @@
         <!--@if($st_skin_info->profile_last_activity_use == 'Y' || $st_skin_info->profile_subscribe_use == 'Y')-->
         <div class="extra st-content pf-card-extra-content">
             <!--@if($st_skin_info->profile_last_activity_use == 'Y')-->
-            <span class="left floated like">
-            {$lang->something_recent_activity} : {$last_activity_gap}
+            <span class="left floated like" >
+            {$lang->something_recent_activity} : {$recent_activity_gap}
             </span>
             <!--@end-->
             <!--@if($st_skin_info->profile_subscribe_use == 'Y')-->

@@ -28,6 +28,10 @@
 		
 		<!-- trigger -->
 		<action name="triggerAddMemberMenu" type="controller" />
-
+		<action name="triggerInsertAfterDocument" type="controller" />
+		<action name="triggerInsertAfterComment" type="controller" />
+		<action name="triggerDeleteAfterDocument" type="controller" />
+		<action name="triggerDeleteAfterComment" type="controller" />
+		
 	</actions>
 </module>

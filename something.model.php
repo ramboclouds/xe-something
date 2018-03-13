@@ -255,5 +255,92 @@ class somethingModel extends something
 
 		return $ret_obj;
 	}
+
+	function getMemeberRecentActivity($member_info, $force_update = false)
+	{
+		$sObj = new stdClass();
+		$sObj->member_srl = $member_info->member_srl;
+		$sObj->module_srl = $board_srls;
+		$sObj->statusList = "PUBLIC";
+		$sObj->sort_index = "regdate";
+		$sObj->order_type = "desc";
+		$sObj->page = 1;
+		$sObj->page_count = 1;
+		$sObj->list_count = 1;
+
+		if (!$force_update)
+		{
+			$stOutput = executeQueryArray("something.getMemberInfo",$sObj);
+		}else{
+			$stOutput = new stdClass();
+		}
+		
+		if ($stOutput->data)
+		{
+			foreach ($stOutput->data as $key => $value)
+			{
+				$recent_activity = $value->recent_activity;
+				break;
+			}
+			return $recent_activity;
+		}
+		else
+		{
+			$sObj2 = new stdClass();
+			$sObj2->member_srl = $member_info->member_srl;
+
+			$oDocumentModel = getModel('document');
+			$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
+
+			foreach ($output->data as $key => $value)
+			{
+				$output->data[$key]->regdate = $value->get('regdate');
+			}
+			$commentOutput = executeQueryArray("something.getCommentData", $sObj);
+			if (!$commentOutput->data && !$output->data)
+			{
+				$sObj2->regdate = $member_info->last_login;
+			}
+			else 
+			{
+				$output->data = array_merge((array)$output->data, (array)$commentOutput->data);
+				usort($output->data, function($first, $second){
+					return strtolower($first->regdate) < strtolower($second->regdate);
+				});
+	
+				foreach ($output->data as $key => $value)
+				{
+					$sObj2->regdate = $value->regdate;
+					break;
+				}
+			}
+	
+			$this->updateMemberRecentActivity($sObj2);
+			return $sObj2->regdate;
+			
+		}
+
+	
+		
+	}
+
+	function updateMemberRecentActivity($obj)
+	{
+		$stOutput = executeQueryArray("something.getMemberInfo",$obj);
+		$dbObj = new stdClass();
+		$dbObj->member_srl = $obj->member_srl;
+		$dbObj->recent_activity = $obj->regdate;
+
+		if (!$stOutput->data)
+		{
+			$dbOutput = executeQuery("something.insertMemberRecentActivity",$dbObj);
+		}
+		else
+		{
+			$dbOutput = executeQuery("something.updateMemberRecentActivity",$dbObj);
+		}
+		
+		return $dbOutput;
+	}
 }
 /* End of file */

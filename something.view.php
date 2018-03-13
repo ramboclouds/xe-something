@@ -66,6 +66,7 @@ class somethingView extends something
 		}
 
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
+		$recent_activity = $oSomethingModel->getMemeberRecentActivity($memberInfo);
 		
 		$st_header_text = $module_info->header_text;
 		$st_footer_text = $module_info->footer_text;
@@ -93,6 +94,7 @@ class somethingView extends something
 
 		Context::set('board_data', $boardData->data);
 		Context::set('member_info', $memberInfo);
+		Context::set('recent_activity', $recent_activity);
 
 		Context::set('st_config', $config);
 

@@ -1,0 +1,4 @@
+<table name="something_member_info">
+    <column name="member_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+    <column name="recent_activity" type="date"  notnull="notnull" index="idx_recent_activity" />
+</table>

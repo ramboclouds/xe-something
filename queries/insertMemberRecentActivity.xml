@@ -1,0 +1,9 @@
+<query id="insertMemberRecentActivity" action="insert">
+    <tables>
+        <table name="something_member_info" />
+    </tables>
+    <columns>
+        <column name="member_srl" var="member_srl" />
+        <column name="recent_activity" var="recent_activity" default="curdate()" />
+    </columns>
+</query>
