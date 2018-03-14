@@ -160,10 +160,6 @@
 		<value xml:lang="ko"><![CDATA[%s기능이 비활성화되어 있습니다.]]></value>
 		<value xml:lang="en"><![CDATA[%s is disabled]]></value>
 	</item>
-	<item name="something_follow_disabled">
-		<value xml:lang="ko"><![CDATA[%s기능이 비활성화되어 있습니다.]]></value>
-		<value xml:lang="en"><![CDATA[%s is disabled]]></value>
-	</item>
 	<item name="something_access_denied">
 		<value xml:lang="ko"><![CDATA[잘못된 접근입니다.]]></value>
 		<value xml:lang="en"><![CDATA[Wrong access]]></value>
