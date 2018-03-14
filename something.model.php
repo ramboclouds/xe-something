@@ -174,6 +174,47 @@ class somethingModel extends something
 		return $output;
 	}
 
+	function getMemberFollowerList($memberInfo, $config, $args, $skin_info)
+	{
+		$skin_info = $this->replaceSkinInfo($skin_info);
+
+		$sObj = new stdClass();
+		$sObj->member_srl = $memberInfo->member_srl;
+		$sObj->sort_index = "regdate";
+		$sObj->order_type = "desc";
+		$sObj->page = $args->page;
+		$sObj->page_count = $skin_info->page_count;
+		$sObj->list_count = $skin_info->list_count;
+
+		$oMemberModel = getModel('member');
+		$oMemberModel->arrangeMemberInfo($output->data, $site_srl);
+
+		$output = executeQueryArray('something.getMemberFollowerList',$sObj);
+		if($output->data)
+		{
+			foreach ($output->data as $key => $value)
+			{
+
+				$output->data[$key] = $oMemberModel->arrangeMemberInfo($value,0);
+				$output->data[$key]->signature = strip_tags($output->data[$key]->signature);
+
+				if (trim($output->data[$key]->signature) == "")
+				{
+					$output->data[$key]->signature = lang('something_message_empty_signature');
+				}
+				$output->data[$key]->smember = $value->{$config->connect_address_type};
+				$followOutput= executeQuery('memberfollow.getMemberFollowerCount',$value);
+				$output->data[$key]->follower_count= $followOutput->data->cnt;
+				
+				if (!$value->recent_activity)
+				{
+					$output->data[$key]->recent_activity = $this->getMemeberRecentActivity($value);
+				}
+			}
+		}
+		return $output;
+	}
+
 	function memberInfoReplace($memberInfo)
 	{
 		if ($memberInfo->signature)

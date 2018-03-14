@@ -42,8 +42,8 @@
                 $subscribe_lang_str = 'something_message_subscribe_mouseon_'.$st_config->subscribe_click_action;
                 $subscribe_msg = sprintf(lang($subscribe_lang_str), $member_info->nick_name, $st_skin_info->profile_subscribe_text); 
             }
-            <span class="right floated"  data-tooltip="{$subscribe_msg}" data-position="top right">
-                <a>
+            <span class="right floated st-member-followercount"  data-tooltip="{$subscribe_msg}" data-position="top right">
+                <a href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist')}">
                 <i class="bell outline st-icon"></i>
                 {$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
                 </a>
@@ -65,6 +65,8 @@
     <!--#include("_comments.html")-->
 <!--@else if(Context::get('view_type') == 'recommend')-->
     <!--#include("_recommend.html")-->
+<!--@else if(Context::get('view_type') == 'followerlist')-->
+    <!--#include("_follower_list.html")-->
 <!--@end-->
     
 <!--@if($something_data)-->

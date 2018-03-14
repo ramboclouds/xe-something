@@ -89,6 +89,10 @@ class somethingView extends something
 			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(),$skin_info);
 
 		}
+		else if (Context::get('view_type') == "followerlist")
+		{
+			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(),$skin_info);
+		}
 		else
 		{
 			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);

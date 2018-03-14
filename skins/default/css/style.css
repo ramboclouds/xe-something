@@ -82,6 +82,14 @@
   height:80px !important;
 }
 
+.st-member-followercount a{
+  text-decoration: none !important;
+}
+
+.st-member-followercount a:hover{
+  text-decoration: none !important;
+}
+
 [data-tooltip]:after{
   font-size:1em !important;
 }

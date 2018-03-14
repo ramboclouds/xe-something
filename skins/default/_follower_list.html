@@ -1,0 +1,40 @@
+<div class="ui unstackable items">
+    <!--@foreach($something_data as $no => $follower_member)-->
+    {@ $follower_member_time_gap = getTimeGap($follower_member->recent_activity, "Y.m.d H:i:s"); }
+    <!--@if(defined('RX_VERSION'))-->
+        {@ $follower_member_time_gap = zdate($follower_member->recent_activity, 'relative'); }
+    <!--@end-->
+    <div class="item">
+        
+        <a class="ui tiny image" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">
+            <!--@if($follower_member->profile_image->src)-->
+            <img src="{$follower_member->profile_image->src}">
+            <!--@else-->
+            <img src="images/user128.png">
+            <!--@end-->
+        </a>
+
+        <div class="st-content">
+            <a class="st-header st-href" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">{$follower_member->nick_name}</a>
+            <div class="meta">
+                <span class="st-doc-date" data-tooltip="{$lang->something_recent_activity}"><i class="clock outline st-icon"></i> {$follower_member_time_gap}</span>
+                <!--@if($follower_member->follower_count > 0)-->
+                {@ $subscribe_msg = sprintf(lang('something_follower_count'), $st_skin_info->profile_subscribe_text); }
+                <span class="st-doc-date" data-tooltip="{$subscribe_msg}"><i class="bell outline st-icon"></i> {$follower_member->follower_count}</span>
+                <!--@end-->
+            </div>
+            
+            <div class="description st-description-href">
+                <a href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">{$follower_member->signature}</a>
+            </div>
+            
+        </div>
+    </div>
+    <!--@end-->
+    <!--@if(!$something_data)-->
+    <div class="ui warning message">
+        <i class="close st-icon"></i>
+        {$lang->something_message_recommend_empty}
+    </div>
+    <!--@end-->
+</div>

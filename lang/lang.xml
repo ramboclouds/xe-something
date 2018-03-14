@@ -132,5 +132,17 @@
 		<value xml:lang="ko"><![CDATA[%s님 %s하기]]></value>
 		<value xml:lang="en"><![CDATA[Add subscribed]]></value>
 	</item>
+	<item name="something_message_empty_signature">
+		<value xml:lang="ko"><![CDATA[등록된 자기소개가 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[No registered signature]]></value>
+	</item>
+	<item name="something_recent_activity">
+		<value xml:lang="ko"><![CDATA[최근 활동]]></value>
+		<value xml:lang="en"><![CDATA[Recent activity]]></value>
+	</item>
+	<item name="something_follower_count">
+		<value xml:lang="ko"><![CDATA[%s자 수]]></value>
+		<value xml:lang="en"><![CDATA[%s count]]></value>
+	</item>
 
 </lang>

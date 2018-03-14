@@ -1,0 +1,29 @@
+<query id="getMemberFollowerList" action="select">
+    <tables>
+        <table name="member_follow"   />
+		<table name="member" type="left join">
+		 <conditions>
+			 <condition operation="equal" column="member_follow.member_srl" default="member.member_srl" notnull="notnull" pipe="and"/>
+		</conditions>
+		</table>
+        <table name="something_member_info" type="left join">
+		 <conditions>
+			 <condition operation="equal" column="member_follow.member_srl" default="something_member_info.member_srl" notnull="notnull" pipe="and"/>
+		</conditions>
+		</table>
+    </tables>
+   <columns>
+          <column name="member.*" />
+          <column name="member_follow.regdate" alias="follower_regdate" />
+          <column name="something_member_info.recent_activity" alias="recent_activity" />
+    </columns>
+	 <conditions>
+		<condition operation="equal" column="member_follow.target_srl" var="member_srl" notnull="notnull" />
+    </conditions>
+	<navigation>
+        <index var="sort_index" default="member_follow.regdate" order="desc" />
+        <list_count var="list_count" default="10" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>
