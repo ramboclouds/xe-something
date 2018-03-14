@@ -12,6 +12,10 @@
 		<value xml:lang="ko"><![CDATA[주소 형태를 설정합니다]]></value>
 		<value xml:lang="en"><![CDATA[each member address type]]></value>
 	</item>
+	<item name="about_something_use_to_subscribe">
+		<value xml:lang="ko"><![CDATA[구독 기능 사용을 설정합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Set to subscribe use.]]></value>
+	</item>
 	<item name="about_use_to_something">
 		<value xml:lang="ko"><![CDATA[모듈 사용을 설정합니다.]]></value>
 		<value xml:lang="en"><![CDATA[Set to the module use.]]></value>
@@ -22,6 +26,10 @@
 	</item>
 	<item name="something_connect_setting">
 		<value xml:lang="ko"><![CDATA[접속설정]]></value>
+		<value xml:lang="en"><![CDATA[Connect setting]]></value>
+	</item>
+	<item name="something_subscribe_setting">
+		<value xml:lang="ko"><![CDATA[구독설정]]></value>
 		<value xml:lang="en"><![CDATA[Connect setting]]></value>
 	</item>
 	<item name="something_address_type">
@@ -116,5 +124,13 @@
 		<value xml:lang="ko"><![CDATA[댓글 내용 없음]]></value>
 		<value xml:lang="en"><![CDATA[Comment is blank]]></value>
 	</item>
-	
+	<item name="something_message_subscribe_mouseon_list">
+		<value xml:lang="ko"><![CDATA[%s님을 %s중인 회원 보기]]></value>
+		<value xml:lang="en"><![CDATA[List of subscribed members]]></value>
+	</item>
+	<item name="something_message_subscribe_mouseon_add">
+		<value xml:lang="ko"><![CDATA[%s님 %s하기]]></value>
+		<value xml:lang="en"><![CDATA[Add subscribed]]></value>
+	</item>
+
 </lang>

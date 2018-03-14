@@ -7,6 +7,7 @@
 		<permission action="dispSomethingAdminData" target="manager" />
 		<permission action="dispSomethingAdminSkinInfo" target="manager" />
 		<permission action="dispSomethingAdminMobileSkinInfo" target="manager" />
+		<permission action="dispSomethingAdminSubscribe" target="manager" />	
 	</permissions>
 	<actions>
 		<!-- admin view -->
@@ -16,12 +17,14 @@
 		<action name="dispSomethingAdminModuleInstance" type="view" standalone="true" />
 		<action name="dispSomethingAdminSkinInfo" type="view" standalone="true" />
 		<action name="dispSomethingAdminMobileSkinInfo" type="view" standalone="true" />
+		<action name="dispSomethingAdminSubscribe" type="view" standalone="true" />
 
 		<!-- admin controller -->
 		<action name="procSomethingAdminInsertConfig" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertConnect" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertData" type="controller" standalone="true" />
 		<action name="procSomethingAdminInsertModuleInstance" type="controller" standalone="true" />
+		<action name="procSomethingAdminInsertSubscribe" type="controller" standalone="true" />
 
 		<!-- user view -->
 		<action name="dispSomethingProfileView" type="view" standalone="true" index="true" />

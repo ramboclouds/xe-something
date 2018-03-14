@@ -82,7 +82,9 @@
   height:80px !important;
 }
 
-
+[data-tooltip]:after{
+  font-size:1em !important;
+}
 
 @media only screen and (max-width: 767px){
   .ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {

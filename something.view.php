@@ -65,6 +65,8 @@ class somethingView extends something
 			return;
 		}
 
+		$memberInfo->follow_count=0;
+
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		$recent_activity = $oSomethingModel->getMemeberRecentActivity($memberInfo);
 		
@@ -80,8 +82,8 @@ class somethingView extends something
 		}
 
 		$skin_info = $oSomethingModel->convertSkinVars($skin_vars);
-
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
+		
 		if (Context::get('view_type') == "recommend")
 		{
 			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(),$skin_info);
@@ -92,6 +94,19 @@ class somethingView extends something
 			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
 		}
 		
+		$is_memberfollow_module = true;
+		if (!is_object(getClass('memberfollow')))
+		{
+			$is_memberfollow_module = false;	
+		}
+
+		if ($is_memberfollow_module)
+		{
+			$followOutput= executeQuery('memberfollow.getMemberFollowerCount',$memberInfo);
+			$memberInfo->follower_count = $followOutput->data->cnt;
+		}
+	
+		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 
 		Context::set('total_count', $somethingData->total_count);
 		Context::set('total_page', $somethingData->total_page);

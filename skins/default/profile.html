@@ -38,10 +38,14 @@
             </span>
             <!--@end-->
             <!--@if($st_skin_info->profile_subscribe_use == 'Y')-->
-            <span class="right floated">
+            {@ 
+                $subscribe_lang_str = 'something_message_subscribe_mouseon_'.$st_config->subscribe_click_action;
+                $subscribe_msg = sprintf(lang($subscribe_lang_str), $member_info->nick_name, $st_skin_info->profile_subscribe_text); 
+            }
+            <span class="right floated"  data-tooltip="{$subscribe_msg}" data-position="top right">
                 <a>
                 <i class="bell outline st-icon"></i>
-                17명 {$st_skin_info->profile_subscribe_text}
+                {$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
                 </a>
             </span>
             <!--@end-->
@@ -74,7 +78,7 @@ $next_page = min($page+1, $page_navigation->last_page);
         <i class="angle left st-icon"></i>
     </a>
     <!--@while($page_no = $page_navigation->getNextPage())-->
-                            
+
     <a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
     <!--@end-->
 

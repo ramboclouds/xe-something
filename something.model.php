@@ -37,8 +37,27 @@ class somethingModel extends something
 				$config->connect_address_type = "member_srl";
 			}
 
+			if (!$config->subscribe_use)
+			{
+				$config->subscribe_use = 'Y';
+			}
+
+			if (!$config->subscribe_click_action)
+			{
+				$config->subscribe_click_action = 'list';
+			}
+
+			if (!$config->subscribe_follow_view_use)
+			{
+				$config->subscribe_follow_view_use = 'N';
+			}
+
+			if (!$config->subscribe_follow_view_menu_name)
+			{
+				$config->subscribe_follow_view_menu_name = '나의 팔로우';
+			}
+
 			$this->config = $config;
-			
 		}
 
 		return $this->config;

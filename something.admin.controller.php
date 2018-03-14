@@ -136,6 +136,30 @@ class somethingAdminController extends something
 		}
 	}
 
+	function procSomethingAdminInsertSubscribe()
+	{
+		$obj = Context::getRequestVars();
+		$config = getModel('something')->getConfig();
+
+		$config->subscribe_use = $obj->subscribe_use;
+		$config->subscribe_click_action = $obj->subscribe_click_action;
+		$config->subscribe_follow_view_use = $obj->subscribe_follow_view_use;
+		$config->subscribe_follow_view_menu_name = $obj->subscribe_follow_view_menu_name;
+		
+		$oModuleController = getController('module');
+		$oModuleController->insertModuleConfig('something', $config);
+
+		$successReturnUrl = Context::get('success_return_url');
+		if ($successReturnUrl)
+		{
+			$this->setRedirectUrl($successReturnUrl);
+		}
+		else
+		{
+			$this->setRedirectUrl(getNotEncodedUrl('', 'module', 'admin', 'act', 'dispSomethingAdminSubscribe'));
+		}
+	}
+
 	function procSomethingAdminInsertModuleInstance()
 	{
 		$obj = Context::getRequestVars();

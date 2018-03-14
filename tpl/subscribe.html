@@ -1,0 +1,59 @@
+<include target="header.html" />
+
+<form action="./" method="post" class="x_form-horizontal" id="fo_something">
+	<input type="hidden" name="module" value="something" />
+    <input type="hidden" name="act" value="procSomethingAdminInsertSubscribe" />
+    <div cond="!$module_installed_memberfollow" class="message update">
+		<p><a href="https://xetown.com/rxe_market/779784" target="_blank_none">구독 모듈</a>이 설치되어 있지 않습니다.(	<a href="https://xetown.com/rxe_market/779784" target="_blank">구독 모듈 소개 보기</a> )<br/>
+			구독 기능을 사용하려면 <a href="https://xetown.com/rxe_market/779784" target="_blank_none">구독 모듈</a>이 필요합니다.
+		</p>
+    </div>
+	<section class="section">
+		<h1>{$lang->something_subscribe_setting}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="subscribe_use">사용 여부</label>
+			<div class="x_controls">
+				<select name="subscribe_use" id="subscribe_use">
+					<option value="Y" selected="selected"|cond="$config->subscribe_use == 'Y'">{$lang->use}</option>
+                    <option value="N" selected="selected"|cond="$config->subscribe_use == 'N'">{$lang->notuse}</option>
+                    </option>
+				</select>
+				<p class="x_help-block">{$lang->about_something_use_to_subscribe}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="subscribe_click_action">구독자 수 클릭시</label>
+			<div class="x_controls">
+				<select name="subscribe_click_action" id="subscribe_click_action">
+					<option value="list" selected="selected"|cond="$config->subscribe_click_action == 'list'">구독자 목록</option>
+                    <option value="add" selected="selected"|cond="$config->subscribe_click_action == 'add'">구독 추가</option>
+                    </option>
+				</select>
+				<p class="x_help-block">구독자 목록 : 구독자 목록과 회원을 구독 할 수 있는 버튼이 포함된 페이지를 출력합니다.<br>
+					구독 추가 : 회원의 구독 추가 안내 팝업이 실행됩니다.
+				</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="subscribe_follow_view_use">구독중인 회원들의 글 보기</label>
+			<div class="x_controls">
+				<select name="subscribe_follow_view_use" id="subscribe_follow_view_use">
+					<option value="Y" selected="selected"|cond="$config->subscribe_follow_view_use == 'Y'">{$lang->use}</option>
+                    <option value="N" selected="selected"|cond="$config->subscribe_follow_view_use == 'N'">{$lang->notuse}</option>
+                    </option>
+				</select>
+				<p class="x_help-block" style="margin-bottom:10px">회원 본인의 페이지에서 회원이 구독중인 회원들의 글을 모아서 볼 수 있는 메뉴가 추가됩니다.</p>
+			</div>
+			<label class="x_control-label" for="subscribe_follow_view_menu_name" >메뉴명</label>
+			<div class="x_controls">
+				<input type="text" name="subscribe_follow_view_menu_name" value="{$config->subscribe_follow_view_menu_name}">
+			</div>
+		</div>
+	</section>
+	
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+</form>

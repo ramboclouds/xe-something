@@ -3,7 +3,7 @@
         {@ 
         $document = getModel('document')->getDocument($voted->document_srl);
         $thumbNail=false; 
-        $doc_title = $document->getTitle(20); 
+        $doc_title = $document->getTitle($st_skin_info->content_cut_size); 
         $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
         }
         

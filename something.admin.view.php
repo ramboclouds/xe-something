@@ -54,6 +54,19 @@ class somethingAdminView extends something
 		Context::set('mid_list', $mid_list);
 	}
 
+	function dispSomethingAdminSubscribe()
+	{
+		$oSomethingModel = getModel('something');
+		$config = $oSomethingModel->getConfig();
+		$is_memberfollow_module = true;
+		if (!is_object(getClass('memberfollow')))
+		{
+			$is_memberfollow_module = false;	
+		}	 
+		Context::set('module_installed_memberfollow', $is_memberfollow_module);
+		Context::set('config', $config);
+	}
+
 	function dispSomethingAdminModuleInstance()
 	{
 		$modulePath = $this->module_path;
