@@ -49,7 +49,7 @@ class somethingModel extends something
 
 			if (!$config->subscribe_follow_view_use)
 			{
-				$config->subscribe_follow_view_use = 'N';
+				$config->subscribe_follow_view_use = 'Y';
 			}
 
 			if (!$config->subscribe_follow_view_menu_name)

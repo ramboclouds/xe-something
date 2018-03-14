@@ -90,6 +90,14 @@
   text-decoration: none !important;
 }
 
+.st-follow-add-msg{
+  cursor: pointer !important;
+}
+
+.st-follow-add-msg:hover{
+  background:#d4d4d4;
+}
+
 [data-tooltip]:after{
   font-size:1em !important;
 }

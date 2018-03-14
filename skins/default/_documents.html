@@ -33,12 +33,11 @@
                 <div class="description st-description-href">
                     <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_skin_info->content_cut_size)}</a>
                 </div>
-                
             </div>
         </div>
         <!--@end-->
         <!--@if(!$something_data)-->
-        <div class="ui warning message">
+        <div class="ui st-message">
             <i class="close st-icon"></i>
             {$lang->something_message_doc_empty}
         </div>

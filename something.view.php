@@ -66,6 +66,7 @@ class somethingView extends something
 		}
 
 		$memberInfo->follow_count=0;
+		$logged_info = Context::get('logged_info');
 
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		$recent_activity = $oSomethingModel->getMemeberRecentActivity($memberInfo);
@@ -73,16 +74,34 @@ class somethingView extends something
 		$st_header_text = $module_info->header_text;
 		$st_footer_text = $module_info->footer_text;
 		
-		if(Mobile::isMobileCheckByAgent()){
+		if (Mobile::isMobileCheckByAgent())
+		{
 			$skin_vars = $oModuleModel->getModuleMobileSkinVars($module_info->module_srl);
 			$st_header_text = $module_info->mobile_header_text;
 			$st_footer_text = $module_info->mobile_footer_text;
-		}else{
+		}
+		else
+		{
 			$skin_vars = $oModuleModel->getModuleSkinVars($module_info->module_srl);
 		}
 
 		$skin_info = $oSomethingModel->convertSkinVars($skin_vars);
 		$memberInfo = $oSomethingModel->memberInfoReplace($memberInfo);
+		$is_memberfollow_module = true;
+		if (!is_object(getClass('memberfollow')))
+		{
+			$is_memberfollow_module = false;	
+		}
+
+		if (Context::get('view_type') == "followerlist" || Context::get('view_type') == "followinglist")
+		{
+			if($config->subscribe_use == "N" || !$is_memberfollow_module)
+			{
+				Context::set('something_error_msg', lang('something_access_denied'));
+				$this->setTemplateFile('_error');
+				return;
+			}
+		}
 		
 		if (Context::get('view_type') == "recommend")
 		{
@@ -90,11 +109,35 @@ class somethingView extends something
 
 		}
 		else if (Context::get('view_type') == "followerlist")
-		{
+		{	
+			if($config->subscribe_click_action != "list")
+			{
+				Context::set('something_error_msg', lang('something_access_denied'));
+				$this->setTemplateFile('_error');
+				return;
+			}
 			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(),$skin_info);
 		}
 		else if (Context::get('view_type') == "followinglist")
 		{
+			if ($config->subscribe_follow_view_use == "N")
+			{
+				Context::set('something_error_msg', lang('something_access_denied'));
+				$this->setTemplateFile('_error');
+				return;
+			}
+			if (!$logged_info->member_srl)
+			{
+				Context::set('something_error_msg', lang('something_access_denied'));
+				$this->setTemplateFile('_error');
+				return;
+			}
+			if ($memberInfo->member_srl != $logged_info->member_srl)
+			{
+				Context::set('something_error_msg', lang('something_access_denied'));
+				$this->setTemplateFile('_error');
+				return;
+			}
 			$somethingData = $oSomethingModel->getFollowingList($memberInfo, $config, Context::getRequestVars(),$skin_info);
 		}
 		else
@@ -102,11 +145,6 @@ class somethingView extends something
 			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
 		}
 		
-		$is_memberfollow_module = true;
-		if (!is_object(getClass('memberfollow')))
-		{
-			$is_memberfollow_module = false;	
-		}
 
 		if ($is_memberfollow_module)
 		{

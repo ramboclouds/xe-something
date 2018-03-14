@@ -148,5 +148,24 @@
 		<value xml:lang="ko"><![CDATA[%s자 수]]></value>
 		<value xml:lang="en"><![CDATA[%s count]]></value>
 	</item>
-
+	<item name="something_follow_add_title">
+		<value xml:lang="ko"><![CDATA[이곳을 클릭하면 %s님을 %s합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Would you like to subscribe?]]></value>
+	</item>
+	<item name="something_follow_add_desc">
+		<value xml:lang="ko"><![CDATA[%s님이 새로운 글을 작성하시면 알림을 보내드려요.]]></value>
+		<value xml:lang="en"><![CDATA[You’re receiving notifications]]></value>
+	</item>
+	<item name="something_follow_disabled">
+		<value xml:lang="ko"><![CDATA[%s기능이 비활성화되어 있습니다.]]></value>
+		<value xml:lang="en"><![CDATA[%s is disabled]]></value>
+	</item>
+	<item name="something_follow_disabled">
+		<value xml:lang="ko"><![CDATA[%s기능이 비활성화되어 있습니다.]]></value>
+		<value xml:lang="en"><![CDATA[%s is disabled]]></value>
+	</item>
+	<item name="something_access_denied">
+		<value xml:lang="ko"><![CDATA[잘못된 접근입니다.]]></value>
+		<value xml:lang="en"><![CDATA[Wrong access]]></value>
+	</item>
 </lang>

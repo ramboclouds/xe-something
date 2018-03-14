@@ -35,6 +35,9 @@
     if(!$st_skin_info->cmt_content_cut_size) $st_skin_info->cmt_content_cut_size = 80;
     if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
     if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
+
+    //config
+    if(!$is_memberfollow_module) $config->subscribe_use="N";
 }
 <!--@if($st_menu_count == 1)-->
 {@ $st_menu_css_class = 'one'; }

@@ -1,3 +1,30 @@
+<!--@if($member_info->member_srl != $logged_info->member_srl)-->
+    <!--@if($logged_info->member_srl)-->
+    {@
+        $mf_args=new stdClass;
+        $mf_args->target_srl = $member_info->member_srl;
+        $mf_args->member_srl = $logged_info->member_srl;
+        $mf_output=executeQuery("something.getMemberFollowCount",$mf_args);
+    }
+    <!--@else-->
+    {@
+        $mf_output=new stdClass;
+        $mf_output->data->cnt = 0;
+    }
+    <!--@end-->
+<!--@if($mf_output->data->cnt < 1)-->
+<div class="ui st-icon st-message st-follow-add-msg" onclick="stFollowAdd('{$member_info->member_srl}')">
+    <i class="outline bell st-icon"></i>
+    <i class="close st-icon"></i>
+    <div class="st-content">
+        <div class="st-header">
+        {sprintf(lang('something_follow_add_title'), $member_info->nick_name, $st_skin_info->profile_subscribe_text); }
+        </div>
+        <p>{sprintf(lang('something_follow_add_desc'), $member_info->nick_name); }</p>
+    </div>
+</div>
+<!--@end-->
+<!--@end-->
 <div class="ui unstackable items">
     <!--@foreach($something_data as $no => $follower_member)-->
     {@ $follower_member_time_gap = getTimeGap($follower_member->recent_activity, "Y.m.d H:i:s"); }
@@ -32,7 +59,7 @@
     </div>
     <!--@end-->
     <!--@if(!$something_data)-->
-    <div class="ui warning message">
+    <div class="ui st-message">
         <i class="close st-icon"></i>
         {$lang->something_message_empty_data}
     </div>

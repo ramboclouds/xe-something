@@ -40,10 +40,14 @@
             <!--@if($st_skin_info->profile_subscribe_use == 'Y')-->
             {@ 
                 $subscribe_lang_str = 'something_message_subscribe_mouseon_'.$st_config->subscribe_click_action;
-                $subscribe_msg = sprintf(lang($subscribe_lang_str), $member_info->nick_name, $st_skin_info->profile_subscribe_text); 
+                $subscribe_msg = sprintf(lang($subscribe_lang_str), $member_info->nick_name, $st_skin_info->profile_subscribe_text);
+                if($st_config->subscribe_use == "N") $subscribe_msg=sprintf(lang('something_follow_disabled'),$st_skin_info->profile_subscribe_text);
+                $subscribe_link = getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist');
+                if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."')";
+                if($st_config->subscribe_use == "N") $subscribe_link = "#";
             }
             <span class="right floated st-member-followercount"  data-tooltip="{$subscribe_msg}" data-position="top right">
-                <a href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist')}">
+                <a href="{$subscribe_link}">
                 <i class="bell outline st-icon"></i>
                 {$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
                 </a>
@@ -59,7 +63,7 @@
     <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_cmt}</a>
     <a class="item <!--@if(Context::get('view_type') == 'recommend')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','recommend')}">{$lang->something_view_type_recommend}</a>
     <!--@if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl)-->
-    <a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}">{$st_config->subscribe_follow_view_menu_name}</a>
+    <a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="<!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->#<!--@else-->{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}<!--@end-->" <!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->data-tooltip="{sprintf(lang('something_follow_disabled'),'')}" data-position="bottom right"<!--@end-->>{$st_config->subscribe_follow_view_menu_name}</a>
     <!--@end-->
 </div>
 <!--@if(Context::get('view_type') == '')-->

@@ -149,7 +149,7 @@ class somethingAdminController extends something
 		$oModuleController = getController('module');
 		$oModuleController->insertModuleConfig('something', $config);
 
-		$successReturnUrl = Context::get('success_return_url');
+		$this->setMessage('success_updated');
 		if ($successReturnUrl)
 		{
 			$this->setRedirectUrl($successReturnUrl);
