@@ -93,6 +93,10 @@ class somethingView extends something
 		{
 			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(),$skin_info);
 		}
+		else if (Context::get('view_type') == "followinglist")
+		{
+			$somethingData = $oSomethingModel->getFollowingList($memberInfo, $config, Context::getRequestVars(),$skin_info);
+		}
 		else
 		{
 			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
@@ -119,7 +123,7 @@ class somethingView extends something
 
 		Context::set('module_info', $module_info);
 		Context::set('skin_info', $skin_info);
-
+		
 		Context::set('something_data', $somethingData->data);
 		Context::set('member_info', $memberInfo);
 		Context::set('recent_activity', $recent_activity);

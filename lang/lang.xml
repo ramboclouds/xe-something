@@ -136,6 +136,10 @@
 		<value xml:lang="ko"><![CDATA[등록된 자기소개가 없습니다.]]></value>
 		<value xml:lang="en"><![CDATA[No registered signature]]></value>
 	</item>
+	<item name="something_message_empty_data">
+		<value xml:lang="ko"><![CDATA[등록된 자료가 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[There are no registered data.]]></value>
+	</item>
 	<item name="something_recent_activity">
 		<value xml:lang="ko"><![CDATA[최근 활동]]></value>
 		<value xml:lang="en"><![CDATA[Recent activity]]></value>

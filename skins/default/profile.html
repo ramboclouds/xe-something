@@ -54,10 +54,13 @@
           
     </div>
 </div>
-<div class="ui three item menu">
+<div class="ui {$st_menu_css_class} item menu">
     <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
     <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_cmt}</a>
     <a class="item <!--@if(Context::get('view_type') == 'recommend')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','recommend')}">{$lang->something_view_type_recommend}</a>
+    <!--@if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl)-->
+    <a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}">{$st_config->subscribe_follow_view_menu_name}</a>
+    <!--@end-->
 </div>
 <!--@if(Context::get('view_type') == '')-->
     <!--#include("_documents.html")-->
@@ -67,6 +70,8 @@
     <!--#include("_recommend.html")-->
 <!--@else if(Context::get('view_type') == 'followerlist')-->
     <!--#include("_follower_list.html")-->
+<!--@else if(Context::get('view_type') == 'followinglist')-->
+    <!--#include("_following_list.html")-->    
 <!--@end-->
     
 <!--@if($something_data)-->

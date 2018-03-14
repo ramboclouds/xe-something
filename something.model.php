@@ -54,7 +54,7 @@ class somethingModel extends something
 
 			if (!$config->subscribe_follow_view_menu_name)
 			{
-				$config->subscribe_follow_view_menu_name = '나의 팔로우';
+				$config->subscribe_follow_view_menu_name = '팔로우 글';
 			}
 
 			$this->config = $config;
@@ -187,14 +187,12 @@ class somethingModel extends something
 		$sObj->list_count = $skin_info->list_count;
 
 		$oMemberModel = getModel('member');
-		$oMemberModel->arrangeMemberInfo($output->data, $site_srl);
 
 		$output = executeQueryArray('something.getMemberFollowerList',$sObj);
 		if($output->data)
 		{
 			foreach ($output->data as $key => $value)
 			{
-
 				$output->data[$key] = $oMemberModel->arrangeMemberInfo($value,0);
 				$output->data[$key]->signature = strip_tags($output->data[$key]->signature);
 
@@ -205,13 +203,67 @@ class somethingModel extends something
 				$output->data[$key]->smember = $value->{$config->connect_address_type};
 				$followOutput= executeQuery('memberfollow.getMemberFollowerCount',$value);
 				$output->data[$key]->follower_count= $followOutput->data->cnt;
-				
+
 				if (!$value->recent_activity)
 				{
 					$output->data[$key]->recent_activity = $this->getMemeberRecentActivity($value);
 				}
 			}
 		}
+		return $output;
+	}
+
+	function getFollowingList($memberInfo, $config, $args, $skin_info)
+	{
+
+		$fObj = new stdClass();
+		$fObj->member_srl = $memberInfo->member_srl;
+
+		$fOutput = executeQueryArray('something.getMemberFollowingList',$fObj);
+		$member_srls = array();
+		
+		foreach ($fOutput->data as $key => $value)
+		{
+			array_push($member_srls, $value->target_srl);
+		}
+
+		if(count($member_srls) == 0)
+		{
+			return;
+		}
+
+		$skin_info = $this->replaceSkinInfo($skin_info);
+
+		$board_srls = null;
+
+		if (count($config->board_module_srls) > 0)
+		{
+			$board_srls = implode($config->board_module_srls, ",");
+		}
+
+
+		$sObj = new stdClass();
+		$sObj->member_srls = implode($member_srls,",");
+		$sObj->module_srl = $board_srls;
+		$sObj->statusList = "PUBLIC";
+		$sObj->sort_index = "regdate";
+		$sObj->order_type = "desc";
+		$sObj->page = $args->page;
+		$sObj->page_count = $skin_info->page_count;
+		$sObj->list_count = $skin_info->list_count;
+
+		$oDocumentModel = getModel('document');
+		$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
+		$oModuleSrl = $this->getModuleInfoCache($config);
+
+		foreach ($output->data as $key => $value)
+		{
+			$output->data[$key]->doc_type = "doc";
+			$output->data[$key]->regdate = $value->get('regdate');
+			$output->data[$key]->mid = $oModuleSrl->mid[$value->get('module_srl')];
+			$output->data[$key]->browser_title = $oModuleSrl->browser_title[$value->get('module_srl')];
+		}
+
 		return $output;
 	}
 

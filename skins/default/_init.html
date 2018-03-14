@@ -8,7 +8,16 @@
     if(!$st_skin_info->profile_image_use) $st_skin_info->profile_image_use = 'Y';
     if(!$st_skin_info->profile_subscribe_use) $st_skin_info->profile_subscribe_use = 'Y';
     if(!$st_skin_info->profile_subscribe_text) $st_skin_info->profile_subscribe_text = '구독';
-    
+
+    //menu
+    $st_menu_count = 3;
+    $st_menu_css_class="three";
+
+    if($st_skin_info->menu_document_view == "N") $st_menu_count--;
+    if($st_skin_info->menu_comment_view == "N") $st_menu_count--;
+    if($st_skin_info->menu_recommend_view == "N") $st_menu_count--;
+    if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl) $st_menu_count++;
+ 
     //document
     if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;
     if(!$st_skin_info->subject_cut_size) $st_skin_info->subject_cut_size = 24;
@@ -27,3 +36,12 @@
     if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
     if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
 }
+<!--@if($st_menu_count == 1)-->
+{@ $st_menu_css_class = 'one'; }
+<!--@elseif($st_menu_count == 2)-->
+{@ $st_menu_css_class = 'two'; }
+<!--@elseif($st_menu_count == 3)-->
+{@ $st_menu_css_class = 'three'; }
+<!--@elseif($st_menu_count == 4)-->
+{@ $st_menu_css_class = 'four'; }
+<!--@end-->
