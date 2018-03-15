@@ -54,7 +54,9 @@
   text-decoration: underline !important;
   color: rgba(0, 0, 0, 0.6)
 }
-
+.ui.st-icon.st-message{
+  width:auto !important;
+}
 .font-grey{
   color:#999999 !important;
 }

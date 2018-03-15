@@ -10,8 +10,15 @@ jQuery(function($) {
     });
 });
 
-function stFollowAdd(add_member_srl)
+function stFollowAdd(add_member_srl,login_status)
 {
-    mfNowClickSrl=add_member_srl;
-    userFollowAdd();
+    if(login_status == "login")
+    {
+        mfNowClickSrl=add_member_srl;
+        userFollowAdd();
+    }
+    else
+    {
+        jQuery('.st-modal-login.modal').modal('show');
+    }
 }

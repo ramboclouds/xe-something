@@ -164,4 +164,20 @@
 		<value xml:lang="ko"><![CDATA[잘못된 접근입니다.]]></value>
 		<value xml:lang="en"><![CDATA[Wrong access]]></value>
 	</item>
+	<item name="something_permission_denied">
+		<value xml:lang="ko"><![CDATA[권한이 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[Wrong permission]]></value>
+	</item>
+	<item name="something_modal_login_title">
+		<value xml:lang="ko"><![CDATA[로그인이 필요합니다.]]></value>
+		<value xml:lang="en"><![CDATA[Login is required]]></value>
+	</item>
+	<item name="something_message_close">
+		<value xml:lang="ko"><![CDATA[닫기]]></value>
+		<value xml:lang="en"><![CDATA[Close]]></value>
+	</item>
+	<item name="something_message_login">
+		<value xml:lang="ko"><![CDATA[로그인]]></value>
+		<value xml:lang="en"><![CDATA[Login]]></value>
+	</item>
 </lang>

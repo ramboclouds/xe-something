@@ -22,6 +22,11 @@ class somethingModel extends something
 				$config->use = 'N';
 			}
 
+			if (!$config->group)
+			{
+				$config->group = 'all';
+			}
+
 			if (!$config->board_module_srls)
 			{
 				$config->board_module_srls = array();
@@ -184,7 +189,6 @@ class somethingModel extends something
 				$documents = getModel('document')->getDocuments($doc_srls);
 			}
 
-			
 			if ($documents)
 			{
 				foreach ($output->data as $key => $value) {

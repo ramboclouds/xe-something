@@ -15,6 +15,11 @@ class somethingAdminController extends something
 		$config = getModel('something')->getConfig();
 		$config->use = Context::get('use');
 		$config->mid_name = $obj->mid_name;
+		if(count($obj->group) ==0){
+			$obj->group="all";
+		}
+
+		$config->group = $obj->group;
 
 		$mid_args = new stdClass;
 		$mid_args->mid = $obj->mid_name;

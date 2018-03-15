@@ -68,6 +68,41 @@ class somethingView extends something
 		$memberInfo->follow_count=0;
 		$logged_info = Context::get('logged_info');
 
+		$oMemberModel = getModel('member');
+		
+		if ($config->group=="all")
+		{
+			$is_permitted = true;
+		}
+		else
+		{
+			if (!$logged_info->member_srl)
+			{
+				$is_permitted = false;
+			}
+			else
+			{
+				$member_groups = $oMemberModel->getMemberGroups($logged_info->member_srl);
+				$is_permitted = false;
+				for ($i=0;$i<count($config->group);$i++)
+				{
+					$group_srl = $config->group[$i];
+					if ($member_groups[$group_srl])
+					{
+						$is_permitted = true;
+						break;
+					}
+				}
+			}
+		}
+
+		if (!$is_permitted)
+		{
+			Context::set('something_error_msg', lang('something_permission_denied'));
+			$this->setTemplateFile('_error');
+			return;
+		}
+
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		$recent_activity = $oSomethingModel->getMemeberRecentActivity($memberInfo);
 		
@@ -95,7 +130,7 @@ class somethingView extends something
 
 		if (Context::get('view_type') == "followerlist" || Context::get('view_type') == "followinglist")
 		{
-			if($config->subscribe_use == "N" || !$is_memberfollow_module)
+			if ($config->subscribe_use == "N" || !$is_memberfollow_module)
 			{
 				Context::set('something_error_msg', lang('something_access_denied'));
 				$this->setTemplateFile('_error');
@@ -110,7 +145,7 @@ class somethingView extends something
 		}
 		else if (Context::get('view_type') == "followerlist")
 		{	
-			if($config->subscribe_click_action != "list")
+			if ($config->subscribe_click_action != "list")
 			{
 				Context::set('something_error_msg', lang('something_access_denied'));
 				$this->setTemplateFile('_error');

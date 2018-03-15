@@ -27,7 +27,10 @@ class somethingAdminView extends something
 
 		$mskin_list = $oModuleModel->getSkins($this->module_path, "m.skins");
 		Context::set('mskin_list', $mskin_list);
-
+		
+		$oMemberModel =&getModel('member');
+		$output = $oMemberModel->getGroups();
+		Context::set('group_list', $output);
 
 		$oLayoutMode = getModel('layout');
 		$layout_list = $oLayoutMode->getLayoutList();
@@ -35,7 +38,6 @@ class somethingAdminView extends something
 
 		$mobile_layout_list = $oLayoutMode->getLayoutList(0,"M");
 		Context::set('mlayout_list', $mobile_layout_list);
-
 	}
 
 	function dispSomethingAdminConnect()
@@ -65,38 +67,6 @@ class somethingAdminView extends something
 		}	 
 		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 		Context::set('config', $config);
-	}
-
-	function dispSomethingAdminModuleInstance()
-	{
-		$modulePath = $this->module_path;
-
-		$moduleSrl = Context::get('module_srl');
-		if(!$moduleSrl)
-		{
-			if($this->module_srl)
-			{
-				$moduleSrl = $this->module_srl;
-			}
-		}
-
-		$moduleInfo = getModel('module')->getModuleInfoByModuleSrl($moduleSrl);
-
-		Context::set('module_info', $moduleInfo);
-
-		$oModuleModel = getModel('module');
-		$skinList = $oModuleModel->getSkins($modulePath);
-		$mSkinList = $oModuleModel->getSkins($modulePath, 'm.skins');
-
-		/** @var $oLayoutModel layoutModel */
-		$oLayoutModel = getModel('layout');
-		$layoutList = $oLayoutModel->getLayoutList();
-		$mLayoutList = $oLayoutModel->getLayoutList(0, 'M');
-
-		Context::set('skin_list', $skinList);
-		Context::set('mskin_list', $mSkinList);
-		Context::set('layout_list', $layoutList);
-		Context::set('mlayout_list', $mLayoutList);
 	}
 
 	function dispSomethingAdminSkinInfo() {

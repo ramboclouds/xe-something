@@ -33,7 +33,7 @@
         <!--@if($st_skin_info->profile_last_activity_use == 'Y' || $st_skin_info->profile_subscribe_use == 'Y')-->
         <div class="extra st-content pf-card-extra-content">
             <!--@if($st_skin_info->profile_last_activity_use == 'Y')-->
-            <span class="left floated like" >
+            <span class="left" >
             {$lang->something_recent_activity} : {$recent_activity_gap}
             </span>
             <!--@end-->
@@ -46,7 +46,7 @@
                 if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."')";
                 if($st_config->subscribe_use == "N") $subscribe_link = "#";
             }
-            <span class="right floated st-member-followercount"  data-tooltip="{$subscribe_msg}" data-position="top right">
+            <span class="right floated st-member-followercount" data-tooltip="{$subscribe_msg}" data-position="top right">
                 <a href="{$subscribe_link}">
                 <i class="bell outline st-icon"></i>
                 {$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
@@ -55,7 +55,6 @@
             <!--@end-->
         </div>
         <!--@end-->
-          
     </div>
 </div>
 <div class="ui {$st_menu_css_class} item menu">
@@ -99,6 +98,7 @@ $next_page = min($page+1, $page_navigation->last_page);
     </div>
 </div>
 <!--@end-->
+
 <!--@if($st_footer_text)-->
 {$st_footer_text}
 <!--@end-->

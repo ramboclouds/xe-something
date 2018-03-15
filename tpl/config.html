@@ -110,16 +110,29 @@
 		<label class="x_control-label" for="mobile_header_text">{$lang->mobile_header_text}</label>
 		<div class="x_controls">
 			<textarea name="mobile_header_text" id="mobile_header_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->mobile_header_text}<!--@else-->{htmlspecialchars($module_info->mobile_header_text)}<!--@end--></textarea>
-			<p id="mobile_header_text_help" class="x_help-block">{$lang->about_mobile_header_text}</p>
+			<p id="mobile_header_text" class="x_help-block">{$lang->about_mobile_header_text}</p>
 		</div>
 	</div>
 	<div class="x_control-group">
 		<label class="x_control-label" for="mobile_footer_text">{$lang->mobile_footer_text}</label>
 		<div class="x_controls">
 			<textarea name="mobile_footer_text" id="mobile_footer_text" class="lang_code" rows="8" cols="42"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->mobile_footer_text}<!--@else-->{htmlspecialchars($module_info->mobile_footer_text)}<!--@end--></textarea>
-			<p id="mobile_footer_text_help" class="x_help-block">{$lang->about_mobile_footer_text}</p>
+			<p id="mobile_footer_text" class="x_help-block">{$lang->about_mobile_footer_text}</p>
 		</div>
 	</div>
+	</section>
+
+	<section class="section">
+			<h1>권한</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="use">접근 권한</label>
+			<div class="x_controls">
+				<block loop="$group_list => $key, $val" >
+						<label for="grp_{htmlspecialchars($key)}"  class="mgr14"><input type="checkbox" name="group[]" value="{$val->group_srl}" id="grp_{htmlspecialchars($key)}" checked|cond="in_array($val->group_srl, $config->group) "> {$val->title}</label>
+				</block>
+				<p class="x_help-block">모두 해제시 전체 사용</p>
+			</div>
+		</div>
 	</section>
 
 	<div class="x_clearfix btnArea">
