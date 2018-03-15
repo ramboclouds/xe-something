@@ -22,7 +22,6 @@ class somethingController extends something
 		$target_mid = $config->mid_name;
 
 		$memberInfo = $oMemberModel->getMemberInfoByMemberSrl($target_srl);
-		$url = getUrl('', 'mid', $target_mid, 'smember', $target_srl);
 
 		if ($config->connect_address_type == 'user_id')
 		{
@@ -31,6 +30,10 @@ class somethingController extends something
 		else if ($config->connect_address_type == 'nick_name')
 		{
 			$url = getUrl('', 'mid', $target_mid, 'smember', $memberInfo->nick_name);
+		}
+		else
+		{
+			$url = getUrl('', 'mid', $target_mid, 'smember', $target_srl);
 		}
 
 		$str = $config->memeber_popupmenu_name;
@@ -44,7 +47,7 @@ class somethingController extends something
 			return;
 		}
 
-		$stModel = getModel('something');
+		$oSomethingModel = getModel('something');
 		$config = $this->getConfig();
 
 		if ($config->use != "Y")
@@ -57,7 +60,7 @@ class somethingController extends something
 			return;
 		}
 
-		$stModel->updateMemberRecentActivity($obj);
+		$oSomethingModel->updateMemberRecentActivity($obj);
 	}
 
 	function triggerInsertAfterComment($obj)
@@ -109,8 +112,10 @@ class somethingController extends something
 		{
 			return;
 		}
-
+		
+		$oMemberModel = getModel('member');
 		$oSomethingModel = getModel('something');
+
 		$config = $this->getConfig();
 
 		if ($config->use != "Y")
@@ -123,7 +128,6 @@ class somethingController extends something
 			return;
 		}
 
-		$oMemberModel = getModel('member');
 		$memberInfo = $oMemberModel->getMemberInfoByMemberSrl($obj->member_srl);
 		$oSomethingModel->getMemeberRecentActivity($memberInfo, true);
 	}
