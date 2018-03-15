@@ -171,6 +171,26 @@ class somethingModel extends something
 		$sObj->list_count = $skin_info->list_count;
 
 		$output = executeQueryArray("something.getMemberVotedList",$sObj);
+		if ($output->data)
+		{
+			$doc_srls = array();
+			foreach ($output->data as $key => $value)
+			{
+				array_push($doc_srls,$value->document_srl);
+			}
+
+			if (count($doc_srls) > 0)
+			{
+				$documents = getModel('document')->getDocuments($doc_srls);
+			}
+
+			
+			if ($documents)
+			{
+				$output->data = $documents;
+			}
+
+		}
 		return $output;
 	}
 

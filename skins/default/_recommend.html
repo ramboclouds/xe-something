@@ -1,7 +1,6 @@
 <div class="ui unstackable items">
-    <!--@foreach($something_data as $no => $voted)-->
+    <!--@foreach($something_data as $no => $document)-->
         {@ 
-        $document = getModel('document')->getDocument($voted->document_srl);
         $thumbNail=false; 
         $doc_title = $document->getTitle($st_skin_info->content_cut_size); 
         $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
