@@ -100,6 +100,12 @@ class somethingModel extends something
 	function getMemberVotedList($memberInfo, $config, $args, $skin_info)
 	{
 		$skin_info = $this->replaceSkinInfo($skin_info);
+		$board_srls = null;
+
+		if (count($config->board_module_srls) > 0)
+		{
+			$board_srls = implode($config->board_module_srls, ",");
+		}
 
 		$sObj = new stdClass();
 		$sObj->member_srl = $memberInfo->member_srl;
@@ -363,6 +369,13 @@ class somethingModel extends something
 
 	function getMemeberRecentActivity($member_info, $force_update = false)
 	{
+		$board_srls = null;
+		$config = $this->getConfig();
+		if (count($config->board_module_srls) > 0)
+		{
+			$board_srls = implode($config->board_module_srls, ",");
+		}
+
 		$sObj = new stdClass();
 		$sObj->member_srl = $member_info->member_srl;
 		$sObj->module_srl = $board_srls;
