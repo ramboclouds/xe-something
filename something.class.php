@@ -1,4 +1,5 @@
 <?php
+
 class something extends ModuleObject
 {
 	private $trigger = array(
@@ -18,10 +19,10 @@ class something extends ModuleObject
 
 		foreach ($this->trigger as $trigger)
 		{
-			if(!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
+			if (!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
 			{
 				$output = $oModuleController->insertTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]);
-				if(!$output->toBool())
+				if (!$output->toBool())
 				{
 					return $output;
 				}
@@ -35,7 +36,7 @@ class something extends ModuleObject
 		$oModuleModel = getModel('module');
 		foreach ($this->trigger as $trigger)
 		{
-			if(!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
+			if (!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
 			{
 				return true;
 			}
@@ -51,10 +52,10 @@ class something extends ModuleObject
 
 		foreach ($this->trigger as $trigger)
 		{
-			if(!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
+			if (!$oModuleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]))
 			{
 				$output = $oModuleController->insertTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4]);
-				if(!$output->toBool())
+				if (!$output->toBool())
 				{
 					return $output;
 				}

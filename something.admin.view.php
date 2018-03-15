@@ -23,12 +23,12 @@ class somethingAdminView extends something
 		}
 
 		$skin_list = $oModuleModel->getSkins($this->module_path);
-		Context::set('skin_list',$skin_list);
+		Context::set('skin_list', $skin_list);
 
 		$mskin_list = $oModuleModel->getSkins($this->module_path, "m.skins");
 		Context::set('mskin_list', $mskin_list);
-		
-		$oMemberModel =&getModel('member');
+
+		$oMemberModel = getModel('member');
 		$output = $oMemberModel->getGroups();
 		Context::set('group_list', $output);
 
@@ -36,7 +36,7 @@ class somethingAdminView extends something
 		$layout_list = $oLayoutMode->getLayoutList();
 		Context::set('layout_list', $layout_list);
 
-		$mobile_layout_list = $oLayoutMode->getLayoutList(0,"M");
+		$mobile_layout_list = $oLayoutMode->getLayoutList(0, "M");
 		Context::set('mlayout_list', $mobile_layout_list);
 	}
 
@@ -63,14 +63,15 @@ class somethingAdminView extends something
 		$is_memberfollow_module = true;
 		if (!is_object(getClass('memberfollow')))
 		{
-			$is_memberfollow_module = false;	
-		}	 
+			$is_memberfollow_module = false;
+		}
 		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 		Context::set('config', $config);
 	}
 
-	function dispSomethingAdminSkinInfo() {
-		
+	function dispSomethingAdminSkinInfo()
+	{
+
 		$oSomethingModel = getModel('something');
 		$config = $oSomethingModel->getConfig();
 		Context::set('config', $config);
@@ -78,7 +79,7 @@ class somethingAdminView extends something
 		$oModuleModel = getModel('module');
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		Context::set('module_info', $module_info);
-	
+
 
 		$oModuleAdminModel = getAdminModel('module');
 		$skin_content = $oModuleAdminModel->getModuleSkinHTML($module_info->module_srl);
@@ -87,7 +88,8 @@ class somethingAdminView extends something
 		$this->setTemplateFile('skin_info');
 	}
 
-	function dispSomethingAdminMobileSkinInfo() {
+	function dispSomethingAdminMobileSkinInfo()
+	{
 		$oSomethingModel = getModel('something');
 		$config = $oSomethingModel->getConfig();
 		Context::set('config', $config);
@@ -95,7 +97,7 @@ class somethingAdminView extends something
 		$oModuleModel = getModel('module');
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		Context::set('module_info', $module_info);
-		
+
 		$oModuleAdminModel = getAdminModel('module');
 		$skin_content = $oModuleAdminModel->getModuleMobileSkinHTML($module_info->module_srl);
 		Context::set('skin_content', $skin_content);

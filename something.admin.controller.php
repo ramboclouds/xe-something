@@ -15,8 +15,9 @@ class somethingAdminController extends something
 		$config = getModel('something')->getConfig();
 		$config->use = Context::get('use');
 		$config->mid_name = $obj->mid_name;
-		if(count($obj->group) ==0){
-			$obj->group="all";
+		if (count($obj->group) == 0)
+		{
+			$obj->group = "all";
 		}
 
 		$config->group = $obj->group;
@@ -42,7 +43,7 @@ class somethingAdminController extends something
 			if (!$module_info->module_srl)
 			{
 				$insertOutput = $oModuleController->insertModule($mid_args);
-				if(!$insertOutput->toBool())
+				if (!$insertOutput->toBool())
 				{
 					return $insertOutput;
 				}
@@ -57,7 +58,7 @@ class somethingAdminController extends something
 		{
 			$mid_args->module_srl = $obj->module_srl;
 			$updateOutput = $oModuleController->updateModule($mid_args);
-			if(!$updateOutput->toBool())
+			if (!$updateOutput->toBool())
 			{
 				return $updateOutput;
 			}
@@ -85,19 +86,19 @@ class somethingAdminController extends something
 	function procSomethingAdminInsertConnect()
 	{
 		$oModuleController = getController('module');
-		
+
 		$obj = Context::getRequestVars();
-		
+
 		$config = getModel('something')->getConfig();
 		$config->connect_address_type = $obj->connect_address_type;
 		$config->memeber_popupmenu_name = $obj->memeber_popupmenu_name;
-		
+
 		$output = $oModuleController->insertModuleConfig('something', $config);
-		if(!$output->toBool())
+		if (!$output->toBool())
 		{
 			return $output;
 		}
-		
+
 		$this->setMessage("success_saved");
 
 		$successReturnUrl = Context::get('success_return_url');
@@ -127,7 +128,7 @@ class somethingAdminController extends something
 
 		$oModuleController = getController('module');
 		$oModuleController->insertModuleConfig('something', $config);
-		
+
 		$this->setMessage("success_saved");
 
 		$successReturnUrl = Context::get('success_return_url');
@@ -150,7 +151,7 @@ class somethingAdminController extends something
 		$config->subscribe_click_action = $obj->subscribe_click_action;
 		$config->subscribe_follow_view_use = $obj->subscribe_follow_view_use;
 		$config->subscribe_follow_view_menu_name = $obj->subscribe_follow_view_menu_name;
-		
+
 		$oModuleController = getController('module');
 		$oModuleController->insertModuleConfig('something', $config);
 

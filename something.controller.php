@@ -10,7 +10,7 @@ class somethingController extends something
 			return;
 		}
 
-		if($config->mid_name == "")
+		if ($config->mid_name == "")
 		{
 			return;
 		}
@@ -44,15 +44,15 @@ class somethingController extends something
 			return;
 		}
 
-		$stModel=getModel('something');
+		$stModel = getModel('something');
 		$config = $stModel->getConfig();
 
 		if ($config->use != "Y")
 		{
 			return;
 		}
-		
-		if($obj->status != "PUBLIC")
+
+		if ($obj->status != "PUBLIC")
 		{
 			return;
 		}
@@ -67,20 +67,22 @@ class somethingController extends something
 			return;
 		}
 
-		$oSomethingModel=getModel('something');
+		$oSomethingModel = getModel('something');
 		$config = $oSomethingModel->getConfig();
 
 		if ($config->use != "Y")
 		{
 			return;
 		}
-		
+
 		if ($obj->is_secret != "N")
 		{
 			return;
 		}
 
-		$oDocument = getModel('document')->getDocument($obj->document_srl);
+		/** @var documentModel $oDocumentModel */
+		$oDocumentModel = getModel('document');
+		$oDocument = $oDocumentModel->getDocument($obj->document_srl);
 		if ($oDocument->get('status') != "PUBLIC")
 		{
 			return;
@@ -108,7 +110,7 @@ class somethingController extends something
 			return;
 		}
 
-		$oSomethingModel=getModel('something');
+		$oSomethingModel = getModel('something');
 		$config = $oSomethingModel->getConfig();
 
 		if ($config->use != "Y")
@@ -121,9 +123,9 @@ class somethingController extends something
 			return;
 		}
 
-		$oMemberModel=getModel('member');
+		$oMemberModel = getModel('member');
 		$memberInfo = $oMemberModel->getMemberInfoByMemberSrl($obj->member_srl);
-		$oSomethingModel->getMemeberRecentActivity($memberInfo,true);
+		$oSomethingModel->getMemeberRecentActivity($memberInfo, true);
 	}
 }
 /* End of file */

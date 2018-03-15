@@ -4,7 +4,6 @@ class somethingView extends something
 {
 	function init()
 	{
-		// TODO(BJRambo) : get to something module skin setting by module_info
 		$module_info = $this->module_info;
 		$template_path = sprintf("%sskins/%s/", $this->module_path, $module_info->skin);
 
@@ -27,11 +26,10 @@ class somethingView extends something
 	function dispSomethingProfileView()
 	{
 		$user_string = Context::get('smember');
-		
+
 		Context::set('st_path', $this->module_path);
 		if ($user_string == "")
 		{
-			
 			Context::set('something_error_msg', lang('something_msg_user_notfound'));
 			$this->setTemplateFile('_error');
 			return;
@@ -65,12 +63,12 @@ class somethingView extends something
 			return;
 		}
 
-		$memberInfo->follow_count=0;
+		$memberInfo->follow_count = 0;
 		$logged_info = Context::get('logged_info');
 
 		$oMemberModel = getModel('member');
-		
-		if ($config->group=="all")
+
+		if ($config->group == "all")
 		{
 			$is_permitted = true;
 		}
@@ -84,7 +82,7 @@ class somethingView extends something
 			{
 				$member_groups = $oMemberModel->getMemberGroups($logged_info->member_srl);
 				$is_permitted = false;
-				for ($i=0;$i<count($config->group);$i++)
+				for ($i = 0; $i < count($config->group); $i++)
 				{
 					$group_srl = $config->group[$i];
 					if ($member_groups[$group_srl])
@@ -105,10 +103,10 @@ class somethingView extends something
 
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
 		$recent_activity = $oSomethingModel->getMemeberRecentActivity($memberInfo);
-		
+
 		$st_header_text = $module_info->header_text;
 		$st_footer_text = $module_info->footer_text;
-		
+
 		if (Mobile::isMobileCheckByAgent())
 		{
 			$skin_vars = $oModuleModel->getModuleMobileSkinVars($module_info->module_srl);
@@ -125,7 +123,7 @@ class somethingView extends something
 		$is_memberfollow_module = true;
 		if (!is_object(getClass('memberfollow')))
 		{
-			$is_memberfollow_module = false;	
+			$is_memberfollow_module = false;
 		}
 
 		if (Context::get('view_type') == "followerlist" || Context::get('view_type') == "followinglist")
@@ -137,21 +135,21 @@ class somethingView extends something
 				return;
 			}
 		}
-		
+
 		if (Context::get('view_type') == "recommend")
 		{
-			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(),$skin_info);
+			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(), $skin_info);
 
 		}
 		else if (Context::get('view_type') == "followerlist")
-		{	
+		{
 			if ($config->subscribe_click_action != "list")
 			{
 				Context::set('something_error_msg', lang('something_access_denied'));
 				$this->setTemplateFile('_error');
 				return;
 			}
-			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(),$skin_info);
+			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
 		else if (Context::get('view_type') == "followinglist")
 		{
@@ -173,20 +171,20 @@ class somethingView extends something
 				$this->setTemplateFile('_error');
 				return;
 			}
-			$somethingData = $oSomethingModel->getFollowingList($memberInfo, $config, Context::getRequestVars(),$skin_info);
+			$somethingData = $oSomethingModel->getFollowingList($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
 		else
 		{
-			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(),$skin_info);
+			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
-		
+
 
 		if ($is_memberfollow_module)
 		{
-			$followOutput= executeQuery('memberfollow.getMemberFollowerCount',$memberInfo);
+			$followOutput = executeQuery('memberfollow.getMemberFollowerCount', $memberInfo);
 			$memberInfo->follower_count = $followOutput->data->cnt;
 		}
-	
+
 		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 
 		Context::set('total_count', $somethingData->total_count);
@@ -196,7 +194,7 @@ class somethingView extends something
 
 		Context::set('module_info', $module_info);
 		Context::set('skin_info', $skin_info);
-		
+
 		Context::set('something_data', $somethingData->data);
 		Context::set('member_info', $memberInfo);
 		Context::set('recent_activity', $recent_activity);
