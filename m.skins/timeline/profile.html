@@ -39,7 +39,8 @@
                 $subscribe_msg = sprintf(lang($subscribe_lang_str), $member_info->nick_name, $st_skin_info->profile_subscribe_text);
                 if($st_config->subscribe_use == "N") $subscribe_msg=sprintf(lang('something_follow_disabled'),$st_skin_info->profile_subscribe_text);
                 $subscribe_link = getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist');
-                if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."')";
+                if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','logout')";
+                if($st_config->subscribe_click_action == "add" && $logged_info->member_srl) $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','login')";
                 if($st_config->subscribe_use == "N") $subscribe_link = "#";
             }
             <span class="right floated st-member-followercount" data-tooltip="{$subscribe_msg}" data-position="top right">
