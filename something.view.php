@@ -41,7 +41,7 @@ class somethingView extends something
 		$oMemberModel = getModel('member');
 		$oModuleModel = getModel('module');
 
-		$config = $oSomethingModel->getConfig();
+		$config = $this->getConfig();
 
 		if ($config->connect_address_type == 'user_id')
 		{

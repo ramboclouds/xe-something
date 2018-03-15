@@ -12,7 +12,7 @@ class somethingAdminController extends something
 		$obj = Context::getRequestVars();
 
 		$oModuleController = getController('module');
-		$config = getModel('something')->getConfig();
+		$config = $this->getConfig();
 		$config->use = Context::get('use');
 		$config->mid_name = $obj->mid_name;
 		if (count($obj->group) == 0)
@@ -89,7 +89,7 @@ class somethingAdminController extends something
 
 		$obj = Context::getRequestVars();
 
-		$config = getModel('something')->getConfig();
+		$config = $this->getConfig();
 		$config->connect_address_type = $obj->connect_address_type;
 		$config->memeber_popupmenu_name = $obj->memeber_popupmenu_name;
 
@@ -115,7 +115,7 @@ class somethingAdminController extends something
 	function procSomethingAdminInsertData()
 	{
 		$obj = Context::getRequestVars();
-		$config = getModel('something')->getConfig();
+		$config = $this->getConfig();
 
 		if (!$obj->board_module_srls)
 		{
@@ -145,7 +145,7 @@ class somethingAdminController extends something
 	function procSomethingAdminInsertSubscribe()
 	{
 		$obj = Context::getRequestVars();
-		$config = getModel('something')->getConfig();
+		$config = $this->getConfig();
 
 		$config->subscribe_use = $obj->subscribe_use;
 		$config->subscribe_click_action = $obj->subscribe_click_action;
@@ -156,6 +156,7 @@ class somethingAdminController extends something
 		$oModuleController->insertModuleConfig('something', $config);
 
 		$this->setMessage('success_updated');
+		$successReturnUrl = Context::get('success_return_url');
 		if ($successReturnUrl)
 		{
 			$this->setRedirectUrl($successReturnUrl);

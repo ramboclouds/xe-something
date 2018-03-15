@@ -4,7 +4,7 @@ class somethingController extends something
 {
 	function triggerAddMemberMenu($module_info)
 	{
-		$config = getModel('something')->getConfig();
+		$config = $this->getConfig();
 		if ($config->use != "Y")
 		{
 			return;
@@ -45,7 +45,7 @@ class somethingController extends something
 		}
 
 		$stModel = getModel('something');
-		$config = $stModel->getConfig();
+		$config = $this->getConfig();
 
 		if ($config->use != "Y")
 		{
@@ -68,7 +68,7 @@ class somethingController extends something
 		}
 
 		$oSomethingModel = getModel('something');
-		$config = $oSomethingModel->getConfig();
+		$config = $this->getConfig();
 
 		if ($config->use != "Y")
 		{
@@ -111,7 +111,7 @@ class somethingController extends something
 		}
 
 		$oSomethingModel = getModel('something');
-		$config = $oSomethingModel->getConfig();
+		$config = $this->getConfig();
 
 		if ($config->use != "Y")
 		{
