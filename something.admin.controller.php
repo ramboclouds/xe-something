@@ -13,7 +13,7 @@ class somethingAdminController extends something
 
 		$oModuleController = getController('module');
 		$config = $this->getConfig();
-		$config->use = Context::get('use');
+		$config->use = $obj->use;
 		$config->mid_name = $obj->mid_name;
 		if (count($obj->group) == 0)
 		{
@@ -156,6 +156,7 @@ class somethingAdminController extends something
 		$oModuleController->insertModuleConfig('something', $config);
 
 		$this->setMessage('success_updated');
+		
 		$successReturnUrl = Context::get('success_return_url');
 		if ($successReturnUrl)
 		{

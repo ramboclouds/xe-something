@@ -139,7 +139,6 @@ class somethingView extends something
 		if (Context::get('view_type') == "recommend")
 		{
 			$somethingData = $oSomethingModel->getMemberVotedList($memberInfo, $config, Context::getRequestVars(), $skin_info);
-
 		}
 		else if (Context::get('view_type') == "followerlist")
 		{
@@ -149,6 +148,7 @@ class somethingView extends something
 				$this->setTemplateFile('_error');
 				return;
 			}
+
 			$somethingData = $oSomethingModel->getMemberFollowerList($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
 		else if (Context::get('view_type') == "followinglist")
@@ -159,25 +159,27 @@ class somethingView extends something
 				$this->setTemplateFile('_error');
 				return;
 			}
+
 			if (!$logged_info->member_srl)
 			{
 				Context::set('something_error_msg', lang('something_access_denied'));
 				$this->setTemplateFile('_error');
 				return;
 			}
+
 			if ($memberInfo->member_srl != $logged_info->member_srl)
 			{
 				Context::set('something_error_msg', lang('something_access_denied'));
 				$this->setTemplateFile('_error');
 				return;
 			}
+
 			$somethingData = $oSomethingModel->getFollowingList($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
 		else
 		{
 			$somethingData = $oSomethingModel->getMemeberBoardData($memberInfo, $config, Context::getRequestVars(), $skin_info);
 		}
-
 
 		if ($is_memberfollow_module)
 		{

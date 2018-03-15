@@ -13,7 +13,7 @@ class somethingAdminView extends something
 		$oLayoutMode = getModel('layout');
 		$oModuleModel = getModel('module');
 		$oMemberModel = getModel('member');
-		
+
 		$config = $this->getConfig();
 		if ($config->mid_name)
 		{
@@ -44,15 +44,15 @@ class somethingAdminView extends something
 	function dispSomethingAdminConnect()
 	{
 		$config = $this->getConfig();
-		
+
 		Context::set('config', $config);
 	}
 
 	function dispSomethingAdminData()
 	{
 		$config = $this->getConfig();
-		$mid_list = getModel('module')->getMidList(null, array('module_srl', 'mid', 'browser_title', 'module'));
-		
+		$mid_list = getModel('module')->getMidList(new stdClass(), array('module_srl', 'mid', 'browser_title', 'module'));
+
 		Context::set('config', $config);
 		Context::set('mid_list', $mid_list);
 	}
@@ -60,11 +60,13 @@ class somethingAdminView extends something
 	function dispSomethingAdminSubscribe()
 	{
 		$config = $this->getConfig();
+
 		$is_memberfollow_module = true;
 		if (!is_object(getClass('memberfollow')))
 		{
 			$is_memberfollow_module = false;
 		}
+
 		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 		Context::set('config', $config);
 	}
@@ -72,15 +74,15 @@ class somethingAdminView extends something
 	function dispSomethingAdminSkinInfo()
 	{
 		$config = $this->getConfig();
-		Context::set('config', $config);
 
 		$oModuleModel = getModel('module');
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
-		Context::set('module_info', $module_info);
-
 
 		$oModuleAdminModel = getAdminModel('module');
 		$skin_content = $oModuleAdminModel->getModuleSkinHTML($module_info->module_srl);
+
+		Context::set('config', $config);
+		Context::set('module_info', $module_info);
 		Context::set('skin_content', $skin_content);
 
 		$this->setTemplateFile('skin_info');
@@ -89,16 +91,17 @@ class somethingAdminView extends something
 	function dispSomethingAdminMobileSkinInfo()
 	{
 		$config = $this->getConfig();
-		Context::set('config', $config);
 
 		$oModuleModel = getModel('module');
 		$module_info = $oModuleModel->getModuleInfoByMid($config->mid_name);
-		Context::set('module_info', $module_info);
 
 		$oModuleAdminModel = getAdminModel('module');
 		$skin_content = $oModuleAdminModel->getModuleMobileSkinHTML($module_info->module_srl);
-		Context::set('skin_content', $skin_content);
 
+		Context::set('config', $config);
+		Context::set('module_info', $module_info);
+		Context::set('skin_content', $skin_content);
+		
 		$this->setTemplateFile('skin_info');
 	}
 }

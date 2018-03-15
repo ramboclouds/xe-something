@@ -10,7 +10,7 @@ class something extends ModuleObject
 		array('comment.deleteComment', 'something', 'controller', 'triggerDeleteAfterComment', 'after'),
 	);
 
-	protected  static $config = null;
+	protected static $config = null;
 
 	protected function getConfig()
 	{

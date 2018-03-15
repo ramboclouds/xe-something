@@ -7,7 +7,7 @@ class somethingModel extends something
 		$oMemberModel = getModel('member');
 		if (!$nick_name)
 		{
-			return;
+			return new stdClass();
 		}
 
 		$args = new stdClass;
@@ -20,7 +20,7 @@ class somethingModel extends something
 		}
 		if (!$output->data)
 		{
-			return;
+			return new stdClass();
 		}
 		$member_info = $oMemberModel->arrangeMemberInfo($output->data);
 
@@ -52,7 +52,6 @@ class somethingModel extends something
 
 		if ($args->view_type != "comment")
 		{
-
 			/** @var documentModel $oDocumentModel */
 			$oDocumentModel = getModel('document');
 			$output = $oDocumentModel->getDocumentList($sObj, FALSE, TRUE);
@@ -64,7 +63,6 @@ class somethingModel extends something
 				$output->data[$key]->mid = $oModuleSrl->mid[$value->get('module_srl')];
 				$output->data[$key]->browser_title = $oModuleSrl->browser_title[$value->get('module_srl')];
 			}
-
 		}
 
 		$commentOutput = executeQueryArray("something.getMemberCommentList", $sObj);
@@ -79,7 +77,7 @@ class somethingModel extends something
 				$cmt_content = Context::getLang('something_message_comment_content_blank');
 			}
 			$commentOutput->data[$key]->content = $cmt_content;
-			// TODO(clouds): check agine is $moduleSrltoMid
+			//TODO : check again $moduleSrltoMid variables.
 			$commentOutput->data[$key]->mid = $moduleSrltoMid[$value->module_srl];
 			$commentOutput->data[$key]->browser_title = $oModuleSrl->browser_title[$value->module_srl];
 		}
@@ -103,6 +101,7 @@ class somethingModel extends something
 
 		$sObj = new stdClass();
 		$sObj->member_srl = $memberInfo->member_srl;
+		//TODO(clouds): how use to this board_srls ? is it same to $board_srls = implode($config->board_module_srls, ",") ?
 		$sObj->module_srl = $board_srls;
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
@@ -117,7 +116,7 @@ class somethingModel extends something
 			$doc_srls = array();
 			foreach ($output->data as $key => $value)
 			{
-				array_push($doc_srls, $value->document_srl);
+				$doc_srls[] = $value->document_srl;
 			}
 
 			if (count($doc_srls) > 0)
@@ -187,7 +186,7 @@ class somethingModel extends something
 
 		foreach ($fOutput->data as $key => $value)
 		{
-			array_push($member_srls, $value->target_srl);
+			$member_srls[] = $value->target_srl;
 		}
 
 		if (count($member_srls) == 0)
@@ -307,6 +306,7 @@ class somethingModel extends something
 				fwrite($wr_file, $piece, strlen($piece));
 			}
 			fclose($wr_file);
+			//TODO(clouds): files 폴더를 사용하면 권한을 바꾸는 것은 위험합니다.(각 서버에서 일부러 사용하는 권한종류가 다 다르니 마음대로 고치는 소스는 불필요합니다..)
 			@chmod($cache_data, 0707);
 			unset($mid_data);
 		}
@@ -365,6 +365,7 @@ class somethingModel extends something
 	{
 		$sObj = new stdClass();
 		$sObj->member_srl = $member_info->member_srl;
+		//TODO(clouds): how use to this board_srls ? is it same to $board_srls = implode($config->board_module_srls, ",") ?
 		$sObj->module_srl = $board_srls;
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
@@ -373,14 +374,7 @@ class somethingModel extends something
 		$sObj->page_count = 1;
 		$sObj->list_count = 1;
 
-		if (!$force_update)
-		{
-			$stOutput = executeQueryArray("something.getMemberInfo", $sObj);
-		}
-		else
-		{
-			$stOutput = new stdClass();
-		}
+		$stOutput = $force_update ? new stdClass() : executeQueryArray("something.getMemberInfo", $sObj);
 
 		if ($stOutput->data)
 		{
@@ -424,10 +418,7 @@ class somethingModel extends something
 
 			$this->updateMemberRecentActivity($sObj2);
 			return $sObj2->regdate;
-
 		}
-
-
 	}
 
 	function updateMemberRecentActivity($obj)
