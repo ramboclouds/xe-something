@@ -13,11 +13,7 @@
             <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
             <!--@end-->
             <div class="st-header st-profile-nick_name">
-            <!--@if($member_info->image_name)-->
-            <img src="{$member_info->image_name->src}" width="{$member_info->image_name->width}" height="{$member_info->image_name->height}" style="border:0 !important;width {$member_info->image_name->width}px !important;height:{$member_info->image_name->height}px !important;">
-            <!--@else-->
-            {$member_info->nick_name}
-            <!--@end-->
+                <a href="#popup_menu_area" class="member_{$member_info->member_srl} a_nick" onclick="return false">{$member_info->nick_name}</a>
             </div>
             <!--@if($st_skin_info->profile_group_use == 'Y')-->
             <div class="meta st-profile-group">
@@ -58,9 +54,15 @@
     </div>
 </div>
 <div class="ui {$st_menu_css_class} item menu">
+    <!--@if($st_skin_info->menu_document_view != "N")-->
     <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
+    <!--@end-->
+    <!--@if($st_skin_info->menu_comment_view != "N")-->
     <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_cmt}</a>
+    <!--@end-->
+    <!--@if($st_skin_info->menu_recommend_view != "N")-->
     <a class="item <!--@if(Context::get('view_type') == 'recommend')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','recommend')}">{$lang->something_view_type_recommend}</a>
+    <!--@end-->
     <!--@if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl)-->
     <a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="<!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->#<!--@else-->{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}<!--@end-->" <!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->data-tooltip="{sprintf(lang('something_follow_disabled'),'')}" data-position="bottom right"<!--@end-->>{$st_config->subscribe_follow_view_menu_name}</a>
     <!--@end-->

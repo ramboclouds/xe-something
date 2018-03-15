@@ -10,27 +10,22 @@
     if(!$st_skin_info->profile_subscribe_text) $st_skin_info->profile_subscribe_text = '구독';
 
     //menu
-    $st_menu_count = 3;
-    $st_menu_css_class="three";
-
-    if($st_skin_info->menu_document_view == "N") $st_menu_count--;
-    if($st_skin_info->menu_comment_view == "N") $st_menu_count--;
+    $st_menu_count = 2;
+    $st_menu_css_class="two";
+    
     if($st_skin_info->menu_recommend_view == "N") $st_menu_count--;
     if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl) $st_menu_count++;
-
+ 
     //list
     if(!$st_skin_info->comment_count_view) $st_skin_info->comment_count_view = 'Y';
+    if(!$st_skin_info->clock_view) $st_skin_info->clock_view = 'N';
     if(!$st_skin_info->voted_count_view) $st_skin_info->voted_count_view = 'Y';
- 
+    
     //document
     if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;
     if(!$st_skin_info->subject_cut_size) $st_skin_info->subject_cut_size = 24;
 
-    if(!$st_skin_info->thumbnail_use) $st_skin_info->thumbnail_use = 'Y';
-    if(!$st_skin_info->thumbnail_type) $st_skin_info->thumbnail_type = 'crop';
-    if(!$st_skin_info->thumbnail_width) $st_skin_info->thumbnail_width = 100;   
-    if(!$st_skin_info->thumbnail_height) $st_skin_info->thumbnail_height = 100;   
-
+    //page
     if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
     if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
     if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
@@ -38,7 +33,12 @@
     //comment
     if(!$st_skin_info->cmt_content_cut_size) $st_skin_info->cmt_content_cut_size = 80;
     if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
-    if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
+
+    //recommend image_view
+    if(!$st_skin_info->thumbnail_use) $st_skin_info->thumbnail_use = 'Y';
+    if(!$st_skin_info->thumbnail_type) $st_skin_info->thumbnail_type = 'crop';
+    if(!$st_skin_info->thumbnail_width) $st_skin_info->thumbnail_width = 100;   
+    if(!$st_skin_info->thumbnail_height) $st_skin_info->thumbnail_height = 100;  
 
     //config
     if(!$is_memberfollow_module) $config->subscribe_use="N";

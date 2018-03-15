@@ -1,2 +1,9 @@
+<!--#include("_init.html")-->
+{@ 
+    $ui_css=$st_path."/component/ui/semantic/semantic.min.css";
+    Context::loadFile(array($ui_css));
+    $ui_js=$st_path."/component/ui/semantic/semantic.min.js";
+    Context::loadFile(array($ui_js,'body'));
+}
 <load target="css/style.css" />
-<load target="css/extra.css" />
+<load target="js/profile.js" type="body" />

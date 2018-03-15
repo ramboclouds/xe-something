@@ -180,4 +180,8 @@
 		<value xml:lang="ko"><![CDATA[로그인]]></value>
 		<value xml:lang="en"><![CDATA[Login]]></value>
 	</item>
+	<item name="something_message_timeline">
+		<value xml:lang="ko"><![CDATA[활동]]></value>
+		<value xml:lang="en"><![CDATA[Timeline]]></value>
+	</item>
 </lang>
