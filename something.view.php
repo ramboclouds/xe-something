@@ -124,6 +124,7 @@ class somethingView extends something
 		if (!is_object(getClass('memberfollow')))
 		{
 			$is_memberfollow_module = false;
+			$memberInfo->follower_count = 0;
 		}
 
 		if (Context::get('view_type') == "followerlist" || Context::get('view_type') == "followinglist")

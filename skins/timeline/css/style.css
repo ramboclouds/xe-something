@@ -127,6 +127,10 @@
   overflow: visible !important;
 }
 
+.ui.modal > .st-content{
+  width:auto !important;
+}
+
 [data-tooltip]:after{
   font-size:1em !important;
 }

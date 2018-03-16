@@ -22,3 +22,13 @@ function stFollowAdd(add_member_srl,login_status)
         jQuery('.st-modal-login.modal').modal('show');
     }
 }
+
+function stFollowModuleNotinatalled()
+{
+    jQuery('.special.modal').modal(
+        {centered: false,
+        onApprove : function() {
+            window.open("https://xe-something.com/introduction","_self");
+        }
+        }).modal('setting', 'transition', 'vertical flip').modal('show');
+}
