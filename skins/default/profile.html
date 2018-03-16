@@ -22,7 +22,7 @@
             <!--@end-->
             <!--@if($st_skin_info->profile_description_use == 'Y')-->
             <div class="description st-profile-description">
-                {$member_info->signature}
+                {cut_str($member_info->signature,$st_skin_info->profile_description_count)}
             </div>
             <!--@end-->
           </div>

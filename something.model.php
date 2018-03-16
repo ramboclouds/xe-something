@@ -107,7 +107,6 @@ class somethingModel extends something
 
 		$sObj = new stdClass();
 		$sObj->member_srl = $memberInfo->member_srl;
-		//TODO(clouds): how use to this board_srls ? is it same to $board_srls = implode($config->board_module_srls, ",") ?
 		$sObj->module_srl = $board_srls;
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
@@ -195,6 +194,7 @@ class somethingModel extends something
 			$member_srls[] = $value->target_srl;
 		}
 
+		
 		if (count($member_srls) == 0)
 		{
 			return;
