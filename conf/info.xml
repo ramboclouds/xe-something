@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="0.2">
-	<title xml:lang="ko">Something 모듈</title>
+	<title xml:lang="ko">Something</title>
+	<description xml:lang="ko">회원의 활동 내역을 출력합니다.</description>
+	<description xml:lang="en">Display member's activity history.</description>
 	<version>0.1</version>
 	<date>2017-10-29</date>
-
-	<author link="http://www.bjrambo.com/">
+	<author link="https://xe-something.com/">
 		<name xml:lang="ko">BJRambo, 구름이</name>
 	</author>
 </module>
