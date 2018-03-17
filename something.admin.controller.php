@@ -151,6 +151,8 @@ class somethingAdminController extends something
 		$config->subscribe_click_action = $obj->subscribe_click_action;
 		$config->subscribe_follow_view_use = $obj->subscribe_follow_view_use;
 		$config->subscribe_follow_view_menu_name = $obj->subscribe_follow_view_menu_name;
+		$config->subscribe_follow_view_menu_name_mobile = $obj->subscribe_follow_view_menu_name_mobile;
+		
 
 		$oModuleController = getController('module');
 		$oModuleController->insertModuleConfig('something', $config);

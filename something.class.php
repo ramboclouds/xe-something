@@ -70,6 +70,13 @@ class something extends ModuleObject
 				$config->subscribe_follow_view_menu_name = '팔로우 글';
 			}
 
+			if (!$config->subscribe_follow_view_menu_name_mobile)
+			{
+				$config->subscribe_follow_view_menu_name_mobile = '팔로우 글';
+			}
+
+			
+
 			self::$config = $config;
 		}
 

@@ -452,5 +452,20 @@ class somethingModel extends something
 
 		return $dbOutput;
 	}
+
+	function checkMobile()
+	{
+		$mAgent = array("iPhone","iPod","iPad","Android","Blackberry",
+			"Opera Mini", "Windows ce", "Nokia", "sony" );
+		$chkMobile = false;
+		for($i=0; $i<sizeof($mAgent); $i++){
+			if(stripos( $_SERVER['HTTP_USER_AGENT'], $mAgent[$i] )){
+				$chkMobile = true;
+				break;
+			}
+		}
+
+		return $chkMobile;
+	}
 }
 /* End of file */

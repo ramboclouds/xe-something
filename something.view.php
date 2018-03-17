@@ -188,6 +188,11 @@ class somethingView extends something
 			$memberInfo->follower_count = $followOutput->data->cnt;
 		}
 
+		if ($oSomethingModel->checkMobile())
+		{
+			$config->subscribe_follow_view_menu_name = $config->subscribe_follow_view_menu_name_mobile;
+		}
+
 		Context::set('module_installed_memberfollow', $is_memberfollow_module);
 
 		Context::set('total_count', $somethingData->total_count);
