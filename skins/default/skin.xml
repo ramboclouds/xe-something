@@ -212,7 +212,26 @@
                 <title xml:lang="ko">본문 글자수</title>
                 <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
             </var>
-
+            <var name="ext1_nickname_view" type="radio">
+                <title xml:lang="ko">닉네임</title>
+                <description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext1_time_view" type="radio">
+                <title xml:lang="ko">작성 시간</title>
+                <description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
             <var name="ext1_comment_count_view" type="radio">
                 <title xml:lang="ko">댓글수</title>
                 <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
@@ -243,7 +262,6 @@
                     <title xml:lang="ko">미출력</title>
                 </options>
             </var>
-
             <var name="ext1_thumbnail_type" type="radio">
                 <title xml:lang="ko">썸네일 비율(*)</title>
                 <options value="">
@@ -261,12 +279,30 @@
                 <title xml:lang="ko">제목 글자수</title>
                 <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
             </var>
-
              <var name="ext2_content_cut_size" type="text">
                 <title xml:lang="ko">본문 글자수</title>
                 <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
             </var>
-
+            <var name="ext2_nickname_view" type="radio">
+                <title xml:lang="ko">닉네임</title>
+                <description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext2_time_view" type="radio">
+                <title xml:lang="ko">작성 시간</title>
+                <description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
             <var name="ext2_comment_count_view" type="radio">
                 <title xml:lang="ko">댓글수</title>
                 <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
@@ -297,7 +333,6 @@
                     <title xml:lang="ko">미출력</title>
                 </options>
             </var>
-
             <var name="ext2_thumbnail_type" type="radio">
                 <title xml:lang="ko">썸네일 비율(*)</title>
                 <options value="">
