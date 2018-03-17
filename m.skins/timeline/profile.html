@@ -22,7 +22,7 @@
             <!--@end-->
             <!--@if($st_skin_info->profile_description_use == 'Y')-->
             <div class="description st-profile-description">
-                {$member_info->signature}
+                {cut_str($member_info->signature,$st_skin_info->profile_description_count)}
             </div>
             <!--@end-->
           </div>
@@ -42,6 +42,7 @@
                 if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','logout')";
                 if($st_config->subscribe_click_action == "add" && $logged_info->member_srl) $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','login')";
                 if($st_config->subscribe_use == "N") $subscribe_link = "#";
+                if(!$module_installed_memberfollow) $subscribe_link = "javascript:stFollowModuleNotinatalled()";
             }
             <span class="right floated st-member-followercount" data-tooltip="{$subscribe_msg}" data-position="top right">
                 <a href="{$subscribe_link}">
@@ -64,7 +65,7 @@
     <!--@end-->
 </div>
 <!--@if(Context::get('view_type') == '')-->
-    <!--#include("_documents.html")-->
+    <!--#include("_timeline.html")-->
 <!--@else if(Context::get('view_type') == 'comment')-->
     <!--#include("_comments.html")-->
 <!--@else if(Context::get('view_type') == 'recommend')-->

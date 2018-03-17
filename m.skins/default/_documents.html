@@ -4,7 +4,7 @@
             <!--@if($document->doc_type == 'cmt')-->
                 {@ continue; }
             <!--@else if($document->doc_type == 'doc')-->
-                {@ $doc_title = $document->getTitle($st_skin_info->content_cut_size); }
+                {@ $doc_title = $document->getTitle($st_skin_info->subject_cut_size); }
                 <!--@if($document->thumbnailExists())-->
                 {@ $thumbNail=true; }
                 <!--@end-->

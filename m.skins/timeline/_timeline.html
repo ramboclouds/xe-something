@@ -19,7 +19,7 @@
         <div class="ui top left attached label">{$time_gap}</div>
         <!--@end-->
             <div class="item">
-                <i class="<!--@if($document->doc_type == "doc")-->file<!--@else-->comment<!--@end--> st-icon"></i>
+                <i class="<!--@if($document->doc_type == "doc")-->file<!--@else-->outline comment<!--@end--> st-icon"></i>
                 <div class="st-content">
             <!--@if($document->doc_type == "doc")-->
                 <div class="description st-title"><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getTitle($st_skin_info->content_cut_size)}</a>
