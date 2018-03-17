@@ -113,8 +113,18 @@
                 </options>
             </var>
         </group>
-         <group>
-            <title xml:lang="ko">목록 정보 표시</title>
+        <group>
+            <title xml:lang="ko">작성글 목록 설정</title>
+            <var name="subject_cut_size" type="text">
+                <title xml:lang="ko">제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+            </var>
+
+             <var name="content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
             <var name="comment_count_view" type="radio">
                 <title xml:lang="ko">댓글수</title>
                 <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
@@ -135,21 +145,8 @@
                     <title xml:lang="ko">미출력</title>
                 </options>
             </var>
-        </group>
-        <group>
-            <title xml:lang="ko">작성글 목록 설정</title>
-            <var name="subject_cut_size" type="text">
-                <title xml:lang="ko">제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
-            </var>
-
-             <var name="content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
-            </var>
-
             <var name="thumbnail_use" type="radio">
-                <title xml:lang="ko">게시물 썸네일 표시</title>
+                <title xml:lang="ko">썸네일 표시</title>
                 <description xml:lang="ko">썸네일 표시여부</description>
                 <options value="">
                     <title xml:lang="ko">출력</title>
@@ -160,7 +157,7 @@
             </var>
 
             <var name="thumbnail_type" type="radio">
-                <title xml:lang="ko">섬네일 비율(*)</title>
+                <title xml:lang="ko">썸네일 비율(*)</title>
                 <options value="">
                     <title xml:lang="ko">크롭(기본)</title>
                 </options>
@@ -169,6 +166,7 @@
                 </options>
             </var>
         </group>
+
         <group>
             <title xml:lang="ko">댓글 목록 설정</title>
             <var name="cmt_content_cut_size" type="text">
@@ -179,6 +177,16 @@
             <var name="cmt_subject_cut_size" type="text">
                 <title xml:lang="ko">댓글의 제목 글자수</title>
                 <description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
+            </var>
+            <var name="cmt_voted_count_view" type="radio">
+                <title xml:lang="ko">추천수</title>
+                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
             </var>
 
             <var name="cmt_browser_title_view" type="radio">
@@ -191,7 +199,114 @@
                     <title xml:lang="ko">미출력</title>
                 </options>
             </var>
-             
+        </group>
+
+        <group>
+            <title xml:lang="ko">추천한 글 목록 설정</title>
+            <var name="ext1_subject_cut_size" type="text">
+                <title xml:lang="ko">제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+            </var>
+
+             <var name="ext1_content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
+            <var name="ext1_comment_count_view" type="radio">
+                <title xml:lang="ko">댓글수</title>
+                <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext1_voted_count_view" type="radio">
+                <title xml:lang="ko">추천수</title>
+                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext1_thumbnail_use" type="radio">
+                <title xml:lang="ko">썸네일 표시</title>
+                <description xml:lang="ko">썸네일 표시여부</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+
+            <var name="ext1_thumbnail_type" type="radio">
+                <title xml:lang="ko">썸네일 비율(*)</title>
+                <options value="">
+                    <title xml:lang="ko">크롭(기본)</title>
+                </options>
+                <options value="ratio">
+                    <title xml:lang="ko">원본 비율</title>
+                </options>
+            </var>
+        </group>
+
+         <group>
+            <title xml:lang="ko">나의 팔로우 소식 글 목록 설정</title>
+            <var name="ext2_subject_cut_size" type="text">
+                <title xml:lang="ko">제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+            </var>
+
+             <var name="ext2_content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
+            <var name="ext2_comment_count_view" type="radio">
+                <title xml:lang="ko">댓글수</title>
+                <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext2_voted_count_view" type="radio">
+                <title xml:lang="ko">추천수</title>
+                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+            <var name="ext2_thumbnail_use" type="radio">
+                <title xml:lang="ko">썸네일 표시</title>
+                <description xml:lang="ko">썸네일 표시여부</description>
+                <options value="">
+                    <title xml:lang="ko">출력</title>
+                </options>
+                <options value="N">
+                    <title xml:lang="ko">미출력</title>
+                </options>
+            </var>
+
+            <var name="ext2_thumbnail_type" type="radio">
+                <title xml:lang="ko">썸네일 비율(*)</title>
+                <options value="">
+                    <title xml:lang="ko">크롭(기본)</title>
+                </options>
+                <options value="ratio">
+                    <title xml:lang="ko">원본 비율</title>
+                </options>
+            </var>
         </group>
 
         <group>

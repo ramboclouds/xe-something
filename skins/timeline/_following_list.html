@@ -1,46 +1,46 @@
 <div class="ui unstackable items">
-        <!--@foreach($something_data as $no => $document)-->
-            {@ 
-            $thumbNail=false; 
-            $doc_title = $document->getTitle($st_skin_info->subject_cut_size); 
-            $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
-            }
-            <!--@if($document->thumbnailExists())-->
-            {@ $thumbNail=true; }
+    <!--@foreach($something_data as $no => $document)-->
+        {@ 
+        $thumbNail=false; 
+        $doc_title = $document->getTitle($st_skin_info->ext2_subject_cut_size); 
+        $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
+        }
+        <!--@if($document->thumbnailExists())-->
+        {@ $thumbNail=true; }
+        <!--@end-->
+      
+        <!--@if(defined('RX_VERSION'))-->
+            {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+        <!--@end-->
+    <div class="item">
+         <!--@if($st_skin_info->ext2_thumbnail_use == 'Y')-->
+        <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
+            <!--@if($thumbNail)-->
+            <img src="{$document->getThumbnail($st_skin_info->thumbnail_width, $st_skin_info->thumbnail_height, $st_skin_info->thumbnail_type)}">
+            <!--@else-->
+            <img src="images/no_thumb.png">
             <!--@end-->
-          
-            <!--@if(defined('RX_VERSION'))-->
-                {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
-            <!--@end-->
-        <div class="item">
-             <!--@if($st_skin_info->thumbnail_use == 'Y')-->
-            <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
-                <!--@if($thumbNail)-->
-                <img src="{$document->getThumbnail($st_skin_info->thumbnail_width, $st_skin_info->thumbnail_height, $st_skin_info->thumbnail_type)}">
-                <!--@else-->
-                <img src="images/no_thumb.png">
-                <!--@end-->
-            </a>
-            <!--@end-->
-            <div class="st-content">
-                <a class="st-header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0  && $st_skin_info->comment_count_view == "Y" )--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
-                <div class="meta">
-                    <span class="st-doc-date"><i class="clock outline st-icon"></i> {$time_gap}</span>
-                     <!--@if($document->get('voted_count') > 0 && $st_skin_info->voted_count_view == "Y")--><span class="st-doc-date"><i class="pink outline heart st-icon"></i> {$document->get('voted_count')}</span>
-                         <!--@end-->
-                    <span class="st-cmt-doc-title"><a href="#popup_menu_area" class="member_{$document->get('member_srl')} a_nick" onclick="return false">{$document->getNickName()}</a></span>
-                </div>
-                
-                <div class="description st-description-href">
-                    <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_skin_info->content_cut_size)}</a>
-                </div>
-                
+        </a>
+        <!--@end-->
+        <div class="st-content">
+            <a class="st-header st-href" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a><!--@if($document->getCommentCount() > 0  && $st_skin_info->ext2_comment_count_view == "Y" )--> <span class="st-doc-comment font-grey"><i class="comment outline st-icon"></i>{$document->getCommentCount()}</span><!--@end-->
+            <div class="meta">
+                <span class="st-doc-date"><i class="clock outline st-icon"></i> {$time_gap}</span>
+                 <!--@if($document->get('voted_count') > 0 && $st_skin_info->ext2_voted_count_view == "Y")--><span class="st-doc-date"><i class="pink outline heart st-icon"></i> {$document->get('voted_count')}</span>
+                     <!--@end-->
+                <span class="st-cmt-doc-title"><a href="#popup_menu_area" class="member_{$document->get('member_srl')} a_nick" onclick="return false">{$document->getNickName()}</a></span>
             </div>
+            
+            <div class="description st-description-href">
+                <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getSummary($st_skin_info->ext2_content_cut_size)}</a>
+            </div>
+            
         </div>
-        <!--@end-->
-        <!--@if(!$something_data)-->
-        <div class="ui message">
-            {$lang->something_message_data_empty}
-        </div>
-        <!--@end-->
     </div>
+    <!--@end-->
+    <!--@if(!$something_data)-->
+    <div class="ui message">
+        {$lang->something_message_data_empty}
+    </div>
+    <!--@end-->
+</div>

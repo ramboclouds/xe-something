@@ -113,8 +113,19 @@
                 </options>
             </var>
         </group>
-         <group>
-            <title xml:lang="ko">목록 정보 표시</title>
+>
+        <group>
+            <title xml:lang="ko">작성글 목록 설정</title>
+            <var name="subject_cut_size" type="text">
+                <title xml:lang="ko">제목 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+            </var>
+
+             <var name="content_cut_size" type="text">
+                <title xml:lang="ko">본문 글자수</title>
+                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+            </var>
+
             <var name="comment_count_view" type="radio">
                 <title xml:lang="ko">댓글수</title>
                 <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
@@ -134,18 +145,6 @@
                 <options value="N">
                     <title xml:lang="ko">미출력</title>
                 </options>
-            </var>
-        </group>
-        <group>
-            <title xml:lang="ko">작성글 목록 설정</title>
-            <var name="subject_cut_size" type="text">
-                <title xml:lang="ko">제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
-            </var>
-
-             <var name="content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
             </var>
 
             <var name="thumbnail_use" type="radio">

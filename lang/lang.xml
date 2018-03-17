@@ -101,7 +101,7 @@
 		<value xml:lang="en"><![CDATA[Documents]]></value>
 	</item>
 	<item name="something_view_type_cmt">
-		<value xml:lang="ko"><![CDATA[코멘트]]></value>
+		<value xml:lang="ko"><![CDATA[댓글]]></value>
 		<value xml:lang="en"><![CDATA[Comments]]></value>
 	</item>
 	<item name="something_view_type_recommend">
