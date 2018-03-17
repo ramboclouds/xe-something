@@ -261,11 +261,9 @@ class somethingModel extends something
 		$cache_folder = _XE_PATH_ . "files/cache/something";
 		$cache_data = $cache_folder . "/srltomid.php";
 
-		//TODO(clouds): files 폴더를 사용하면 권한을 바꾸는 것은 위험합니다.(각 서버에서 일부러 사용하는 권한종류가 다 다르니 마음대로 고치는 소스는 불필요합니다..)
 		if (!is_dir($cache_folder))
 		{
-			mkdir($cache_folder, 0707);
-			@chmod($cache_folder, 0707);
+			mkdir($cache_folder);
 		}
 
 		$data_make = "no";    //ok,no,del
@@ -312,8 +310,6 @@ class somethingModel extends something
 				fwrite($wr_file, $piece, strlen($piece));
 			}
 			fclose($wr_file);
-			//TODO(clouds): files 폴더를 사용하면 권한을 바꾸는 것은 위험합니다.(각 서버에서 일부러 사용하는 권한종류가 다 다르니 마음대로 고치는 소스는 불필요합니다..)
-			@chmod($cache_data, 0707);
 			unset($mid_data);
 		}
 
