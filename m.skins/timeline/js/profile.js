@@ -32,3 +32,8 @@ function stFollowModuleNotinatalled()
         }
         }).modal('setting', 'transition', 'vertical flip').modal('show');
 }
+
+function stLoginModalHide()
+{
+    return false;
+}
