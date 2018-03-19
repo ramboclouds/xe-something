@@ -30,7 +30,7 @@ class somethingView extends something
 		Context::set('st_path', $this->module_path);
 		if ($user_string == "")
 		{
-			Context::set('something_error_msg', lang('something_msg_user_notfound'));
+			Context::set('something_error_msg', $lang->something_msg_user_notfound);
 			$this->setTemplateFile('_error');
 			return;
 		}
@@ -58,7 +58,7 @@ class somethingView extends something
 
 		if (!$memberInfo->member_srl)
 		{
-			Context::set('something_error_msg', lang('something_msg_user_notfound'));
+			Context::set('something_error_msg', $lang->something_msg_user_notfound);
 			$this->setTemplateFile('_error');
 			return;
 		}
@@ -96,7 +96,7 @@ class somethingView extends something
 
 		if (!$is_permitted)
 		{
-			Context::set('something_error_msg', lang('something_permission_denied'));
+			Context::set('something_error_msg', $lang->something_permission_denied);
 			$this->setTemplateFile('_error');
 			return;
 		}
@@ -131,7 +131,7 @@ class somethingView extends something
 		{
 			if ($config->subscribe_use == "N" || !$is_memberfollow_module)
 			{
-				Context::set('something_error_msg', lang('something_access_denied'));
+				Context::set('something_error_msg', $lang->something_access_denied);
 				$this->setTemplateFile('_error');
 				return;
 			}
@@ -145,7 +145,7 @@ class somethingView extends something
 		{
 			if ($config->subscribe_click_action != "list")
 			{
-				Context::set('something_error_msg', lang('something_access_denied'));
+				Context::set('something_error_msg', $lang->something_access_denied);
 				$this->setTemplateFile('_error');
 				return;
 			}
@@ -156,21 +156,21 @@ class somethingView extends something
 		{
 			if ($config->subscribe_follow_view_use == "N")
 			{
-				Context::set('something_error_msg', lang('something_access_denied'));
+				Context::set('something_error_msg', $lang->something_access_denied);
 				$this->setTemplateFile('_error');
 				return;
 			}
 
 			if (!$logged_info->member_srl)
 			{
-				Context::set('something_error_msg', lang('something_access_denied'));
+				Context::set('something_error_msg', $lang->something_access_denied);
 				$this->setTemplateFile('_error');
 				return;
 			}
 
 			if ($memberInfo->member_srl != $logged_info->member_srl)
 			{
-				Context::set('something_error_msg', lang('something_access_denied'));
+				Context::set('something_error_msg', $lang->something_access_denied);
 				$this->setTemplateFile('_error');
 				return;
 			}
