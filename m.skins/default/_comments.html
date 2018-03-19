@@ -8,11 +8,10 @@
                 $doc_title = cut_str($document->doc_title,$st_skin_info->cmt_subject_cut_size);
             }
            <!--@end-->
-
            <!--@if(defined('RX_VERSION'))-->
-               {@ $time_gap = zdate($document->regdate, 'relative'); }
+            {@ $time_gap = zdate($document->regdate, 'relative'); }
            <!--@else-->
-               {@ $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s"); }
+            {@ $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s"); }
            <!--@end-->
         <div class="item">
                <div class="st-content">
