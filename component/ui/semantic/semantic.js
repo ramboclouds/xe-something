@@ -1788,13 +1788,13 @@
       radio      : 'input[type="radio"]',
       reset      : '.reset:not([type="reset"])',
       submit     : '.submit:not([type="submit"])',
-      uiCheckbox : '.ui.checkbox',
-      uiDropdown : '.ui.dropdown'
+      uiCheckbox : '.st-ui.checkbox',
+      uiDropdown : '.st-ui.dropdown'
     },
   
     className : {
       error   : 'error',
-      label   : 'ui prompt label',
+      label   : 'st-ui prompt label',
       pressed : 'down',
       success : 'success'
     },
@@ -1823,7 +1823,7 @@
       // template that produces label
       prompt: function(errors) {
         return $('<div/>')
-          .addClass('ui basic red pointing prompt label')
+          .addClass('st-ui basic red pointing prompt label')
           .html(errors[0])
         ;
       }
@@ -3639,7 +3639,7 @@
     },
   
     selector : {
-      checkbox : '.ui.checkbox',
+      checkbox : '.st-ui.checkbox',
       label    : 'label, .box',
       input    : 'input[type="checkbox"], input[type="radio"]',
       link     : 'a[href]'
@@ -4346,13 +4346,13 @@
     },
   
     selector: {
-      dimmer   : '> .ui.dimmer',
-      content  : '.ui.dimmer > .st-content, .ui.dimmer > .st-content > .center'
+      dimmer   : '> .st-ui.dimmer',
+      content  : '.st-ui.dimmer > .st-content, .ui.dimmer > .st-content > .center'
     },
   
     template: {
       dimmer: function() {
-       return $('<div />').attr('class', 'ui dimmer');
+       return $('<div />').attr('class', 'st-ui dimmer');
       }
     }
   
@@ -8164,7 +8164,7 @@
   
     selector : {
       addition     : '.addition',
-      dropdown     : '.ui.dropdown',
+      dropdown     : '.st-ui.dropdown',
       hidden       : '.hidden',
       icon         : '> .dropdown.icon',
       input        : '> input[type="hidden"], > select',
@@ -8187,11 +8187,11 @@
       animating   : 'animating',
       disabled    : 'disabled',
       empty       : 'empty',
-      dropdown    : 'ui dropdown',
+      dropdown    : 'st-ui dropdown',
       filtered    : 'filtered',
       hidden      : 'hidden transition',
       item        : 'item',
-      label       : 'ui label',
+      label       : 'st-ui label',
       loading     : 'loading',
       menu        : 'menu',
       message     : 'message',
@@ -9914,7 +9914,7 @@
       close    : '> .close',
       approve  : '.actions .positive, .actions .approve, .actions .ok',
       deny     : '.actions .negative, .actions .deny, .actions .cancel',
-      modal    : '.ui.modal'
+      modal    : '.st-ui.modal'
     },
     error : {
       dimmer    : 'UI Dimmer, a required component is not included in this page',
@@ -11911,14 +11911,14 @@
       dropdown     : 'dropdown',
       fluid        : 'fluid',
       loading      : 'loading',
-      popup        : 'ui popup',
+      popup        : 'st-ui popup',
       position     : 'top left center bottom right',
       visible      : 'visible',
       popupVisible : 'visible'
     },
   
     selector    : {
-      popup    : '.ui.popup'
+      popup    : '.st-ui.popup'
     },
   
     templates: {
@@ -14830,7 +14830,7 @@
                     + '</div>'
                   ;
                 }
-                html += '<div class="content">';
+                html += '<div class="st-content">';
                 if(result[fields.price] !== undefined) {
                   html += '<div class="price">' + result[fields.price] + '</div>';
                 }
@@ -14882,7 +14882,7 @@
                 + '</div>'
               ;
             }
-            html += '<div class="content">';
+            html += '<div class="st-content">';
             if(result[fields.price] !== undefined) {
               html += '<div class="price">' + result[fields.price] + '</div>';
             }
@@ -16071,8 +16071,8 @@
               if(direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
-                  + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                  + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                  + ' .st-ui.visible.' + direction + '.sidebar ~ .fixed,'
+                  + ' .st-ui.visible.' + direction + '.sidebar ~ .pusher {'
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }'
@@ -16080,8 +16080,8 @@
               }
               else if(direction === 'top' || direction == 'bottom') {
                 style  += ''
-                  + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                  + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                  + ' .st-ui.visible.' + direction + '.sidebar ~ .fixed,'
+                  + ' .st-ui.visible.' + direction + '.sidebar ~ .pusher {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }'
@@ -16094,7 +16094,7 @@
                 if(direction === 'left' || direction === 'right') {
                   module.debug('Adding CSS rules for animation distance', width);
                   style  += ''
-                    + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+                    + ' body.pushable > .st-ui.visible.' + direction + '.sidebar ~ .pusher:after {'
                     + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                     + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                     + ' }'
@@ -16110,8 +16110,8 @@
                 }
                 /* opposite sides visible forces content overlay */
                 style += ''
-                  + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher:after,'
-                  + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher:after {'
+                  + ' body.pushable > .st-ui.visible.left.sidebar ~ .st-ui.visible.right.sidebar ~ .pusher:after,'
+                  + ' body.pushable > .st-ui.visible.right.sidebar ~ .st-ui.visible.left.sidebar ~ .pusher:after {'
                   + '   -webkit-transform: translate3d(0px, 0, 0);'
                   + '           transform: translate3d(0px, 0, 0);'
                   + ' }'
@@ -16845,9 +16845,9 @@
   
     selector: {
       fixed   : '.fixed',
-      omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
+      omitted : 'script, link, style, .st-ui.modal, .st-ui.dimmer, .st-ui.nag, .st-ui.fixed',
       pusher  : '.pusher',
-      sidebar : '.ui.sidebar'
+      sidebar : '.st-ui.sidebar'
     },
   
     regExp: {
@@ -18774,8 +18774,8 @@
     },
   
     selector    : {
-      tabs : '.ui.tab',
-      ui   : '.ui'
+      tabs : '.st-ui.tab',
+      ui   : '.st-ui'
     }
   
   };
@@ -21208,7 +21208,7 @@
               return $module.is('input');
             },
             progress: function() {
-              return $module.is('.ui.progress');
+              return $module.is('.st-ui.progress');
             }
           },
   

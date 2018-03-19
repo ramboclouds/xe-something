@@ -15,7 +15,7 @@
     }
     <!--@end-->
 <!--@if($mf_output->data->cnt < 1)-->
-<div class="ui st-icon st-message st-follow-add-msg" onclick="stFollowAdd('{$member_info->member_srl}','{$mf_login_status}')">
+<div class="st-ui st-icon st-message st-follow-add-msg" onclick="stFollowAdd('{$member_info->member_srl}','{$mf_login_status}')">
     <i class="outline bell st-icon"></i>
     <div class="st-content">
         <div class="st-header">
@@ -26,7 +26,7 @@
 </div>
 <!--@end-->
 <!--@end-->
-<div class="ui unstackable items">
+<div class="st-ui unstackable items">
     <!--@foreach($something_data as $no => $follower_member)-->
     {@ $follower_member_time_gap = getTimeGap($follower_member->recent_activity, "Y.m.d H:i:s"); }
     <!--@if(defined('RX_VERSION'))-->
@@ -34,7 +34,7 @@
     <!--@end-->
     <div class="item">
         
-        <a class="ui tiny image" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">
+        <a class="st-ui tiny image" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">
             <!--@if($follower_member->profile_image->src)-->
             <img src="{$follower_member->profile_image->src}">
             <!--@else-->
@@ -60,7 +60,7 @@
     </div>
     <!--@end-->
     <!--@if(!$something_data)-->
-    <div class="ui st-message">
+    <div class="st-ui st-message">
         {$lang->something_message_empty_data}
     </div>
     <!--@end-->

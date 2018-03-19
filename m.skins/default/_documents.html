@@ -1,4 +1,4 @@
-    <div class="ui unstackable items">
+    <div class="st-ui unstackable items">
         <!--@foreach($something_data as $no => $document)-->
             {@ $thumbNail=false; }
             <!--@if($document->doc_type == 'cmt')-->
@@ -15,7 +15,7 @@
             <!--@end-->
         <div class="item">
              <!--@if($st_skin_info->thumbnail_use == 'Y')-->
-            <a class="ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
+            <a class="st-ui tiny image" href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">
                 <!--@if($thumbNail)-->
                 <img src="{$document->getThumbnail($st_skin_info->thumbnail_width, $st_skin_info->thumbnail_height, $st_skin_info->thumbnail_type)}">
                 <!--@else-->
@@ -39,7 +39,7 @@
         </div>
         <!--@end-->
         <!--@if(!$something_data)-->
-        <div class="ui st-message">
+        <div class="st-ui st-message">
             {$lang->something_message_doc_empty}
         </div>
         <!--@end-->

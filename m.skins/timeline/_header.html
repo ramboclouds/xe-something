@@ -2,9 +2,9 @@
 {@ 
     $semantic_ver="23";    
     $stBaseUrl = getUrl('')."/modules/something";
-    $ui_css=$stBaseUrl."/component/ui/semantic/semantic.min.css?".$semantic_ver;
+    $ui_css=$stBaseUrl."/component/ui/semantic/semantic.css?".$semantic_ver;
     Context::loadFile(array($ui_css));
-    $ui_js=$stBaseUrl."/component/ui/semantic/semantic.min.js?".$semantic_ver;
+    $ui_js=$stBaseUrl."/component/ui/semantic/semantic.js?".$semantic_ver;
     Context::loadFile(array($ui_js,'body'));
 }
 <load target="css/style.css" />

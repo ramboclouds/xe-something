@@ -1,6 +1,6 @@
 .st-profile{
   width:100% !important;
-  min-height:120px !important;
+  min-height:130px !important;
 }
 
 .st-profile-image{
@@ -136,7 +136,10 @@
 }
 
 @media only screen and (max-width: 767px){
-  .ui.unstackable.items > .item > .image, .ui.unstackable.items > .item > .image > img {
+  .st-ui.unstackable.items > .item > .image, .st-ui.unstackable.items > .item > .image > img {
       width: 100px !important;
+  }
+  .st-profile-top{
+    margin:0 0 !important;
   }
 }

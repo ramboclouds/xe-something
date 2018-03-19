@@ -6,11 +6,11 @@
 <!--@if($st_header_text)-->
 {$st_header_text}
 <!--@end-->
-<div class="ui cards">
+<div class="st-ui cards st-profile-top">
     <div class="card st-profile">
         <div class="st-content">
             <!--@if($st_skin_info->profile_image_use == 'Y')-->
-            <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
+            <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny st-ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny st-ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
             <!--@end-->
             <div class="st-header st-profile-nick_name">
                 <a href="#popup_menu_area" class="member_{$member_info->member_srl} a_nick" onclick="return false">{$member_info->nick_name}</a>
@@ -59,7 +59,7 @@
         <!--@end-->
     </div>
 </div>
-<div class="ui {$st_menu_css_class} item menu">
+<div class="st-ui {$st_menu_css_class} item menu">
     <!--@if($st_skin_info->menu_document_view != "N")-->
     <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
     <!--@end-->
@@ -86,12 +86,12 @@
 <!--@end-->
     
 <!--@if($something_data)-->
-<div class="ui one column centered grid st-page-parent">
+<div class="st-ui one column centered grid st-page-parent">
 {@
 $prev_page = max($page-1, 1);
 $next_page = min($page+1, $page_navigation->last_page);
 }
-    <div class="ui pagination menu st-page">
+    <div class="st-ui pagination menu st-page">
     <a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
         <i class="angle left st-icon"></i>
     </a>
