@@ -19,9 +19,9 @@
     <i class="outline bell st-icon"></i>
     <div class="st-content">
         <div class="st-header">
-        {sprintf(lang('something_follow_add_title'), $member_info->nick_name, $st_skin_info->profile_subscribe_text); }
+        {sprintf($lang->something_follow_add_title, $member_info->nick_name, $st_skin_info->profile_subscribe_text); }
         </div>
-        <p>{sprintf(lang('something_follow_add_desc'), $member_info->nick_name); }</p>
+        <p>{sprintf($lang->something_follow_add_desc, $member_info->nick_name); }</p>
     </div>
 </div>
 <!--@end-->
@@ -47,7 +47,7 @@
             <div class="meta">
                 <span class="st-doc-date" data-tooltip="{$lang->something_recent_activity}"><i class="clock outline st-icon"></i> {$follower_member_time_gap}</span>
                 <!--@if($follower_member->follower_count > 0)-->
-                {@ $subscribe_msg = sprintf(lang('something_follower_count'), $st_skin_info->profile_subscribe_text); }
+                {@ $subscribe_msg = sprintf($lang->something_follower_count, $st_skin_info->profile_subscribe_text); }
                 <span class="st-doc-date" data-tooltip="{$subscribe_msg}"><i class="bell outline st-icon"></i> {$follower_member->follower_count}</span>
                 <!--@end-->
             </div>
