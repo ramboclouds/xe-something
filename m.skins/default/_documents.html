@@ -9,9 +9,11 @@
                 {@ $thumbNail=true; }
                 <!--@end-->
             <!--@end-->
-            {@ $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s"); }
+            
             <!--@if(defined('RX_VERSION'))-->
                 {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+            <!--@else-->
+                {@ $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s"); }
             <!--@end-->
         <div class="item">
              <!--@if($st_skin_info->thumbnail_use == 'Y')-->

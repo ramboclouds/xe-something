@@ -1,11 +1,15 @@
 <!--#include("_header.html")-->
-{@ $recent_activity_gap = getTimeGap($recent_activity, "Y.m.d H:i:s"); }
+
 <!--@if(defined('RX_VERSION'))-->
 {@ $recent_activity_gap = zdate($recent_activity, 'relative'); }
+<!--@else-->
+{@ $recent_activity_gap = getTimeGap($recent_activity, "Y.m.d H:i:s"); }
 <!--@end-->
+
 <!--@if($st_header_text)-->
 {$st_header_text}
 <!--@end-->
+
 <div class="st-ui cards st-profile-top">
     <div class="card st-profile">
         <div class="st-content">

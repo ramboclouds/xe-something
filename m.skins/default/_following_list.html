@@ -3,14 +3,15 @@
         {@ 
         $thumbNail=false; 
         $doc_title = $document->getTitle($st_skin_info->ext2_subject_cut_size); 
-        $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
         }
         <!--@if($document->thumbnailExists())-->
         {@ $thumbNail=true; }
         <!--@end-->
-      
+
         <!--@if(defined('RX_VERSION'))-->
             {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+        <!--@else-->
+            {@ $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s"); }
         <!--@end-->
     <div class="item">
          <!--@if($st_skin_info->ext2_thumbnail_use == 'Y')-->

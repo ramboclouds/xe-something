@@ -4,8 +4,8 @@
             $regdate = $document->regdate;
             $nDate = zdate($regdate, 'Ymd');
             
-            $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s");
             if( defined('RX_VERSION') ) $time_gap = zdate($document->regdate, 'relative');
+            else $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s");
         }
 
         <!--@if($nowDate=="" )-->

@@ -2,8 +2,7 @@
     <!--@foreach($something_data as $no => $document)-->
         {@ 
         $thumbNail=false; 
-        $doc_title = $document->getTitle($st_skin_info->ext1_subject_cut_size); 
-        $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s");
+        $doc_title = $document->getTitle($st_skin_info->ext1_subject_cut_size);
         }
         
         <!--@if($document->thumbnailExists())-->
@@ -12,6 +11,8 @@
         
         <!--@if(defined('RX_VERSION'))-->
             {@ $time_gap = zdate($document->get('regdate'), 'relative'); }
+        <!--@else-->
+            {@ $time_gap = getTimeGap($document->get('regdate'), "Y.m.d H:i:s"); }
         <!--@end-->
     <div class="item">
             <!--@if($st_skin_info->ext1_thumbnail_use == 'Y')-->
