@@ -12,7 +12,12 @@
     </div>
     <div class="extra st-content">
       <div class="st-ui buttons right floated">
+       
+        <!--@if($something_error_type == 'permission' && !$something_is_permitted_login)-->
+          <a href="{getUrl('act','dispMemberLoginForm')}" class="right floated"><div class="st-ui basic green button st-description-href">{$lang->something_btn_confirm_ok}</div></a>
+        <!--@else-->
           <a href="{getUrl('')}" class="right floated"><div class="st-ui basic green button st-description-href">{$lang->something_btn_confirm_ok}</div></a>
+        <!--@end-->
       </div>
     </div>
   </div>
