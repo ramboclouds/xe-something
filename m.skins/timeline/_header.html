@@ -1,7 +1,7 @@
 <!--#include("_init.html")-->
 {@ 
     $semantic_ver="23";    
-    $stBaseUrl = getUrl('')."/modules/something";
+    $stBaseUrl = getNotEncodedFullUrl('')."/modules/something";
     $ui_css=$stBaseUrl."/component/ui/semantic/semantic.css?".$semantic_ver;
     Context::loadFile(array($ui_css));
     $ui_js=$stBaseUrl."/component/ui/semantic/semantic.js?".$semantic_ver;
