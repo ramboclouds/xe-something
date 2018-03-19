@@ -139,7 +139,7 @@
   .st-ui.unstackable.items > .item > .image, .st-ui.unstackable.items > .item > .image > img {
       width: 100px !important;
   }
-  .st-profile-top{
+  .st-profile-top, .st-profile{
     margin:0 0 !important;
   }
 }
