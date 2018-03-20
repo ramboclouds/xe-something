@@ -142,4 +142,13 @@
   .st-profile-top, .st-profile{
     margin:0 0 !important;
   }
+
+  .st-description-href{
+    word-wrap: break-word !important;
+  }
+
+  .st-page-parent{
+    width:100%;
+  }
+  
 }
