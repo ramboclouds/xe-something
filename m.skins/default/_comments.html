@@ -1,34 +1,34 @@
-    <div class="st-ui unstackable items">
-        <!--@foreach($something_data as $no => $document)-->
-           <!--@if($document->doc_type == 'doc')-->
-            {@ continue; }
-           <!--@else if($document->doc_type == 'cmt')-->
-            {@ 
-                $comment = cut_str($documnet->content,$st_skin_info->cmt_content_cut_size); 
-                $doc_title = cut_str($document->doc_title,$st_skin_info->cmt_subject_cut_size);
-            }
-           <!--@end-->
-           <!--@if(defined('RX_VERSION'))-->
-            {@ $time_gap = zdate($document->regdate, 'relative'); }
-           <!--@else-->
-            {@ $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s"); }
-           <!--@end-->
-        <div class="item">
-               <div class="st-content">
-                       <div class="description st-description-href">
-                           <a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}#comment_{$document->comment_srl}">{$document->content}</a>
-                       </div>
-                       <div class="meta">
-                               <span class="st-doc-date"><i class="clock outline st-icon"></i>{$time_gap}</span><!--@if($st_skin_info->cmt_browser_title_view == 'Y')-->
-                               <span class="st-board-name"><i class="folder outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl')}">{$document->browser_title}</a> <i class="right chevron st-icon divider"></i> </span>
-                               <!--@end--><span class="st-cmt-doc-title"><i class="file outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a></span><!--@if($document->voted_count > 0 && $st_skin_info->voted_count_view == "Y")--><span class="st-doc-date"><i class="pink outline heart st-icon"></i> {$document->voted_count}</span><!--@end-->
-                       </div> 
-               </div>
-        </div>
-       <!--@end-->
-       <!--@if(!$something_data)-->
-       <div class="st-ui st-message">
-           {$lang->something_message_cmt_empty}
-       </div>
-       <!--@end-->
+	<div class="st-ui unstackable items">
+		<!--@foreach($something_data as $no => $document)-->
+			<!--@if($document->doc_type == 'doc')-->
+			{@ continue; }
+			<!--@else if($document->doc_type == 'cmt')-->
+			{@ 
+				$comment = cut_str($documnet->content,$st_skin_info->cmt_content_cut_size); 
+				$doc_title = cut_str($document->doc_title,$st_skin_info->cmt_subject_cut_size);
+			}
+			<!--@end-->
+			<!--@if(defined('RX_VERSION'))-->
+			{@ $time_gap = zdate($document->regdate, 'relative'); }
+			<!--@else-->
+			{@ $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s"); }
+			<!--@end-->
+		<div class="item">
+			   <div class="st-content">
+						<div class="description st-description-href">
+							<a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}#comment_{$document->comment_srl}">{$document->content}</a>
+						</div>
+						<div class="meta">
+								<span class="st-doc-date"><i class="clock outline st-icon"></i>{$time_gap}</span><!--@if($st_skin_info->cmt_browser_title_view == 'Y')-->
+								<span class="st-board-name"><i class="folder outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl')}">{$document->browser_title}</a> <i class="right chevron st-icon divider"></i> </span>
+								<!--@end--><span class="st-cmt-doc-title"><i class="file outline st-icon"></i><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$doc_title}</a></span><!--@if($document->voted_count > 0 && $st_skin_info->voted_count_view == "Y")--><span class="st-doc-date"><i class="pink outline heart st-icon"></i> {$document->voted_count}</span><!--@end-->
+						</div> 
+				</div>
+		</div>
+		<!--@end-->
+		<!--@if(!$something_data)-->
+		<div class="st-ui st-message">
+		   {$lang->something_message_cmt_empty}
+		</div>
+		<!--@end-->
    </div>

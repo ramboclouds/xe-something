@@ -7,363 +7,363 @@
 	<author email_address="xe.yeyak@gmail.com" link="https://xe-something.com/">
 		<name xml:lang="ko">구름이</name>
 	</author>
-    <extra_vars>
-        <group>
-            <title xml:lang="ko">프로필 설정</title>
-            <var name="profile_group_use" type="radio">
-                <title xml:lang="ko">그룹명 표시</title>
-                <description xml:lang="ko">회원이 소속된 그룹명을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="profile_description_use" type="radio">
-                <title xml:lang="ko">서명 표시</title>
-                <description xml:lang="ko">회원이 입력한 서명을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="profile_description_count" type="text">
-                <title xml:lang="ko">서명 길이</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '60' 입니다.</description>
-            </var>
-            <var name="profile_image_use" type="radio">
-                <title xml:lang="ko">프로필 이미지 표시</title>
-                <description xml:lang="ko">회원이 프로필 이미지를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="profile_last_activity_use" type="radio">
-                <title xml:lang="ko">최근 활동 표시</title>
-                <description xml:lang="ko">회원이 마지막으로 활동한 시간을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="profile_subscribe_use" type="radio">
-                <title xml:lang="ko">구독자 수 표시</title>
-                <description xml:lang="ko">회원을 구독(팔로워)하고 사용자의 수를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="profile_subscribe_text" type="text">
-                <title xml:lang="ko">구독자 수 단위</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '구독' 입니다.</description>
-            </var>
+	<extra_vars>
+		<group>
+			<title xml:lang="ko">프로필 설정</title>
+			<var name="profile_group_use" type="radio">
+				<title xml:lang="ko">그룹명 표시</title>
+				<description xml:lang="ko">회원이 소속된 그룹명을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="profile_description_use" type="radio">
+				<title xml:lang="ko">서명 표시</title>
+				<description xml:lang="ko">회원이 입력한 서명을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="profile_description_count" type="text">
+				<title xml:lang="ko">서명 길이</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '60' 입니다.</description>
+			</var>
+			<var name="profile_image_use" type="radio">
+				<title xml:lang="ko">프로필 이미지 표시</title>
+				<description xml:lang="ko">회원이 프로필 이미지를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="profile_last_activity_use" type="radio">
+				<title xml:lang="ko">최근 활동 표시</title>
+				<description xml:lang="ko">회원이 마지막으로 활동한 시간을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="profile_subscribe_use" type="radio">
+				<title xml:lang="ko">구독자 수 표시</title>
+				<description xml:lang="ko">회원을 구독(팔로워)하고 사용자의 수를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="profile_subscribe_text" type="text">
+				<title xml:lang="ko">구독자 수 단위</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '구독' 입니다.</description>
+			</var>
 
-        </group>
-        <group>
-            <title xml:lang="ko">메뉴 설정</title>
-            <var name="menu_document_view" type="radio">
-                <title xml:lang="ko">작성글</title>
-                <description xml:lang="ko">메뉴에 작성 글을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="menu_comment_view" type="radio">
-                <title xml:lang="ko">댓글</title>
-                <description xml:lang="ko">메뉴에 댓글을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="menu_recommend_view" type="radio">
-                <title xml:lang="ko">추천한 글</title>
-                <description xml:lang="ko">메뉴에 추천한 글을 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="menu_my_following_view" type="radio">
-                <title xml:lang="ko">나의 팔로우</title>
-                <description xml:lang="ko">메뉴에 나의 팔로우를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-        </group>
-        <group>
-            <title xml:lang="ko">작성글 목록 설정</title>
-            <var name="subject_cut_size" type="text">
-                <title xml:lang="ko">제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
-            </var>
+		</group>
+		<group>
+			<title xml:lang="ko">메뉴 설정</title>
+			<var name="menu_document_view" type="radio">
+				<title xml:lang="ko">작성글</title>
+				<description xml:lang="ko">메뉴에 작성 글을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="menu_comment_view" type="radio">
+				<title xml:lang="ko">댓글</title>
+				<description xml:lang="ko">메뉴에 댓글을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="menu_recommend_view" type="radio">
+				<title xml:lang="ko">추천한 글</title>
+				<description xml:lang="ko">메뉴에 추천한 글을 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="menu_my_following_view" type="radio">
+				<title xml:lang="ko">나의 팔로우</title>
+				<description xml:lang="ko">메뉴에 나의 팔로우를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+		</group>
+		<group>
+			<title xml:lang="ko">작성글 목록 설정</title>
+			<var name="subject_cut_size" type="text">
+				<title xml:lang="ko">제목 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+			</var>
 
-             <var name="content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
-            </var>
+			 <var name="content_cut_size" type="text">
+				<title xml:lang="ko">본문 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+			</var>
 
-            <var name="comment_count_view" type="radio">
-                <title xml:lang="ko">댓글수</title>
-                <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="voted_count_view" type="radio">
-                <title xml:lang="ko">추천수</title>
-                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="thumbnail_use" type="radio">
-                <title xml:lang="ko">썸네일 표시</title>
-                <description xml:lang="ko">썸네일 표시여부</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
+			<var name="comment_count_view" type="radio">
+				<title xml:lang="ko">댓글수</title>
+				<description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="voted_count_view" type="radio">
+				<title xml:lang="ko">추천수</title>
+				<description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="thumbnail_use" type="radio">
+				<title xml:lang="ko">썸네일 표시</title>
+				<description xml:lang="ko">썸네일 표시여부</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
 
-            <var name="thumbnail_type" type="radio">
-                <title xml:lang="ko">썸네일 비율(*)</title>
-                <options value="">
-                    <title xml:lang="ko">크롭(기본)</title>
-                </options>
-                <options value="ratio">
-                    <title xml:lang="ko">원본 비율</title>
-                </options>
-            </var>
-        </group>
+			<var name="thumbnail_type" type="radio">
+				<title xml:lang="ko">썸네일 비율(*)</title>
+				<options value="">
+					<title xml:lang="ko">크롭(기본)</title>
+				</options>
+				<options value="ratio">
+					<title xml:lang="ko">원본 비율</title>
+				</options>
+			</var>
+		</group>
 
-        <group>
-            <title xml:lang="ko">댓글 목록 설정</title>
-            <var name="cmt_content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
-            </var>
+		<group>
+			<title xml:lang="ko">댓글 목록 설정</title>
+			<var name="cmt_content_cut_size" type="text">
+				<title xml:lang="ko">본문 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+			</var>
 
-            <var name="cmt_subject_cut_size" type="text">
-                <title xml:lang="ko">댓글의 제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
-            </var>
-            <var name="cmt_voted_count_view" type="radio">
-                <title xml:lang="ko">추천수</title>
-                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
+			<var name="cmt_subject_cut_size" type="text">
+				<title xml:lang="ko">댓글의 제목 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '20' 입니다.</description>
+			</var>
+			<var name="cmt_voted_count_view" type="radio">
+				<title xml:lang="ko">추천수</title>
+				<description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
 
-            <var name="cmt_browser_title_view" type="radio">
-                <title xml:lang="ko">게시판 이름 표시</title>
-                <description xml:lang="ko">댓글 단 글의 게시판 이름 표시</description>
-                <options value="Y">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-        </group>
+			<var name="cmt_browser_title_view" type="radio">
+				<title xml:lang="ko">게시판 이름 표시</title>
+				<description xml:lang="ko">댓글 단 글의 게시판 이름 표시</description>
+				<options value="Y">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+		</group>
 
-        <group>
-            <title xml:lang="ko">추천한 글 목록 설정</title>
-            <var name="ext1_subject_cut_size" type="text">
-                <title xml:lang="ko">제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
-            </var>
+		<group>
+			<title xml:lang="ko">추천한 글 목록 설정</title>
+			<var name="ext1_subject_cut_size" type="text">
+				<title xml:lang="ko">제목 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+			</var>
 
-             <var name="ext1_content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
-            </var>
-            <var name="ext1_nickname_view" type="radio">
-                <title xml:lang="ko">닉네임</title>
-                <description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext1_time_view" type="radio">
-                <title xml:lang="ko">작성 시간</title>
-                <description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext1_comment_count_view" type="radio">
-                <title xml:lang="ko">댓글수</title>
-                <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext1_voted_count_view" type="radio">
-                <title xml:lang="ko">추천수</title>
-                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext1_thumbnail_use" type="radio">
-                <title xml:lang="ko">썸네일 표시</title>
-                <description xml:lang="ko">썸네일 표시여부</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext1_thumbnail_type" type="radio">
-                <title xml:lang="ko">썸네일 비율(*)</title>
-                <options value="">
-                    <title xml:lang="ko">크롭(기본)</title>
-                </options>
-                <options value="ratio">
-                    <title xml:lang="ko">원본 비율</title>
-                </options>
-            </var>
-        </group>
+			 <var name="ext1_content_cut_size" type="text">
+				<title xml:lang="ko">본문 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+			</var>
+			<var name="ext1_nickname_view" type="radio">
+				<title xml:lang="ko">닉네임</title>
+				<description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext1_time_view" type="radio">
+				<title xml:lang="ko">작성 시간</title>
+				<description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext1_comment_count_view" type="radio">
+				<title xml:lang="ko">댓글수</title>
+				<description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext1_voted_count_view" type="radio">
+				<title xml:lang="ko">추천수</title>
+				<description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext1_thumbnail_use" type="radio">
+				<title xml:lang="ko">썸네일 표시</title>
+				<description xml:lang="ko">썸네일 표시여부</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext1_thumbnail_type" type="radio">
+				<title xml:lang="ko">썸네일 비율(*)</title>
+				<options value="">
+					<title xml:lang="ko">크롭(기본)</title>
+				</options>
+				<options value="ratio">
+					<title xml:lang="ko">원본 비율</title>
+				</options>
+			</var>
+		</group>
 
-         <group>
-            <title xml:lang="ko">나의 팔로우 소식 글 목록 설정</title>
-            <var name="ext2_subject_cut_size" type="text">
-                <title xml:lang="ko">제목 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
-            </var>
-             <var name="ext2_content_cut_size" type="text">
-                <title xml:lang="ko">본문 글자수</title>
-                <description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
-            </var>
-            <var name="ext2_nickname_view" type="radio">
-                <title xml:lang="ko">닉네임</title>
-                <description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext2_time_view" type="radio">
-                <title xml:lang="ko">작성 시간</title>
-                <description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext2_comment_count_view" type="radio">
-                <title xml:lang="ko">댓글수</title>
-                <description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext2_voted_count_view" type="radio">
-                <title xml:lang="ko">추천수</title>
-                <description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext2_thumbnail_use" type="radio">
-                <title xml:lang="ko">썸네일 표시</title>
-                <description xml:lang="ko">썸네일 표시여부</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="ext2_thumbnail_type" type="radio">
-                <title xml:lang="ko">썸네일 비율(*)</title>
-                <options value="">
-                    <title xml:lang="ko">크롭(기본)</title>
-                </options>
-                <options value="ratio">
-                    <title xml:lang="ko">원본 비율</title>
-                </options>
-            </var>
-        </group>
+		 <group>
+			<title xml:lang="ko">나의 팔로우 소식 글 목록 설정</title>
+			<var name="ext2_subject_cut_size" type="text">
+				<title xml:lang="ko">제목 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '24' 입니다.</description>
+			</var>
+			 <var name="ext2_content_cut_size" type="text">
+				<title xml:lang="ko">본문 글자수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정 '80' 입니다.</description>
+			</var>
+			<var name="ext2_nickname_view" type="radio">
+				<title xml:lang="ko">닉네임</title>
+				<description xml:lang="ko">닉네임을 표시 여부를 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext2_time_view" type="radio">
+				<title xml:lang="ko">작성 시간</title>
+				<description xml:lang="ko">작성 시간 표시 여부를 설정합니다..</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext2_comment_count_view" type="radio">
+				<title xml:lang="ko">댓글수</title>
+				<description xml:lang="ko">게시글에 댓글이 있을경우 댓글 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext2_voted_count_view" type="radio">
+				<title xml:lang="ko">추천수</title>
+				<description xml:lang="ko">게시글에 추천 있을경우 추천 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext2_thumbnail_use" type="radio">
+				<title xml:lang="ko">썸네일 표시</title>
+				<description xml:lang="ko">썸네일 표시여부</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="ext2_thumbnail_type" type="radio">
+				<title xml:lang="ko">썸네일 비율(*)</title>
+				<options value="">
+					<title xml:lang="ko">크롭(기본)</title>
+				</options>
+				<options value="ratio">
+					<title xml:lang="ko">원본 비율</title>
+				</options>
+			</var>
+		</group>
 
-        <group>
-            <title xml:lang="ko">페이징 설정</title>
-            <var name="use_page" type="radio">
-                <title xml:lang="ko">페이지 표시</title>
-                <description xml:lang="ko">스킨 하단에 페이지 숫자를 표시합니다.</description>
-                <options value="">
-                    <title xml:lang="ko">출력</title>
-                </options>
-                <options value="N">
-                    <title xml:lang="ko">미출력</title>
-                </options>
-            </var>
-            <var name="list_count" type="text">
-                <title xml:lang="ko">문서 출력수</title>
-                <description xml:lang="ko">페이지당 표시되는 아이템 수 , 입력하지 않으면 기본 설정은 '10' 입니다.</description>
-            </var>
-            <var name="page_count" type="text">
-                <title xml:lang="ko">페이지 출력수</title>
-                <description xml:lang="ko">페이지 목록에 표시되는 페이지수  , 입력하지 않으면 기본 설정은 '5' 입니다.</description>
-            </var>
-        </group>
-    </extra_vars>
+		<group>
+			<title xml:lang="ko">페이징 설정</title>
+			<var name="use_page" type="radio">
+				<title xml:lang="ko">페이지 표시</title>
+				<description xml:lang="ko">스킨 하단에 페이지 숫자를 표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">미출력</title>
+				</options>
+			</var>
+			<var name="list_count" type="text">
+				<title xml:lang="ko">문서 출력수</title>
+				<description xml:lang="ko">페이지당 표시되는 아이템 수 , 입력하지 않으면 기본 설정은 '10' 입니다.</description>
+			</var>
+			<var name="page_count" type="text">
+				<title xml:lang="ko">페이지 출력수</title>
+				<description xml:lang="ko">페이지 목록에 표시되는 페이지수  , 입력하지 않으면 기본 설정은 '5' 입니다.</description>
+			</var>
+		</group>
+	</extra_vars>
 </skin>

@@ -1,68 +1,68 @@
 <!--@if($member_info->member_srl != $logged_info->member_srl)-->
-    <!--@if($logged_info->member_srl)-->
-    {@
-        $mf_args=new stdClass;
-        $mf_args->target_srl = $member_info->member_srl;
-        $mf_args->member_srl = $logged_info->member_srl;
-        $mf_output=executeQuery("something.getMemberFollowCount",$mf_args);
-        $mf_login_status="login";
-    }
-    <!--@else-->
-    {@
-        $mf_output=new stdClass;
-        $mf_output->data->cnt = 0;
-        $mf_login_status="logout";
-    }
-    <!--@end-->
+	<!--@if($logged_info->member_srl)-->
+	{@
+		$mf_args=new stdClass;
+		$mf_args->target_srl = $member_info->member_srl;
+		$mf_args->member_srl = $logged_info->member_srl;
+		$mf_output=executeQuery("something.getMemberFollowCount",$mf_args);
+		$mf_login_status="login";
+	}
+	<!--@else-->
+	{@
+		$mf_output=new stdClass;
+		$mf_output->data->cnt = 0;
+		$mf_login_status="logout";
+	}
+	<!--@end-->
 <!--@if($mf_output->data->cnt < 1)-->
 <div class="st-ui st-icon st-message st-follow-add-msg" onclick="stFollowAdd('{$member_info->member_srl}','{$mf_login_status}')">
-    <i class="outline bell st-icon"></i>
-    <div class="st-content">
-        <div class="st-header">
-        {sprintf($lang->something_follow_add_title, $member_info->nick_name, $st_skin_info->profile_subscribe_text); }
-        </div>
-        <p>{sprintf($lang->something_follow_add_desc, $member_info->nick_name); }</p>
-    </div>
+	<i class="outline bell st-icon"></i>
+	<div class="st-content">
+		<div class="st-header">
+		{sprintf($lang->something_follow_add_title, $member_info->nick_name, $st_skin_info->profile_subscribe_text); }
+		</div>
+		<p>{sprintf($lang->something_follow_add_desc, $member_info->nick_name); }</p>
+	</div>
 </div>
 <!--@end-->
 <!--@end-->
 <div class="st-ui unstackable items">
-    <!--@foreach($something_data as $no => $follower_member)-->
-    <!--@if(defined('RX_VERSION'))-->
-        {@ $follower_member_time_gap = zdate($follower_member->recent_activity, 'relative'); }
-    <!--@else-->
-        {@ $follower_member_time_gap = getTimeGap($follower_member->recent_activity, "Y.m.d H:i:s"); }
-    <!--@end-->
-    <div class="item">
-        
-        <a class="st-ui tiny image" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">
-            <!--@if($follower_member->profile_image->src)-->
-            <img src="{$follower_member->profile_image->src}">
-            <!--@else-->
-            <img src="images/user128.png">
-            <!--@end-->
-        </a>
+	<!--@foreach($something_data as $no => $follower_member)-->
+	<!--@if(defined('RX_VERSION'))-->
+		{@ $follower_member_time_gap = zdate($follower_member->recent_activity, 'relative'); }
+	<!--@else-->
+		{@ $follower_member_time_gap = getTimeGap($follower_member->recent_activity, "Y.m.d H:i:s"); }
+	<!--@end-->
+	<div class="item">
+		
+		<a class="st-ui tiny image" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">
+			<!--@if($follower_member->profile_image->src)-->
+			<img src="{$follower_member->profile_image->src}">
+			<!--@else-->
+			<img src="images/user128.png">
+			<!--@end-->
+		</a>
 
-        <div class="st-content">
-            <a class="st-header st-href" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}"><!--@if($follower_member->image_name->src)--><img src="{$follower_member->image_name->src}" width="{$follower_member->image_name->width}" height="{$follower_member->image_name->height}"><!--@else-->{$follower_member->nick_name}<!--@end--></a>
-            <div class="meta">
-                <span class="st-doc-date" data-tooltip="{$lang->something_recent_activity}"><i class="clock outline st-icon"></i> {$follower_member_time_gap}</span>
-                <!--@if($follower_member->follower_count > 0)-->
-                {@ $subscribe_msg = sprintf($lang->something_follower_count, $st_skin_info->profile_subscribe_text); }
-                <span class="st-doc-date" data-tooltip="{$subscribe_msg}"><i class="bell outline st-icon"></i> {$follower_member->follower_count}</span>
-                <!--@end-->
-            </div>
-            
-            <div class="description st-description-href">
-                <a href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">{$follower_member->signature}</a>
-            </div>
-            
-        </div>
-    </div>
-    <!--@end-->
-    <!--@if(!$something_data)-->
-    <div class="st-ui st-message">
-        {$lang->something_message_empty_data}
-    </div>
-    <!--@end-->
+		<div class="st-content">
+			<a class="st-header st-href" href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}"><!--@if($follower_member->image_name->src)--><img src="{$follower_member->image_name->src}" width="{$follower_member->image_name->width}" height="{$follower_member->image_name->height}"><!--@else-->{$follower_member->nick_name}<!--@end--></a>
+			<div class="meta">
+				<span class="st-doc-date" data-tooltip="{$lang->something_recent_activity}"><i class="clock outline st-icon"></i> {$follower_member_time_gap}</span>
+				<!--@if($follower_member->follower_count > 0)-->
+				{@ $subscribe_msg = sprintf($lang->something_follower_count, $st_skin_info->profile_subscribe_text); }
+				<span class="st-doc-date" data-tooltip="{$subscribe_msg}"><i class="bell outline st-icon"></i> {$follower_member->follower_count}</span>
+				<!--@end-->
+			</div>
+			
+			<div class="description st-description-href">
+				<a href="{getUrl('','mid',$st_config->mid_name,'smember',$follower_member->smember)}">{$follower_member->signature}</a>
+			</div>
+			
+		</div>
+	</div>
+	<!--@end-->
+	<!--@if(!$something_data)-->
+	<div class="st-ui st-message">
+		{$lang->something_message_empty_data}
+	</div>
+	<!--@end-->
 </div>

@@ -11,103 +11,103 @@
 <!--@end-->
 
 <div class="st-ui cards st-profile-top">
-    <div class="card st-profile">
-        <div class="st-content">
-            <!--@if($st_skin_info->profile_image_use == 'Y')-->
-            <div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny st-ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny st-ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
-            <!--@end-->
-            <div class="st-header st-profile-nick_name">
-                <a href="#popup_menu_area" class="member_{$member_info->member_srl} a_nick" onclick="return false">{$member_info->nick_name}</a>
-            </div>
-            <!--@if($st_skin_info->profile_group_use == 'Y')-->
-            <div class="meta st-profile-group">
-            {implode($member_info->group_list,",")}
-            </div>
-            <!--@end-->
-            <!--@if($st_skin_info->profile_description_use == 'Y')-->
-            <div class="description st-profile-description">
-                {cut_str($member_info->signature,$st_skin_info->profile_description_count)}
-            </div>
-            <!--@end-->
-          </div>
-        <!--@if($st_skin_info->profile_last_activity_use == 'Y' || $st_skin_info->profile_subscribe_use == 'Y')-->
-        <div class="extra st-content pf-card-extra-content">
-            <!--@if($st_skin_info->profile_last_activity_use == 'Y')-->
-            <span class="left" >
-            {$lang->something_recent_activity} : {$recent_activity_gap}
-            </span>
-            <!--@end-->
-            <!--@if($st_skin_info->profile_subscribe_use == 'Y')-->
-            {@ 
-                $subscribe_msg = "";
-                if($st_config->subscribe_click_action == 'add') $subscribe_msg = sprintf($lang->something_message_subscribe_mouseon_add, $member_info->nick_name, $st_skin_info->profile_subscribe_text);
+	<div class="card st-profile">
+		<div class="st-content">
+			<!--@if($st_skin_info->profile_image_use == 'Y')-->
+			<div class="st-profile-image"><!--@if(!$member_info->profile_image->src)--><img class="tiny st-ui image none-profile-image" src="images/user128.png"><!--@else--><img class="tiny st-ui image" src="{$member_info->profile_image->src}"><!--@end--></div>
+			<!--@end-->
+			<div class="st-header st-profile-nick_name">
+				<a href="#popup_menu_area" class="member_{$member_info->member_srl} a_nick" onclick="return false">{$member_info->nick_name}</a>
+			</div>
+			<!--@if($st_skin_info->profile_group_use == 'Y')-->
+			<div class="meta st-profile-group">
+			{implode($member_info->group_list,",")}
+			</div>
+			<!--@end-->
+			<!--@if($st_skin_info->profile_description_use == 'Y')-->
+			<div class="description st-profile-description">
+				{cut_str($member_info->signature,$st_skin_info->profile_description_count)}
+			</div>
+			<!--@end-->
+		  </div>
+		<!--@if($st_skin_info->profile_last_activity_use == 'Y' || $st_skin_info->profile_subscribe_use == 'Y')-->
+		<div class="extra st-content pf-card-extra-content">
+			<!--@if($st_skin_info->profile_last_activity_use == 'Y')-->
+			<span class="left" >
+			{$lang->something_recent_activity} : {$recent_activity_gap}
+			</span>
+			<!--@end-->
+			<!--@if($st_skin_info->profile_subscribe_use == 'Y')-->
+			{@ 
+				$subscribe_msg = "";
+				if($st_config->subscribe_click_action == 'add') $subscribe_msg = sprintf($lang->something_message_subscribe_mouseon_add, $member_info->nick_name, $st_skin_info->profile_subscribe_text);
 
-                if($st_config->subscribe_click_action == 'list') $subscribe_msg = sprintf($lang->something_message_subscribe_mouseon_list, $member_info->nick_name, $st_skin_info->profile_subscribe_text);
+				if($st_config->subscribe_click_action == 'list') $subscribe_msg = sprintf($lang->something_message_subscribe_mouseon_list, $member_info->nick_name, $st_skin_info->profile_subscribe_text);
 
-              
-                if($st_config->subscribe_use == "N") $subscribe_msg=sprintf($lang->something_follow_disabled,$st_skin_info->profile_subscribe_text);
-                $subscribe_link = getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist');
-                if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','logout')";
-                if($st_config->subscribe_click_action == "add" && $logged_info->member_srl) $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','login')";
-                if($st_config->subscribe_use == "N") $subscribe_link = "#";
-                if(!$module_installed_memberfollow) $subscribe_link = "javascript:stFollowModuleNotinatalled()";
-            }
-            <span class="right floated st-member-followercount" data-tooltip="{$subscribe_msg}" data-position="top right">
-                <a href="{$subscribe_link}">
-                <i class="bell outline st-icon"></i>
-                {$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
-                </a>
-            </span>
-            <!--@end-->
-        </div>
-        <!--@end-->
-    </div>
+			  
+				if($st_config->subscribe_use == "N") $subscribe_msg=sprintf($lang->something_follow_disabled,$st_skin_info->profile_subscribe_text);
+				$subscribe_link = getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followerlist');
+				if($st_config->subscribe_click_action == "add") $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','logout')";
+				if($st_config->subscribe_click_action == "add" && $logged_info->member_srl) $subscribe_link = "javascript:stFollowAdd('".$member_info->member_srl."','login')";
+				if($st_config->subscribe_use == "N") $subscribe_link = "#";
+				if(!$module_installed_memberfollow) $subscribe_link = "javascript:stFollowModuleNotinatalled()";
+			}
+			<span class="right floated st-member-followercount" data-tooltip="{$subscribe_msg}" data-position="top right">
+				<a href="{$subscribe_link}">
+				<i class="bell outline st-icon"></i>
+				{$member_info->follower_count}명 {$st_skin_info->profile_subscribe_text}
+				</a>
+			</span>
+			<!--@end-->
+		</div>
+		<!--@end-->
+	</div>
 </div>
 <div class="st-ui {$st_menu_css_class} item menu">
-    <!--@if($st_skin_info->menu_document_view != "N")-->
-    <a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
-    <!--@end-->
-    <!--@if($st_skin_info->menu_comment_view != "N")-->
-    <a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_cmt}</a>
-    <!--@end-->
-    <!--@if($st_skin_info->menu_recommend_view != "N")-->
-    <a class="item <!--@if(Context::get('view_type') == 'recommend')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','recommend')}">{$lang->something_view_type_recommend}</a>
-    <!--@end-->
-    <!--@if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl)-->
-    <a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="<!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->#<!--@else-->{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}<!--@end-->" <!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->data-tooltip="{$lang->something_follow_disabled}" data-position="bottom right"<!--@end-->>{$st_config->subscribe_follow_view_menu_name}</a>
-    <!--@end-->
+	<!--@if($st_skin_info->menu_document_view != "N")-->
+	<a class="item <!--@if(Context::get('view_type') == '' || Context::get('view_type') == 'document')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'))}">{$lang->something_view_type_doc}</a>
+	<!--@end-->
+	<!--@if($st_skin_info->menu_comment_view != "N")-->
+	<a class="item <!--@if(Context::get('view_type') == 'comment')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','comment')}">{$lang->something_view_type_cmt}</a>
+	<!--@end-->
+	<!--@if($st_skin_info->menu_recommend_view != "N")-->
+	<a class="item <!--@if(Context::get('view_type') == 'recommend')-->active<!--@end-->" href="{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','recommend')}">{$lang->something_view_type_recommend}</a>
+	<!--@end-->
+	<!--@if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl)-->
+	<a class="item <!--@if(Context::get('view_type') == 'followinglist')-->active<!--@end-->" href="<!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->#<!--@else-->{getUrl('','mid',Context::get('mid'),'smember',Context::get('smember'),'view_type','followinglist')}<!--@end-->" <!--@if($st_config->subscribe_use == "N" || $st_config->subscribe_follow_view_use == "N")-->data-tooltip="{$lang->something_follow_disabled}" data-position="bottom right"<!--@end-->>{$st_config->subscribe_follow_view_menu_name}</a>
+	<!--@end-->
 </div>
 <!--@if(Context::get('view_type') == '')-->
-    <!--#include("_documents.html")-->
+	<!--#include("_documents.html")-->
 <!--@else if(Context::get('view_type') == 'comment')-->
-    <!--#include("_comments.html")-->
+	<!--#include("_comments.html")-->
 <!--@else if(Context::get('view_type') == 'recommend')-->
-    <!--#include("_recommend.html")-->
+	<!--#include("_recommend.html")-->
 <!--@else if(Context::get('view_type') == 'followerlist')-->
-    <!--#include("_follower_list.html")-->
+	<!--#include("_follower_list.html")-->
 <!--@else if(Context::get('view_type') == 'followinglist')-->
-    <!--#include("_following_list.html")-->    
+	<!--#include("_following_list.html")-->	
 <!--@end-->
-    
+	
 <!--@if($something_data)-->
 <div class="st-ui one column centered grid st-page-parent">
 {@
 $prev_page = max($page-1, 1);
 $next_page = min($page+1, $page_navigation->last_page);
 }
-    <div class="st-ui pagination menu st-page">
-    <a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
-        <i class="angle left st-icon"></i>
-    </a>
-    <!--@while($page_no = $page_navigation->getNextPage())-->
+	<div class="st-ui pagination menu st-page">
+	<a class="<!--@if($page == $prev_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $prev_page)-->#<!--@else-->{getUrl('page',$prev_page)}<!--@end-->">
+		<i class="angle left st-icon"></i>
+	</a>
+	<!--@while($page_no = $page_navigation->getNextPage())-->
 
-    <a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
-    <!--@end-->
+	<a class="<!--@if($page == $page_no)-->active<!--@end--> item" href="<!--@if($page == $page_no)-->#<!--@else-->{getUrl('page',$page_no)}<!--@end-->">{$page_no}</a>
+	<!--@end-->
 
-    <a class="<!--@if($page == $next_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $next_page)-->#<!--@else-->{getUrl('page',$next_page,'module_srl','')}<!--@end-->">
-        <i class="angle right st-icon"></i>
-    </a>
-    </div>
+	<a class="<!--@if($page == $next_page)-->disabeled<!--@end--> item st-angle"  href="<!--@if($page == $next_page)-->#<!--@else-->{getUrl('page',$next_page,'module_srl','')}<!--@end-->">
+		<i class="angle right st-icon"></i>
+	</a>
+	</div>
 </div>
 <!--@end-->
 <!--@if($st_footer_text)-->

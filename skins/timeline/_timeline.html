@@ -1,63 +1,63 @@
-    <div class="st-ui unstackable items">
-        <!--@foreach($something_data as $no => $document)-->
-        {@
-            $regdate = $document->regdate;
-            $nDate = zdate($regdate, 'Ymd');
-            
-            if( defined('RX_VERSION') ) $time_gap = zdate($document->regdate, 'relative');
-            else $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s");
-        }
+	<div class="st-ui unstackable items">
+		<!--@foreach($something_data as $no => $document)-->
+		{@
+			$regdate = $document->regdate;
+			$nDate = zdate($regdate, 'Ymd');
+			
+			if( defined('RX_VERSION') ) $time_gap = zdate($document->regdate, 'relative');
+			else $time_gap = getTimeGap($document->regdate, "Y.m.d H:i:s");
+		}
 
-        <!--@if($nowDate=="" )-->
-        <div class="st-ui vertical padded segment list">
-        <div class="st-ui top left attached label">{$time_gap}</div>
-        <!--@end-->
-        
-        <!--@if($nowDate != $nDate && $nowDate != "" )-->
-        </div>
-        <div class="st-ui vertical  padded segment list">
-        <div class="st-ui top left attached label">{$time_gap}</div>
-        <!--@end-->
-            <div class="item">
-                <i class="<!--@if($document->doc_type == "doc")-->file<!--@else-->outline comment<!--@end--> st-icon"></i>
-                <div class="st-content">
-            <!--@if($document->doc_type == "doc")-->
-                <div class="description st-title"><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getTitle($st_skin_info->subject_cut_size)}</a>
-            <!--@else-->
-                <div class="description st-title"><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}#comment_{$document->comment_srl}">{cut_str($document->content,$st_skin_info->cmt_content_cut_size)}</a>
-            <!--@end-->
-                <!--@if($st_skin_info->clock_view == "Y")-->
-                <div class="st-ui mini basic label">
-                <i class="mini outline clock st-icon"></i>{zdate($document->regdate, 'H:i')}
-                </div>
-                <!--@end-->
-                <!--@if($document->doc_type == "doc")-->
-                    <!--@if($document->getCommentCount() > 0 && $st_skin_info->comment_count_view == "Y")-->
-                    <div class="st-ui mini basic label">
-                    <i class="mini outline comment st-icon"></i>{$document->getCommentCount()}
-                    </div>
-                    <!--@end-->
-                    <!--@if($document->get('voted_count') > 0 && $st_skin_info->voted_count_view == "Y")-->
-                    <div class="st-ui mini basic label">
-                    <i class="mini pink outline heart st-icon"></i>{$document->get('voted_count')}
-                    </div>
-                    <!--@end-->
-                <!--@else-->
-                    <!--@if($document->voted_count > 0 && $st_skin_info->voted_count_view == "Y")-->
-                        <div class="st-ui mini basic label">
-                        <i class="mini pink outline heart st-icon"></i>{$document->voted_count}
-                        </div>
-                    <!--@end-->
-                <!--@end-->
-            </div>
-            </div>
-        </div>
-        {@ $nowDate= $nDate; }
-        <!--@end-->
-        </div>
-        <!--@if(!$something_data)-->
-        <div class="st-ui st-message">
-            {$lang->something_message_doc_empty}
-        </div>
-        <!--@end-->
-    </div>
+		<!--@if($nowDate=="" )-->
+		<div class="st-ui vertical padded segment list">
+		<div class="st-ui top left attached label">{$time_gap}</div>
+		<!--@end-->
+		
+		<!--@if($nowDate != $nDate && $nowDate != "" )-->
+		</div>
+		<div class="st-ui vertical  padded segment list">
+		<div class="st-ui top left attached label">{$time_gap}</div>
+		<!--@end-->
+			<div class="item">
+				<i class="<!--@if($document->doc_type == "doc")-->file<!--@else-->outline comment<!--@end--> st-icon"></i>
+				<div class="st-content">
+			<!--@if($document->doc_type == "doc")-->
+				<div class="description st-title"><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}">{$document->getTitle($st_skin_info->subject_cut_size)}</a>
+			<!--@else-->
+				<div class="description st-title"><a href="{getUrl('','mid',$document->mid,'document_srl',$document->document_srl)}#comment_{$document->comment_srl}">{cut_str($document->content,$st_skin_info->cmt_content_cut_size)}</a>
+			<!--@end-->
+				<!--@if($st_skin_info->clock_view == "Y")-->
+				<div class="st-ui mini basic label">
+				<i class="mini outline clock st-icon"></i>{zdate($document->regdate, 'H:i')}
+				</div>
+				<!--@end-->
+				<!--@if($document->doc_type == "doc")-->
+					<!--@if($document->getCommentCount() > 0 && $st_skin_info->comment_count_view == "Y")-->
+					<div class="st-ui mini basic label">
+					<i class="mini outline comment st-icon"></i>{$document->getCommentCount()}
+					</div>
+					<!--@end-->
+					<!--@if($document->get('voted_count') > 0 && $st_skin_info->voted_count_view == "Y")-->
+					<div class="st-ui mini basic label">
+					<i class="mini pink outline heart st-icon"></i>{$document->get('voted_count')}
+					</div>
+					<!--@end-->
+				<!--@else-->
+					<!--@if($document->voted_count > 0 && $st_skin_info->voted_count_view == "Y")-->
+						<div class="st-ui mini basic label">
+						<i class="mini pink outline heart st-icon"></i>{$document->voted_count}
+						</div>
+					<!--@end-->
+				<!--@end-->
+			</div>
+			</div>
+		</div>
+		{@ $nowDate= $nDate; }
+		<!--@end-->
+		</div>
+		<!--@if(!$something_data)-->
+		<div class="st-ui st-message">
+			{$lang->something_message_doc_empty}
+		</div>
+		<!--@end-->
+	</div>

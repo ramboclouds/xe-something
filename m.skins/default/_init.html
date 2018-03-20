@@ -1,77 +1,77 @@
 {@
-    $st_skin_info = $skin_info;
-    
-    //profile
-    if(!$st_skin_info->profile_group_use) $st_skin_info->profile_group_use = 'Y';
-    if(!$st_skin_info->profile_description_use) $st_skin_info->profile_description_use = 'Y';
-    if(!$st_skin_info->profile_last_activity_use) $st_skin_info->profile_last_activity_use = 'Y';
-    if(!$st_skin_info->profile_image_use) $st_skin_info->profile_image_use = 'Y';
-    if(!$st_skin_info->profile_subscribe_use) $st_skin_info->profile_subscribe_use = 'Y';
-    if(!$st_skin_info->profile_subscribe_text) $st_skin_info->profile_subscribe_text = '구독';
-    if(!$st_skin_info->profile_description_count) $st_skin_info->profile_description_count = 60;
+	$st_skin_info = $skin_info;
+	
+	//profile
+	if(!$st_skin_info->profile_group_use) $st_skin_info->profile_group_use = 'Y';
+	if(!$st_skin_info->profile_description_use) $st_skin_info->profile_description_use = 'Y';
+	if(!$st_skin_info->profile_last_activity_use) $st_skin_info->profile_last_activity_use = 'Y';
+	if(!$st_skin_info->profile_image_use) $st_skin_info->profile_image_use = 'Y';
+	if(!$st_skin_info->profile_subscribe_use) $st_skin_info->profile_subscribe_use = 'Y';
+	if(!$st_skin_info->profile_subscribe_text) $st_skin_info->profile_subscribe_text = '구독';
+	if(!$st_skin_info->profile_description_count) $st_skin_info->profile_description_count = 60;
 
-    //menu
-    $st_menu_count = 3;
-    $st_menu_css_class="three";
+	//menu
+	$st_menu_count = 3;
+	$st_menu_css_class="three";
 
-    if($st_skin_info->menu_document_view == "N") $st_menu_count--;
-    if($st_skin_info->menu_comment_view == "N") $st_menu_count--;
-    if($st_skin_info->menu_recommend_view == "N") $st_menu_count--;
-    if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl) $st_menu_count++;
+	if($st_skin_info->menu_document_view == "N") $st_menu_count--;
+	if($st_skin_info->menu_comment_view == "N") $st_menu_count--;
+	if($st_skin_info->menu_recommend_view == "N") $st_menu_count--;
+	if($st_skin_info->menu_my_following_view != "N" && $member_info->member_srl == $logged_info->member_srl) $st_menu_count++;
 
-    //document
-    if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;
-    if(!$st_skin_info->subject_cut_size) $st_skin_info->subject_cut_size = 24;
+	//document
+	if(!$st_skin_info->content_cut_size) $st_skin_info->content_cut_size = 80;
+	if(!$st_skin_info->subject_cut_size) $st_skin_info->subject_cut_size = 24;
 
-    if(!$st_skin_info->thumbnail_use) $st_skin_info->thumbnail_use = 'Y';
-    if(!$st_skin_info->thumbnail_type) $st_skin_info->thumbnail_type = 'crop';
-    if(!$st_skin_info->thumbnail_width) $st_skin_info->thumbnail_width = 100;   
-    if(!$st_skin_info->thumbnail_height) $st_skin_info->thumbnail_height = 100;   
+	if(!$st_skin_info->thumbnail_use) $st_skin_info->thumbnail_use = 'Y';
+	if(!$st_skin_info->thumbnail_type) $st_skin_info->thumbnail_type = 'crop';
+	if(!$st_skin_info->thumbnail_width) $st_skin_info->thumbnail_width = 100;   
+	if(!$st_skin_info->thumbnail_height) $st_skin_info->thumbnail_height = 100;   
 
-    if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
-    if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
-    if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
+	if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
+	if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
+	if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
 
-    if(!$st_skin_info->comment_count_view) $st_skin_info->comment_count_view = 'Y';
-    if(!$st_skin_info->voted_count_view) $st_skin_info->voted_count_view = 'Y';
+	if(!$st_skin_info->comment_count_view) $st_skin_info->comment_count_view = 'Y';
+	if(!$st_skin_info->voted_count_view) $st_skin_info->voted_count_view = 'Y';
 
-    //comment
-    if(!$st_skin_info->cmt_content_cut_size) $st_skin_info->cmt_content_cut_size = 80;
-    if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
-    if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
-    if(!$st_skin_info->cmt_voted_count_view) $st_skin_info->cmt_voted_count_view = 'Y';
+	//comment
+	if(!$st_skin_info->cmt_content_cut_size) $st_skin_info->cmt_content_cut_size = 80;
+	if(!$st_skin_info->cmt_subject_cut_size) $st_skin_info->cmt_subject_cut_size = 24;
+	if(!$st_skin_info->cmt_browser_title_view) $st_skin_info->cmt_browser_title_view = 'N';
+	if(!$st_skin_info->cmt_voted_count_view) $st_skin_info->cmt_voted_count_view = 'Y';
 
-    //recommend
-    if(!$st_skin_info->ext1_content_cut_size) $st_skin_info->ext1_content_cut_size = 80;
-    if(!$st_skin_info->ext1_subject_cut_size) $st_skin_info->ext1_subject_cut_size = 24;
-    if(!$st_skin_info->ext1_thumbnail_use) $st_skin_info->ext1_thumbnail_use = 'Y';
-    if(!$st_skin_info->ext1_thumbnail_type) $st_skin_info->ext1_thumbnail_type = 'crop';
-    if(!$st_skin_info->ext1_thumbnail_width) $st_skin_info->ext1_thumbnail_width = 100;
-    if(!$st_skin_info->ext1_thumbnail_height) $st_skin_info->ext1_thumbnail_height = 100;
-    if(!$st_skin_info->ext1_nickname_view) $st_skin_info->ext1_nickname_view = 'Y';
-    if(!$st_skin_info->ext1_time_view) $st_skin_info->ext1_time_view = 'Y';
-    if(!$st_skin_info->ext1_comment_count_view) $st_skin_info->ext1_comment_count_view = 'Y';
-    if(!$st_skin_info->ext1_voted_count_view) $st_skin_info->ext1_voted_count_view = 'Y';
+	//recommend
+	if(!$st_skin_info->ext1_content_cut_size) $st_skin_info->ext1_content_cut_size = 80;
+	if(!$st_skin_info->ext1_subject_cut_size) $st_skin_info->ext1_subject_cut_size = 24;
+	if(!$st_skin_info->ext1_thumbnail_use) $st_skin_info->ext1_thumbnail_use = 'Y';
+	if(!$st_skin_info->ext1_thumbnail_type) $st_skin_info->ext1_thumbnail_type = 'crop';
+	if(!$st_skin_info->ext1_thumbnail_width) $st_skin_info->ext1_thumbnail_width = 100;
+	if(!$st_skin_info->ext1_thumbnail_height) $st_skin_info->ext1_thumbnail_height = 100;
+	if(!$st_skin_info->ext1_nickname_view) $st_skin_info->ext1_nickname_view = 'Y';
+	if(!$st_skin_info->ext1_time_view) $st_skin_info->ext1_time_view = 'Y';
+	if(!$st_skin_info->ext1_comment_count_view) $st_skin_info->ext1_comment_count_view = 'Y';
+	if(!$st_skin_info->ext1_voted_count_view) $st_skin_info->ext1_voted_count_view = 'Y';
 
-    //following_list
-    if(!$st_skin_info->ext2_content_cut_size) $st_skin_info->ext2_content_cut_size = 80;
-    if(!$st_skin_info->ext2_subject_cut_size) $st_skin_info->ext2_subject_cut_size = 24;
-    if(!$st_skin_info->ext2_thumbnail_use) $st_skin_info->ext2_thumbnail_use = 'Y';
-    if(!$st_skin_info->ext2_thumbnail_type) $st_skin_info->ext2_thumbnail_type = 'crop';
-    if(!$st_skin_info->ext2_thumbnail_width) $st_skin_info->ext2_thumbnail_width = 100;
-    if(!$st_skin_info->ext2_thumbnail_height) $st_skin_info->ext2_thumbnail_height = 100;
-    if(!$st_skin_info->ext2_nickname_view) $st_skin_info->ext2_nickname_view = 'Y';
-    if(!$st_skin_info->ext2_time_view) $st_skin_info->ext2_time_view = 'Y';
-    if(!$st_skin_info->ext2_comment_count_view) $st_skin_info->ext2_comment_count_view = 'Y';
-    if(!$st_skin_info->ext2_voted_count_view) $st_skin_info->ext2_voted_count_view = 'Y';
+	//following_list
+	if(!$st_skin_info->ext2_content_cut_size) $st_skin_info->ext2_content_cut_size = 80;
+	if(!$st_skin_info->ext2_subject_cut_size) $st_skin_info->ext2_subject_cut_size = 24;
+	if(!$st_skin_info->ext2_thumbnail_use) $st_skin_info->ext2_thumbnail_use = 'Y';
+	if(!$st_skin_info->ext2_thumbnail_type) $st_skin_info->ext2_thumbnail_type = 'crop';
+	if(!$st_skin_info->ext2_thumbnail_width) $st_skin_info->ext2_thumbnail_width = 100;
+	if(!$st_skin_info->ext2_thumbnail_height) $st_skin_info->ext2_thumbnail_height = 100;
+	if(!$st_skin_info->ext2_nickname_view) $st_skin_info->ext2_nickname_view = 'Y';
+	if(!$st_skin_info->ext2_time_view) $st_skin_info->ext2_time_view = 'Y';
+	if(!$st_skin_info->ext2_comment_count_view) $st_skin_info->ext2_comment_count_view = 'Y';
+	if(!$st_skin_info->ext2_voted_count_view) $st_skin_info->ext2_voted_count_view = 'Y';
 
-    //pagenation
-    if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
-    if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
-    if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
+	//pagenation
+	if(!$st_skin_info->use_page) $st_skin_info->use_page = 'Y';
+	if(!$st_skin_info->list_count) $st_skin_info->list_count = 10;
+	if(!$st_skin_info->page_count) $st_skin_info->page_count = 5;
 
-    //module info
-    if(!$is_memberfollow_module) $config->subscribe_use="N";
+	//module info
+	if(!$is_memberfollow_module) $config->subscribe_use="N";
 }
 <!--@if($st_menu_count == 1)-->
 {@ $st_menu_css_class = 'one'; }
