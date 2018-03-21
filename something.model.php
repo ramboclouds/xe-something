@@ -248,11 +248,6 @@ class somethingModel extends something
 			$config = $this->getConfig();
 		}
 
-		if ($config->ht_use == "N")
-		{
-			return;
-		}
-
 		$cache_folder = _XE_PATH_ . "files/cache/something";
 		$cache_data = $cache_folder . "/srltomid.php";
 
