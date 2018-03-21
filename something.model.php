@@ -207,7 +207,7 @@ class somethingModel extends something
 
 
 		$sObj = new stdClass();
-		$sObj->member_srl = implode($member_srls, ",");
+		$sObj->member_srls = implode($member_srls, ",");
 		$sObj->module_srl = $board_srls;
 		$sObj->statusList = "PUBLIC";
 		$sObj->sort_index = "regdate";
