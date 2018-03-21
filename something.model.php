@@ -77,8 +77,7 @@ class somethingModel extends something
 				$cmt_content = Context::getLang('something_message_comment_content_blank');
 			}
 			$commentOutput->data[$key]->content = $cmt_content;
-			//TODO : check again $moduleSrltoMid variables.
-			$commentOutput->data[$key]->mid = $moduleSrltoMid[$value->module_srl];
+			$commentOutput->data[$key]->mid = $oModuleSrl->mid[$value->module_srl];
 			$commentOutput->data[$key]->browser_title = $oModuleSrl->browser_title[$value->module_srl];
 		}
 
