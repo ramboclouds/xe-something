@@ -131,12 +131,8 @@ class somethingModel extends something
 
 			if ($documents)
 			{
-				foreach ($output->data as $key => $value)
-				{
-					$output->data[$key] = $documents[$value->document_srl];
-				}
+				$output->data = $documents;
 			}
-
 		}
 		return $output;
 	}
