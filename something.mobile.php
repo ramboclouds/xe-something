@@ -1,5 +1,5 @@
 <?php
-
+require_once(_XE_PATH_.'modules/something/something.view.php');
 class somethingMobile extends somethingView
 {
 	function init()
