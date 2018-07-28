@@ -184,4 +184,8 @@
 		<value xml:lang="ko"><![CDATA[활동]]></value>
 		<value xml:lang="en"><![CDATA[Timeline]]></value>
 	</item>
+	<item name="something_message_data_empty">
+		<value xml:lang="ko"><![CDATA[구독한 사람들의 글이 없습니다.]]></value>
+		<value xml:lang="en"><![CDATA[There are no posts from subscribed users.]]></value>
+	</item>
 </lang>
