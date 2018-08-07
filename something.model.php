@@ -290,6 +290,7 @@ class somethingModel extends something
 					$mid_tmp = $mid_tmp . ',' . $val->module_srl . '=>"' . $val->mid . '"';
 					$name_tmp = $name_tmp . ',' . $val->module_srl . '=>"' . $val->browser_title . '"';
 				}
+				$name_tmp = $this->removeSpStr($name_tmp);
 			}
 
 			$mid_data = "<?php \$st_module_srl_to_mid = array(" . $mid_tmp . "); " . PHP_EOL . "\$st_module_srl_to_name = array(" . $name_tmp . ");?>";
@@ -452,5 +453,13 @@ class somethingModel extends something
 
 		return $chkMobile;
 	}
+
+	function removeSpStr($str)
+	{
+		$pattern = '/([\xEA-\xED][\x80-\xBF]{2}|[a-zA-Z])+/';
+		preg_match_all($pattern, $str, $match);
+		return implode('', $match[0]);
+	}
+
 }
 /* End of file */
