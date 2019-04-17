@@ -4,12 +4,11 @@ class somethingMobile extends somethingView
 {
 	function init()
 	{
-		
         $module_info = $this->module_info;
 		$template_path = sprintf("%sm.skins/%s/",$this->module_path, $module_info->mskin);
-		if(!is_dir($template_path)||!$config->mskin)
+		if(!is_dir($template_path)||!$module_info->mskin)
 		{
-			$config->skin = 'default';
+			$module_info->mskin = 'default';
 			$template_path = sprintf("%sm.skins/%s/",$this->module_path, $module_info->mskin);
 		}
 		$this->setTemplatePath($template_path);
@@ -21,7 +20,5 @@ class somethingMobile extends somethingView
 		{
 			$this->setLayoutPath($layout_info->path);
 		}
-
 	}
-
 }
